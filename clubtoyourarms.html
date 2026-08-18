@@ -1,0 +1,1310 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    >
+
+    <title>CLUB TO YOUR ARMS - SABATINI28</title>
+
+
+    <style>
+
+        /* =========================================
+           FONTES
+        ========================================= */
+
+        @font-face {
+
+            font-family: "POI Diode";
+
+            src:
+                url("fonts/POIDiodeTrial-Bold.woff2")
+                format("woff2");
+
+            font-weight: 700;
+            font-style: normal;
+
+            font-display: swap;
+
+        }
+
+
+        @font-face {
+
+            font-family: "Moderat";
+
+            src:
+                url("fonts/Moderat-Mono-Light.woff2")
+                format("woff2");
+
+            font-weight: 300;
+            font-style: normal;
+
+            font-display: swap;
+
+        }
+
+
+
+        /* =========================================
+           RESET
+        ========================================= */
+
+        * {
+
+            box-sizing: border-box;
+
+            margin: 0;
+
+            padding: 0;
+
+        }
+
+
+        html,
+        body {
+
+            width: 100%;
+
+            min-height: 100%;
+
+            background: #000;
+
+        }
+
+
+        body {
+
+            overflow-x: hidden;
+
+            background: #000;
+
+        }
+
+
+
+        /* =========================================
+           PÁGINA
+        ========================================= */
+
+        .club-page {
+
+            position: relative;
+
+            width: 100%;
+
+            min-height: 100vh;
+
+            background: #000;
+
+            padding:
+                16px
+                16px
+                35px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            justify-content: center;
+
+        }
+
+
+        @media (min-width: 700px) {
+
+            .club-page {
+
+                padding:
+                    20px
+                    30px
+                    50px;
+
+            }
+
+        }
+
+
+        @media (max-width: 380px) {
+
+            .club-page {
+
+                padding-left: 11px;
+
+                padding-right: 11px;
+
+            }
+
+        }
+
+
+
+        /* =========================================
+           VOLTAR
+        ========================================= */
+
+        .back {
+
+            position: absolute;
+
+            top: 12px;
+
+            left: 14px;
+
+            border: 0;
+
+            background: none;
+
+            color: #FF5C00;
+
+            font-family:
+                "POI Diode",
+                sans-serif;
+
+            font-size: 42px;
+
+            line-height: 1;
+
+            cursor: pointer;
+
+            z-index: 20;
+
+            transition:
+                transform 100ms ease,
+                color 80ms linear;
+
+        }
+
+
+        .back:active {
+
+            transform:
+                translateX(-8px)
+                scale(1.15);
+
+        }
+
+
+
+        /* =========================================
+           TÍTULO
+        ========================================= */
+
+        .title {
+
+            width: 100%;
+
+            color: #00FF38;
+
+            font-family:
+                "POI Diode",
+                sans-serif;
+
+            font-size:
+                clamp(
+                    50px,
+                    14vw,
+                    160px
+                );
+
+            line-height: 0.72;
+
+            letter-spacing: -0.04em;
+
+            text-align: center;
+
+            user-select: none;
+
+            margin-bottom: 32px;
+
+        }
+
+
+        @media (max-width: 380px) {
+
+            .title {
+
+                font-size: 14vw;
+
+            }
+
+        }
+
+
+
+        /* =========================================
+           FORMULÁRIO
+        ========================================= */
+
+        .form-container {
+
+            width: 100%;
+
+            max-width: 900px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 12px;
+
+        }
+
+
+        @media (min-width: 700px) {
+
+            .form-container {
+
+                gap: 16px;
+
+            }
+
+        }
+
+
+        @media (max-width: 380px) {
+
+            .form-container {
+
+                gap: 9px;
+
+            }
+
+        }
+
+
+
+        /* =========================================
+           GRUPO DE INPUT
+        ========================================= */
+
+        .input-group {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 4px;
+
+        }
+
+
+        .input-label {
+
+            color: #087AFF;
+
+            font-family:
+                "POI Diode",
+                sans-serif;
+
+            font-size:
+                clamp(
+                    18px,
+                    5vw,
+                    28px
+                );
+
+            font-weight: 700;
+
+            text-transform: uppercase;
+
+            letter-spacing: -0.04em;
+
+            user-select: none;
+
+        }
+
+
+        .input-field,
+        .textarea-field {
+
+            width: 100%;
+
+            padding:
+                13px
+                12px;
+
+            border:
+                4px solid #FF5C00;
+
+            background: #000;
+
+            color: #00FF38;
+
+            font-family:
+                "Moderat",
+                monospace;
+
+            font-size:
+                clamp(
+                    16px,
+                    4vw,
+                    22px
+                );
+
+            font-weight: 300;
+
+            text-transform: uppercase;
+
+            outline: none;
+
+            transition:
+                border-color 100ms ease,
+                box-shadow 100ms ease;
+
+            display: flex;
+
+            align-items: center;
+
+        }
+
+
+        .input-field {
+
+            min-height: 78px;
+
+        }
+
+
+        .textarea-field {
+
+            min-height: 200px;
+
+            resize: vertical;
+
+            text-transform: none;
+
+            padding:
+                16px
+                12px;
+
+            overflow-y: auto;
+
+        }
+
+
+        .input-field::placeholder,
+        .textarea-field::placeholder {
+
+            color: #FF5C00;
+
+            opacity: 0.6;
+
+        }
+
+
+        .input-field:focus,
+        .textarea-field:focus {
+
+            border-color: #00FF38;
+
+            box-shadow:
+                0 0 12px
+                rgba(0, 255, 56, 0.3);
+
+        }
+
+
+        .input-field.error,
+        .textarea-field.error {
+
+            border-color: #FF5C00;
+
+            box-shadow:
+                0 0 12px
+                rgba(255, 92, 0, 0.5);
+
+        }
+
+
+        .error-message {
+
+            color: #FF5C00;
+
+            font-family:
+                "Moderat",
+                monospace;
+
+            font-size:
+                clamp(
+                    12px,
+                    3vw,
+                    16px
+                );
+
+            font-weight: 300;
+
+            margin-top: 4px;
+
+            opacity: 0;
+
+            transition:
+                opacity 200ms ease;
+
+        }
+
+
+        .error-message.show {
+
+            opacity: 1;
+
+        }
+
+
+        @media (min-width: 700px) {
+
+            .input-field {
+
+                min-height: 90px;
+
+                font-size:
+                    clamp(
+                        20px,
+                        3vw,
+                        26px
+                    );
+
+            }
+
+            .textarea-field {
+
+                min-height: 240px;
+
+            }
+
+        }
+
+
+        @media (max-width: 380px) {
+
+            .input-field {
+
+                min-height: 67px;
+
+                border-width: 3px;
+
+                font-size: 16px;
+
+            }
+
+            .textarea-field {
+
+                min-height: 160px;
+
+                border-width: 3px;
+
+                font-size: 14px;
+
+            }
+
+        }
+
+
+
+        /* =========================================
+           INSTRUÇÃO
+        ========================================= */
+
+        .instruction-text {
+
+            color: #B000FF;
+
+            font-family:
+                "Moderat",
+                monospace;
+
+            font-size:
+                clamp(
+                    12px,
+                    3vw,
+                    16px
+                );
+
+            font-weight: 300;
+
+            line-height: 1.6;
+
+            margin-top: 4px;
+
+            letter-spacing: -0.01em;
+
+        }
+
+
+
+        /* =========================================
+           BOTÃO ENVIAR
+        ========================================= */
+
+        .submit-btn {
+
+            display: block;
+
+            width: 100%;
+
+            padding:
+                12px
+                24px;
+
+            border:
+                4px solid #B000FF;
+
+            background: #000;
+
+            color: #B000FF;
+
+            font-family:
+                "POI Diode",
+                sans-serif;
+
+            font-size:
+                clamp(
+                    25px,
+                    6vw,
+                    42px
+                );
+
+            font-weight: 700;
+
+            line-height: 0.9;
+
+            text-transform: uppercase;
+
+            letter-spacing: -0.04em;
+
+            cursor: pointer;
+
+            transition:
+                background-color 70ms linear,
+                color 70ms linear,
+                transform 100ms ease;
+
+            margin-top: 16px;
+
+        }
+
+
+        .submit-btn:hover {
+
+            border-color: #B000FF;
+
+        }
+
+
+        .submit-btn:active {
+
+            background: #B000FF;
+
+            color: #000;
+
+            transform:
+                scaleX(1.10)
+                scaleY(0.90);
+
+        }
+
+
+        .submit-btn:disabled {
+
+            opacity: 0.5;
+
+            cursor: not-allowed;
+
+        }
+
+
+        @media (min-width: 700px) {
+
+            .submit-btn {
+
+                margin-top: 20px;
+
+            }
+
+        }
+
+
+        @media (max-width: 380px) {
+
+            .submit-btn {
+
+                margin-top: 12px;
+
+                border-width: 3px;
+
+            }
+
+        }
+
+
+
+        /* =========================================
+           MENSAGEM DE SUCESSO
+        ========================================= */
+
+        .success-overlay {
+
+            position: fixed;
+
+            inset: 0;
+
+            background: #000;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            opacity: 0;
+
+            pointer-events: none;
+
+            transition:
+                opacity 200ms ease;
+
+            z-index: 100;
+
+        }
+
+
+        .success-overlay.active {
+
+            opacity: 1;
+
+            pointer-events: auto;
+
+        }
+
+
+        .success-message {
+
+            font-family:
+                "POI Diode",
+                sans-serif;
+
+            font-size:
+                clamp(
+                    40px,
+                    12vw,
+                    200px
+                );
+
+            font-weight: 700;
+
+            line-height: 0.8;
+
+            letter-spacing: -0.045em;
+
+            text-align: center;
+
+            text-transform: uppercase;
+
+            color: #00FF38;
+
+            animation:
+                adooo-grow
+                3s
+                ease-out
+                forwards;
+
+            will-change:
+                opacity,
+                transform,
+                font-size,
+                color;
+
+        }
+
+
+        @keyframes adooo-grow {
+
+            0% {
+
+                font-size:
+                    clamp(
+                        30px,
+                        8vw,
+                        100px
+                    );
+
+                transform:
+                    scale(0.1)
+                    rotate(-15deg);
+
+                opacity: 0;
+
+                color: #FF5C00;
+
+            }
+
+            15% {
+
+                opacity: 1;
+
+            }
+
+            30% {
+
+                transform:
+                    scale(1.2)
+                    rotate(8deg);
+
+                color: #B000FF;
+
+            }
+
+            50% {
+
+                transform:
+                    scale(1)
+                    rotate(-5deg);
+
+                color: #00FF38;
+
+                font-size:
+                    clamp(
+                        40px,
+                        15vw,
+                        240px
+                    );
+
+            }
+
+            70% {
+
+                transform:
+                    scale(1.15)
+                    rotate(12deg);
+
+                color: #087AFF;
+
+            }
+
+            85% {
+
+                transform:
+                    scale(0.95)
+                    rotate(-8deg);
+
+                color: #E5FF00;
+
+            }
+
+            100% {
+
+                font-size:
+                    clamp(
+                        40px,
+                        15vw,
+                        240px
+                    );
+
+                transform:
+                    scale(1)
+                    rotate(0deg);
+
+                opacity: 1;
+
+                color: #00FF38;
+
+            }
+
+        }
+
+
+
+        /* =========================================
+           FLASH
+        ========================================= */
+
+        .flash {
+
+            position: fixed;
+
+            inset: 0;
+
+            background: #FFF;
+
+            opacity: 0;
+
+            pointer-events: none;
+
+            z-index: 101;
+
+        }
+
+
+        .flash.active {
+
+            animation:
+                flash-effect
+                100ms
+                linear;
+
+        }
+
+
+        @keyframes flash-effect {
+
+            0% {
+                opacity: 0;
+            }
+
+            25% {
+                opacity: .8;
+            }
+
+            100% {
+                opacity: 0;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <main class="club-page">
+
+
+        <!-- =====================================
+             VOLTAR
+        ====================================== -->
+
+        <button
+            class="back"
+            onclick="history.back()"
+            aria-label="Voltar"
+        >
+            ←
+        </button>
+
+
+
+        <!-- =====================================
+             TÍTULO
+        ====================================== -->
+
+        <h1 class="title">
+            CLUB TO<br>YOUR ARMS
+        </h1>
+
+
+
+        <!-- =====================================
+             FORMULÁRIO
+        ====================================== -->
+
+        <form
+            class="form-container"
+            id="clubForm"
+            onsubmit="handleSubmit(event)"
+        >
+
+
+            <!-- INSTAGRAM -->
+
+            <div class="input-group">
+
+                <label
+                    class="input-label"
+                    for="instagram"
+                >
+                    Para: @
+                </label>
+
+                <input
+                    type="text"
+                    id="instagram"
+                    class="input-field"
+                    placeholder="@instagram da pessoa"
+                    maxlength="100"
+                    autocomplete="off"
+                >
+
+                <div
+                    class="error-message"
+                    id="instagramError"
+                >
+                    Campo obrigatório
+                </div>
+
+            </div>
+
+
+
+            <!-- MENSAGEM -->
+
+            <div class="input-group">
+
+                <label
+                    class="input-label"
+                    for="message"
+                >
+                    Declaração
+                </label>
+
+                <p class="instruction-text">
+
+                    Deixe aqui uma declaração pra alguém na festa. Pode ser amigx, namoradx, pretendente, uma mensagem fofa ou uma confissão secreta. Você pode mandar anonimamente ou assinado, e eu vou fazer a mensagem chegar no destinatário 💌
+
+                </p>
+
+                <textarea
+                    id="message"
+                    class="textarea-field"
+                    placeholder="escreva sua declaração aqui..."
+                    maxlength="500"
+                    autocomplete="off"
+                ></textarea>
+
+                <div
+                    class="error-message"
+                    id="messageError"
+                >
+                    Campo obrigatório
+                </div>
+
+            </div>
+
+
+
+            <!-- BOTÃO ENVIAR -->
+
+            <button
+                type="submit"
+                class="submit-btn"
+            >
+                ENVIAR
+            </button>
+
+
+        </form>
+
+
+    </main>
+
+
+
+    <!-- =====================================
+         OVERLAY DE SUCESSO
+    ====================================== -->
+
+    <div
+        class="success-overlay"
+        id="successOverlay"
+    >
+
+        <div class="success-message">
+            MENSAGEM ENVIADA
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================
+         FLASH
+    ====================================== -->
+
+    <div
+        class="flash"
+        id="flash"
+    ></div>
+
+
+
+    <script>
+
+
+        /* =========================================
+           ELEMENTOS
+        ========================================= */
+
+        const form =
+            document.getElementById(
+                "clubForm"
+            );
+
+        const instagramInput =
+            document.getElementById(
+                "instagram"
+            );
+
+        const messageInput =
+            document.getElementById(
+                "message"
+            );
+
+        const instagramError =
+            document.getElementById(
+                "instagramError"
+            );
+
+        const messageError =
+            document.getElementById(
+                "messageError"
+            );
+
+        const successOverlay =
+            document.getElementById(
+                "successOverlay"
+            );
+
+        const flash =
+            document.getElementById(
+                "flash"
+            );
+
+
+
+        /* =========================================
+           VALIDAÇÃO EM TEMPO REAL
+        ========================================= */
+
+        instagramInput.addEventListener(
+            "blur",
+            function() {
+
+                if (
+                    this.value.trim() === ""
+                ) {
+
+                    this.classList.add(
+                        "error"
+                    );
+
+                    instagramError.classList.add(
+                        "show"
+                    );
+
+                } else {
+
+                    this.classList.remove(
+                        "error"
+                    );
+
+                    instagramError.classList.remove(
+                        "show"
+                    );
+
+                }
+
+            }
+        );
+
+        instagramInput.addEventListener(
+            "input",
+            function() {
+
+                if (
+                    this.value.trim() !== ""
+                ) {
+
+                    this.classList.remove(
+                        "error"
+                    );
+
+                    instagramError.classList.remove(
+                        "show"
+                    );
+
+                }
+
+            }
+        );
+
+        messageInput.addEventListener(
+            "blur",
+            function() {
+
+                if (
+                    this.value.trim() === ""
+                ) {
+
+                    this.classList.add(
+                        "error"
+                    );
+
+                    messageError.classList.add(
+                        "show"
+                    );
+
+                } else {
+
+                    this.classList.remove(
+                        "error"
+                    );
+
+                    messageError.classList.remove(
+                        "show"
+                    );
+
+                }
+
+            }
+        );
+
+        messageInput.addEventListener(
+            "input",
+            function() {
+
+                if (
+                    this.value.trim() !== ""
+                ) {
+
+                    this.classList.remove(
+                        "error"
+                    );
+
+                    messageError.classList.remove(
+                        "show"
+                    );
+
+                }
+
+            }
+        );
+
+
+
+        /* =========================================
+           FLASH
+        ========================================= */
+
+        function doFlash() {
+
+            flash.classList.remove(
+                "active"
+            );
+
+            void flash.offsetWidth;
+
+            flash.classList.add(
+                "active"
+            );
+
+        }
+
+
+
+        /* =========================================
+           ENVIO DO FORMULÁRIO
+        ========================================= */
+
+        function handleSubmit(event) {
+
+            event.preventDefault();
+
+            const instagram =
+                instagramInput.value.trim();
+
+            const message =
+                messageInput.value.trim();
+
+
+            /*
+                Validação
+            */
+
+            if (instagram === "") {
+
+                instagramInput.classList.add(
+                    "error"
+                );
+
+                instagramError.classList.add(
+                    "show"
+                );
+
+                return;
+
+            }
+
+            if (message === "") {
+
+                messageInput.classList.add(
+                    "error"
+                );
+
+                messageError.classList.add(
+                    "show"
+                );
+
+                return;
+
+            }
+
+
+            /*
+                Dados pra enviar
+            */
+
+            const declaracao = {
+
+                para: instagram,
+                mensagem: message,
+                data: new Date().toLocaleString('pt-BR')
+
+            };
+
+            console.log(
+                "Declaração:",
+                declaracao
+            );
+
+
+            /*
+                Animar overlay de sucesso
+            */
+
+            successOverlay.classList.add(
+                "active"
+            );
+
+            doFlash();
+
+
+            /*
+                Desabilitar o formulário
+            */
+
+            form.style.pointerEvents =
+                "none";
+
+            form.style.opacity = "0.5";
+
+
+            /*
+                Depois de 3.5 segundos,
+                voltar pra home
+            */
+
+            setTimeout(function() {
+
+                window.location.href =
+                    "index.html";
+
+            }, 3500);
+
+        }
+
+
+    </script>
+
+</body>
+
+</html>
