@@ -2,11 +2,18 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    >
 
-    <title>SABATINI28</title>
+    <title>SABATINI28 — LOOKS</title>
 
     <style>
+
+        /* =========================================
+           RESET
+        ========================================= */
 
         * {
             box-sizing: border-box;
@@ -14,27 +21,903 @@
             padding: 0;
         }
 
+
         html,
         body {
             width: 100%;
-            height: 100%;
-            overflow: hidden;
+            min-height: 100%;
+
             background: #000;
+
+            font-family:
+                "Arial Black",
+                Arial,
+                sans-serif;
         }
+
 
         body {
-            font-family: Arial Black, Arial, sans-serif;
-            cursor: crosshair;
+            overflow-x: hidden;
         }
 
 
-        /* =========================
-           ÁREA PRINCIPAL
-        ========================= */
+        /* =========================================
+           PÁGINA
+        ========================================= */
 
-        .menu {
+        .looks-page {
+
             position: relative;
 
+            width: 100%;
+            min-height: 100vh;
+
+            background: #000;
+
+            padding:
+                18px
+                18px
+                35px;
+
+        }
+
+
+        /* =========================================
+           BOTÃO VOLTAR
+        ========================================= */
+
+        .back {
+
+            position: absolute;
+
+            top: 14px;
+            left: 16px;
+
+            border: 0;
+
+            background: none;
+
+            color: #FF5C00;
+
+            font-family:
+                Arial Black,
+                Arial,
+                sans-serif;
+
+            font-size: 42px;
+
+            line-height: 1;
+
+            cursor: pointer;
+
+            z-index: 20;
+
+            transition:
+                transform 100ms ease,
+                color 80ms linear;
+
+        }
+
+
+        .back:active {
+
+            transform:
+                translateX(-8px)
+                scale(1.15);
+
+        }
+
+
+        /* =========================================
+           TÍTULO
+        ========================================= */
+
+        .title {
+
+            width: 100%;
+
+            margin-top: 45px;
+
+            color: #00FF38;
+
+            font-family:
+                Arial Black,
+                Arial,
+                sans-serif;
+
+            font-size:
+                clamp(
+                    65px,
+                    18vw,
+                    190px
+                );
+
+            line-height: 0.75;
+
+            letter-spacing: -0.07em;
+
+            text-align: center;
+
+            transform:
+                scaleX(1.15);
+
+            user-select: none;
+
+        }
+
+
+        /* =========================================
+           GERAR
+        ========================================= */
+
+        .generate {
+
+            display: block;
+
+            margin:
+                28px auto
+                32px;
+
+            padding:
+                10px
+                22px;
+
+            border:
+                4px solid #FF5C00;
+
+            background: #000;
+
+            color: #FF5C00;
+
+            font-family:
+                Arial Black,
+                Arial,
+                sans-serif;
+
+            font-size:
+                clamp(
+                    20px,
+                    5vw,
+                    34px
+                );
+
+            line-height: 1;
+
+            cursor: pointer;
+
+            text-transform: uppercase;
+
+            transition:
+                background-color 80ms linear,
+                color 80ms linear,
+                transform 100ms ease;
+
+        }
+
+
+        .generate:active {
+
+            background: #FF5C00;
+
+            color: #000;
+
+            transform:
+                scaleX(1.08)
+                scaleY(0.92);
+
+        }
+
+
+        /* =========================================
+           ÁREA DOS LOOKS
+        ========================================= */
+
+        .outfit {
+
+            width: 100%;
+
+            max-width: 850px;
+
+            margin:
+                0 auto;
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 14px;
+
+        }
+
+
+        /* =========================================
+           RETÂNGULOS
+        ========================================= */
+
+        .look-box {
+
+            width: 100%;
+
+            min-height: 78px;
+
+            padding:
+                14px
+                12px;
+
+            border:
+                4px solid #FF5C00;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            overflow: hidden;
+
+            background: #000;
+
+            color: #00FF38;
+
+            text-align: center;
+
+            font-family:
+                Arial Black,
+                Arial,
+                sans-serif;
+
+            font-size:
+                clamp(
+                    23px,
+                    7vw,
+                    54px
+                );
+
+            line-height: 0.9;
+
+            letter-spacing: -0.035em;
+
+            text-transform: uppercase;
+
+            user-select: none;
+
+            transition:
+                transform 120ms
+                cubic-bezier(.2,.8,.2,1),
+
+                background-color 80ms linear,
+
+                color 80ms linear,
+
+                border-color 80ms linear;
+
+        }
+
+
+        /* =========================================
+           EFEITO QUANDO GERA
+        ========================================= */
+
+        .look-box.generating {
+
+            animation:
+                generate-chaos
+                220ms
+                ease;
+
+        }
+
+
+        @keyframes generate-chaos {
+
+            0% {
+
+                transform:
+                    scaleX(1)
+                    scaleY(1)
+                    skewX(0deg);
+
+            }
+
+            25% {
+
+                transform:
+                    scaleX(1.04)
+                    scaleY(0.88)
+                    skewX(-4deg);
+
+            }
+
+            50% {
+
+                transform:
+                    scaleX(0.97)
+                    scaleY(1.08)
+                    skewX(4deg);
+
+            }
+
+            75% {
+
+                transform:
+                    scaleX(1.03)
+                    scaleY(0.94)
+                    skewX(-2deg);
+
+            }
+
+            100% {
+
+                transform:
+                    scaleX(1)
+                    scaleY(1)
+                    skewX(0deg);
+
+            }
+
+        }
+
+
+        /* =========================================
+           DESKTOP
+        ========================================= */
+
+        @media (min-width: 700px) {
+
+            .looks-page {
+
+                padding:
+                    20px
+                    30px
+                    50px;
+
+            }
+
+
+            .title {
+
+                margin-top: 40px;
+
+            }
+
+
+            .generate {
+
+                margin-top: 35px;
+
+            }
+
+
+            .outfit {
+
+                gap: 18px;
+
+            }
+
+
+            .look-box {
+
+                min-height: 92px;
+
+                font-size:
+                    clamp(
+                        32px,
+                        4vw,
+                        62px
+                    );
+
+            }
+
+        }
+
+
+        /* =========================================
+           TELAS MUITO PEQUENAS
+        ========================================= */
+
+        @media (max-width: 380px) {
+
+            .looks-page {
+
+                padding-left: 12px;
+                padding-right: 12px;
+
+            }
+
+
+            .title {
+
+                font-size: 62px;
+
+            }
+
+
+            .look-box {
+
+                min-height: 70px;
+
+                font-size: 21px;
+
+                border-width: 3px;
+
+            }
+
+
+            .outfit {
+
+                gap: 10px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <main class="looks-page">
+
+
+        <!-- =====================================
+             VOLTAR
+        ====================================== -->
+
+        <button
+            class="back"
+            onclick="history.back()"
+            aria-label="Voltar"
+        >
+            ←
+        </button>
+
+
+        <!-- =====================================
+             TÍTULO
+        ====================================== -->
+
+        <h1 class="title">
+            LOOKS
+        </h1>
+
+
+        <!-- =====================================
+             GERAR
+        ====================================== -->
+
+        <button
+            class="generate"
+            id="generate"
+        >
+            GERAR
+        </button>
+
+
+        <!-- =====================================
+             RESULTADO
+             
+             AS CATEGORIAS NÃO APARECEM.
+        ====================================== -->
+
+        <section
+            class="outfit"
+            id="outfit"
+        >
+
+
+            <div
+                class="look-box"
+                id="accessory"
+            ></div>
+
+
+            <div
+                class="look-box"
+                id="top"
+            ></div>
+
+
+            <div
+                class="look-box"
+                id="bottom"
+            ></div>
+
+
+            <div
+                class="look-box"
+                id="shoes"
+            ></div>
+
+
+            <div
+                class="look-box"
+                id="outer"
+            ></div>
+
+
+        </section>
+
+
+    </main>
+
+
+
+    <script>
+
+
+        /* =========================================
+           BANCO DE LOOKS
+        ========================================= */
+
+
+        const looks = {
+
+
+            accessory: [
+
+                "óculos escuro",
+
+                "bandana",
+
+                "cigarro na orelha",
+
+                "echarpe",
+
+                "gravata mal atada",
+
+                "correntes",
+
+                "luvas"
+
+            ],
+
+
+            top: [
+
+                "camiseta branca",
+
+                "camiseta preta",
+
+                "regata branca",
+
+                "regata preta",
+
+                "camisa desabotoada",
+
+                "graphic tee"
+
+            ],
+
+
+            bottom: [
+
+                "calça de couro",
+
+                "jeans cinza",
+
+                "jorts",
+
+                "calça social",
+
+                "calça de nylon",
+
+                "cintura baixa"
+
+            ],
+
+
+            shoes: [
+
+                "mocassim",
+
+                "coturno",
+
+                "dad shoes",
+
+                "sapatilha com meia",
+
+                "boston soft",
+
+                "converse"
+
+            ],
+
+
+            outer: [
+
+                "jaqueta de couro",
+
+                "colete de couro",
+
+                "camisa de manga longa",
+
+                "corta vento",
+
+                "paletó"
+
+            ]
+
+        };
+
+
+
+        /* =========================================
+           ELEMENTOS
+        ========================================= */
+
+        const boxes = {
+
+            accessory:
+                document.getElementById(
+                    "accessory"
+                ),
+
+            top:
+                document.getElementById(
+                    "top"
+                ),
+
+            bottom:
+                document.getElementById(
+                    "bottom"
+                ),
+
+            shoes:
+                document.getElementById(
+                    "shoes"
+                ),
+
+            outer:
+                document.getElementById(
+                    "outer"
+                )
+
+        };
+
+
+        const generate =
+            document.getElementById(
+                "generate"
+            );
+
+
+
+        /* =========================================
+           PALETA
+        ========================================= */
+
+        const colors = [
+
+            "#087AFF",
+
+            "#B000FF",
+
+            "#FF5C00",
+
+            "#00FF38",
+
+            "#E5FF00"
+
+        ];
+
+
+
+        /* =========================================
+           ESCOLHER ALEATORIAMENTE
+        ========================================= */
+
+        function randomItem(array) {
+
+            return array[
+                Math.floor(
+                    Math.random()
+                    *
+                    array.length
+                )
+            ];
+
+        }
+
+
+
+        /* =========================================
+           GERAR LOOK
+        ========================================= */
+
+        function generateLook() {
+
+
+            Object.keys(boxes)
+                .forEach(function(category) {
+
+
+                    const box =
+                        boxes[category];
+
+
+                    /*
+                        Nova opção
+                    */
+
+                    box.textContent =
+                        randomItem(
+                            looks[category]
+                        ).toUpperCase();
+
+
+                    /*
+                        Reinicia animação
+                    */
+
+                    box.classList.remove(
+                        "generating"
+                    );
+
+
+                    /*
+                        Força o navegador
+                        a reiniciar a animação
+                    */
+
+                    void box.offsetWidth;
+
+
+                    box.classList.add(
+                        "generating"
+                    );
+
+
+                    /*
+                        Cor aleatória
+                    */
+
+                    box.style.color =
+                        colors[
+                            Math.floor(
+                                Math.random()
+                                *
+                                colors.length
+                            )
+                        ];
+
+                });
+
+
+            /*
+                Pequena reação do botão
+            */
+
+            generate.style.transform =
+                "scaleX(1.12) scaleY(.9)";
+
+
+            setTimeout(function() {
+
+                generate.style.transform =
+                    "";
+
+            }, 120);
+
+        }
+
+
+
+        /* =========================================
+           PRIMEIRO LOOK
+        ========================================= */
+
+        generateLook();
+
+
+
+        /* =========================================
+           BOTÃO
+        ========================================= */
+
+        generate.addEventListener(
+            "click",
+            generateLook
+        );
+
+
+
+        /* =========================================
+           INTERAÇÃO COM OS RETÂNGULOS
+           
+           No desktop, o mouse deforma.
+           No mobile, o toque dá uma
+           pequena reação.
+        ========================================= */
+
+        Object.values(boxes)
+            .forEach(function(box) {
+
+
+                box.addEventListener(
+                    "mousemove",
+                    function(event) {
+
+
+                        const rect =
+                            box.getBoundingClientRect();
+
+
+                        const x =
+                            event.clientX -
+                            rect.left;
+
+
+                        const percentage =
+                            x /
+                            rect.width;
+
+
+                        const rotation =
+                            (
+                                percentage -
+                                0.5
+                            )
+                            *
+                            5;
+
+
+                        box.style.transform = `
+                            skewX(${rotation}deg)
+                            scaleX(1.015)
+                        `;
+
+                    }
+                );
+
+
+                box.addEventListener(
+                    "mouseleave",
+                    function() {
+
+                        box.style.transform =
+                            "";
+
+                    }
+                );
+
+
+                box.addEventListener(
+                    "touchstart",
+                    function() {
+
+                        box.style.transform =
+                            "scaleX(1.025) scaleY(.96)";
+
+                    },
+                    {
+                        passive: true
+                    }
+                );
+
+
+                box.addEventListener(
+                    "touchend",
+                    function() {
+
+                        setTimeout(function() {
+
+                            box.style.transform =
+                                "";
+
+                        }, 100);
+
+                    }
+                );
+
+            });
+
+    </script>
+
+</body>
+</html>
             width: 100vw;
             height: 100vh;
 
