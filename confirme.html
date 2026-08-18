@@ -631,8 +631,8 @@
 
             font-size:
                 clamp(
-                    80px,
-                    20vw,
+                    60px,
+                    15vw,
                     280px
                 );
 
@@ -646,70 +646,113 @@
 
             text-transform: uppercase;
 
-            color: #FF5C00;
+            color: #00FF38;
 
             animation:
-                adooo-blink
-                400ms
-                ease-in-out
-                infinite;
+                adooo-grow
+                3s
+                ease-out
+                forwards;
 
             will-change:
                 opacity,
-                transform;
+                transform,
+                font-size,
+                color;
 
         }
 
 
-        @keyframes adooo-blink {
+        @keyframes adooo-grow {
 
             0% {
 
-                opacity: 1;
+                font-size:
+                    clamp(
+                        40px,
+                        8vw,
+                        120px
+                    );
 
                 transform:
-                    scale(1)
-                    rotate(-1deg);
+                    scale(0.1)
+                    rotate(-15deg);
+
+                opacity: 0;
+
+                color: #FF5C00;
 
             }
 
-            25% {
+            15% {
 
-                opacity: 0.3;
+                opacity: 1;
+
+            }
+
+            30% {
 
                 transform:
-                    scale(1.05)
-                    rotate(1deg);
+                    scale(1.2)
+                    rotate(8deg);
+
+                color: #B000FF;
 
             }
 
             50% {
 
-                opacity: 1;
-
                 transform:
                     scale(1)
-                    rotate(-1deg);
+                    rotate(-5deg);
+
+                color: #00FF38;
+
+                font-size:
+                    clamp(
+                        60px,
+                        18vw,
+                        320px
+                    );
 
             }
 
-            75% {
-
-                opacity: 0.4;
+            70% {
 
                 transform:
-                    scale(1.08)
-                    rotate(2deg);
+                    scale(1.15)
+                    rotate(12deg);
+
+                color: #087AFF;
+
+            }
+
+            85% {
+
+                transform:
+                    scale(0.95)
+                    rotate(-8deg);
+
+                color: #E5FF00;
 
             }
 
             100% {
 
-                opacity: 1;
+                font-size:
+                    clamp(
+                        60px,
+                        18vw,
+                        320px
+                    );
 
                 transform:
                     scale(1)
-                    rotate(-1deg);
+                    rotate(0deg);
+
+                opacity: 1;
+
+                color: #00FF38;
 
             }
 
