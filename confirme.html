@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    >
+
+    <title>CONFIRME - SABATINI28</title>
+
+
+    <style>
+
+        /* =========================================
+           FONTE
+        ========================================= */
+
+        @font-face {
+
+            font-family: "POI Diode";
+
+            src:
+                url("fonts/POIDiodeTrial-Bold.woff2")
+                format("woff2");
+
+            font-weight: 700;
+            font-style: normal;
+
+            font-display: swap;
+
+        }
+
+
+        @font-face {
+
+            font-family: "Moderat";
+
+            src:
+                url("fonts/Moderat-Mono-Light.woff2")
+                format("woff2");
+
+            font-weight: 300;
+
+            font-style: normal;
+
+            font-display: swap;
+
+        }
+
+
+
+        /* =========================================
+           RESET
+        ========================================= */
+
+        * {
+
+            box-sizing: border-box;
+
+            margin: 0;
+
+            padding: 0;
+
+        }
+
+
+        html,
+        body {
+
+            width: 100%;
+
+            min-height: 100%;
+
+            background: #000;
+
+        }
+
+
+        body {
+
+            overflow-x: hidden;
+
+            background: #000;
+
+        }
+
+
+
+        /* =========================================
+           PÁGINA
+        ========================================= */
+
+        .confirme-page {
+
+            position: relative;
+
+            width: 100%;
+
+            min-height: 100vh;
+
+            background: #000;
+
+            padding:
+                16px
+                16px
+                35px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            justify-content: center;
+
+        }
+
+
+        @media (min-width: 700px) {
+
+            .confirme-page {
+
+                padding:
+                    20px
+                    30px
+                    50px;
+
+            }
+
+        }
+
+
+        @media (max-width: 380px) {
+
+            .confirme-page {
+
+                padding-left: 11px;
+
+                padding-right: 11px;
+
+            }
+
+        }
+
+
+
+        /* =========================================
+           VOLTAR
+        ========================================= */
+
+        .back {
+
+            position: absolute;
+
+            top: 12px;
+
+            left: 14px;
+
+            border: 0;
+
+            background: none;
+
+            color: #FF5C00;
+
+            font-family:
+                "POI Diode",
+                sans-serif;
+
+            font-size: 42px;
+
+            line-height: 1;
+
+            cursor: pointer;
+
+            z-index: 20;
+
+            transition:
+                transform 100ms ease,
+                color 80ms linear;
+
+        }
+
+
+        .back:active {
+
+            transform:
+                translateX(-8px)
+                scale(1.15);
+
+        }
+
+
+
+        /* =========================================
+           TÍTULO
+        ========================================= */
+
+        .title {
+
+            width: 100%;
+
+            margin-top: 52px;
+
+            color: #00FF38;
+
+            font-family:
+                "POI Diode",
+                sans-serif;
+
+            font-size:
+                clamp(
+                    70px,
+                    19vw,
+                    200px
+                );
+
+            line-height: 0.72;
+
+            letter-spacing: -0.04em;
+
+            text-align: center;
+
+            user-select: none;
+
+            margin-bottom: 40px;
+
+        }
+
+
+        @media (min-width: 700px) {
+
+            .title {
+
+                margin-top: 45px;
+
+            }
+
+        }
+
+
+        @media (max-width: 380px) {
+
+            .title {
+
+                font-size: 62px;
+
+            }
+
+        }
+
+
+
+        /* =========================================
+           FORMULÁRIO
+        ========================================= */
+
+        .form-container {
+
+            width: 100%;
+
+            max-width: 900px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 12px;
+
+            margin: 0 auto;
+
+        }
+
+
+        @media (min-width: 700px) {
+
+            .form-container {
+
+                gap: 16px;
+
+            }
+
+        }
+
+
+        @media (max-width: 380px) {
+
+            .form-container {
+
+                gap: 9px;
+
+            }
+
+        }
+
+
+        .input-group {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 4px;
+
+        }
+
+
+        .input-label {
+
+            color: #087AFF;
+
+            font-family:
+                "POI Diode",
+                sans-serif;
+
+            font-size:
+                clamp(
+                    18px,
+                    5vw,
+                    28px
+                );
+
+            font-weight: 700;
+
+            text-transform: uppercase;
+
+            letter-spacing: -0.04em;
+
+            user-select: none;
+
+        }
+
+
+        .input-field {
+
+            width: 100%;
+
+            min-height: 78px;
+
+            padding:
+                13px
+                12px;
+
+            border:
+                4px solid #FF5C00;
+
+            background: #000;
+
+            color: #00FF38;
+
+            font-family:
+                "Moderat",
+                monospace;
+
+            font-size:
+                clamp(
+                    21px,
+                    6vw,
+                    48px
+                );
+
+            font-weight: 300;
+
+            text-transform: uppercase;
+
+            outline: none;
+
+            transition:
+                border-color 100ms ease,
+                box-shadow 100ms ease;
+
+            display: flex;
+
+            align-items: center;
+
+        }
+
+
+        .input-field::placeholder {
+
+            color: #FF5C00;
+
+            opacity: 0.6;
+
+        }
+
+
+        .input-field:focus {
+
+            border-color: #00FF38;
+
+            box-shadow:
+                0 0 12px
+                rgba(0, 255, 56, 0.3);
+
+        }
+
+
+        .input-field.error {
+
+            border-color: #FF5C00;
+
+            box-shadow:
+                0 0 12px
+                rgba(255, 92, 0, 0.5);
+
+        }
+
+
+        @media (min-width: 700px) {
+
+            .input-field {
+
+                min-height: 90px;
+
+                font-size:
+                    clamp(
+                        30px,
+                        4vw,
+                        58px
+                    );
+
+            }
+
+        }
+
+
+        @media (max-width: 380px) {
+
+            .input-field {
+
+                min-height: 67px;
+
+                border-width: 3px;
+
+                font-size: 19px;
+
+            }
+
+        }
+
+
+        .error-message {
+
+            color: #FF5C00;
+
+            font-family:
+                "Moderat",
+                monospace;
+
+            font-size:
+                clamp(
+                    12px,
+                    3vw,
+                    16px
+                );
+
+            font-weight: 300;
+
+            margin-top: 4px;
+
+            opacity: 0;
+
+            transition:
+                opacity 200ms ease;
+
+        }
+
+
+        .error-message.show {
+
+            opacity: 1;
+
+        }
+
+
+
+        /* =========================================
+           BOTÃO ENVIAR
+        ========================================= */
+
+        .submit-btn {
+
+            display: block;
+
+            width: 100%;
+
+            padding:
+                12px
+                24px;
+
+            border:
+                4px solid #B000FF;
+
+            background: #000;
+
+            color: #B000FF;
+
+            font-family:
+                "POI Diode",
+                sans-serif;
+
+            font-size:
+                clamp(
+                    25px,
+                    6vw,
+                    42px
+                );
+
+            font-weight: 700;
+
+            line-height: 0.9;
+
+            text-transform: uppercase;
+
+            letter-spacing: -0.04em;
+
+            cursor: pointer;
+
+            transition:
+                background-color 70ms linear,
+                color 70ms linear,
+                transform 100ms ease;
+
+            margin-top: 16px;
+
+        }
+
+
+        .submit-btn:hover {
+
+            border-color: #B000FF;
+
+        }
+
+
+        .submit-btn:active {
+
+            background: #B000FF;
+
+            color: #000;
+
+            transform:
+                scaleX(1.10)
+                scaleY(0.90);
+
+        }
+
+
+        .submit-btn:disabled {
+
+            opacity: 0.5;
+
+            cursor: not-allowed;
+
+        }
+
+
+        @media (min-width: 700px) {
+
+            .submit-btn {
+
+                margin-top: 20px;
+
+            }
+
+        }
+
+
+        @media (max-width: 380px) {
+
+            .submit-btn {
+
+                margin-top: 12px;
+
+                border-width: 3px;
+
+            }
+
+        }
+
+
+
+        /* =========================================
+           MENSAGEM DE SUCESSO
+        ========================================= */
+
+        .success-overlay {
+
+            position: fixed;
+
+            inset: 0;
+
+            background: #000;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            opacity: 0;
+
+            pointer-events: none;
+
+            transition:
+                opacity 200ms ease;
+
+            z-index: 100;
+
+        }
+
+
+        .success-overlay.active {
+
+            opacity: 1;
+
+            pointer-events: auto;
+
+        }
+
+
+        .success-message {
+
+            font-family:
+                "POI Diode",
+                sans-serif;
+
+            font-size:
+                clamp(
+                    80px,
+                    20vw,
+                    280px
+                );
+
+            font-weight: 700;
+
+            line-height: 0.8;
+
+            letter-spacing: -0.045em;
+
+            text-align: center;
+
+            text-transform: uppercase;
+
+            color: #FF5C00;
+
+            animation:
+                adooo-blink
+                400ms
+                ease-in-out
+                infinite;
+
+            will-change:
+                opacity,
+                transform;
+
+        }
+
+
+        @keyframes adooo-blink {
+
+            0% {
+
+                opacity: 1;
+
+                transform:
+                    scale(1)
+                    rotate(-1deg);
+
+            }
+
+            25% {
+
+                opacity: 0.3;
+
+                transform:
+                    scale(1.05)
+                    rotate(1deg);
+
+            }
+
+            50% {
+
+                opacity: 1;
+
+                transform:
+                    scale(1)
+                    rotate(-1deg);
+
+            }
+
+            75% {
+
+                opacity: 0.4;
+
+                transform:
+                    scale(1.08)
+                    rotate(2deg);
+
+            }
+
+            100% {
+
+                opacity: 1;
+
+                transform:
+                    scale(1)
+                    rotate(-1deg);
+
+            }
+
+        }
+
+
+
+        /* =========================================
+           FLASH
+        ========================================= */
+
+        .flash {
+
+            position: fixed;
+
+            inset: 0;
+
+            background: #FFF;
+
+            opacity: 0;
+
+            pointer-events: none;
+
+            z-index: 101;
+
+        }
+
+
+        .flash.active {
+
+            animation:
+                flash-effect
+                100ms
+                linear;
+
+        }
+
+
+        @keyframes flash-effect {
+
+            0% {
+                opacity: 0;
+            }
+
+            25% {
+                opacity: .8;
+            }
+
+            100% {
+                opacity: 0;
+            }
+
+        }
+
+
+
+
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <main class="confirme-page">
+
+
+        <!-- =====================================
+             VOLTAR
+        ====================================== -->
+
+        <button
+            class="back"
+            onclick="history.back()"
+            aria-label="Voltar"
+        >
+            ←
+        </button>
+
+
+
+        <!-- =====================================
+             TÍTULO
+        ====================================== -->
+
+        <h1 class="title">
+            CONFIRME
+        </h1>
+
+
+
+        <!-- =====================================
+             FORMULÁRIO
+        ====================================== -->
+
+        <form
+            class="form-container"
+            id="confirmForm"
+            onsubmit="handleSubmit(event)"
+        >
+
+
+            <!-- SEU NOME -->
+
+            <div class="input-group">
+
+                <label
+                    class="input-label"
+                    for="yourName"
+                >
+                    Seu nome
+                </label>
+
+                <input
+                    type="text"
+                    id="yourName"
+                    class="input-field"
+                    placeholder="seu nome"
+                    maxlength="50"
+                    autocomplete="off"
+                >
+
+                <div
+                    class="error-message"
+                    id="nameError"
+                >
+                    Campo obrigatório
+                </div>
+
+            </div>
+
+
+
+            <!-- NOME DO +1 -->
+
+            <div class="input-group">
+
+                <label
+                    class="input-label"
+                    for="companionName"
+                >
+                    +1
+                </label>
+
+                <input
+                    type="text"
+                    id="companionName"
+                    class="input-field"
+                    placeholder="nome de quem vem com você (opcional)"
+                    maxlength="50"
+                    autocomplete="off"
+                >
+
+            </div>
+
+
+
+            <!-- BOTÃO ENVIAR -->
+
+            <button
+                type="submit"
+                class="submit-btn"
+            >
+                ENVIAR
+            </button>
+
+
+        </form>
+
+
+    </main>
+
+
+
+    <!-- =====================================
+         OVERLAY DE SUCESSO
+    ====================================== -->
+
+    <div
+        class="success-overlay"
+        id="successOverlay"
+    >
+
+        <div class="success-message">
+            ADOOOOOOOOOOOOGO
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================
+         FLASH
+    ====================================== -->
+
+    <div
+        class="flash"
+        id="flash"
+    ></div>
+
+
+
+    <script>
+
+
+        /* =========================================
+           ELEMENTOS
+        ========================================= */
+
+        const form =
+            document.getElementById(
+                "confirmForm"
+            );
+
+
+        const yourNameInput =
+            document.getElementById(
+                "yourName"
+            );
+
+
+        const companionNameInput =
+            document.getElementById(
+                "companionName"
+            );
+
+
+        const nameError =
+            document.getElementById(
+                "nameError"
+            );
+
+
+        const successOverlay =
+            document.getElementById(
+                "successOverlay"
+            );
+
+
+        const flash =
+            document.getElementById(
+                "flash"
+            );
+
+
+
+        /* =========================================
+           VALIDAÇÃO EM TEMPO REAL
+        ========================================= */
+
+        yourNameInput.addEventListener(
+            "blur",
+            function() {
+
+                if (
+                    this.value.trim() === ""
+                ) {
+
+                    this.classList.add(
+                        "error"
+                    );
+
+                    nameError.classList.add(
+                        "show"
+                    );
+
+                } else {
+
+                    this.classList.remove(
+                        "error"
+                    );
+
+                    nameError.classList.remove(
+                        "show"
+                    );
+
+                }
+
+            }
+        );
+
+
+        yourNameInput.addEventListener(
+            "input",
+            function() {
+
+                if (
+                    this.value.trim() !== ""
+                ) {
+
+                    this.classList.remove(
+                        "error"
+                    );
+
+                    nameError.classList.remove(
+                        "show"
+                    );
+
+                }
+
+            }
+        );
+
+
+
+        /* =========================================
+           FLASH
+        ========================================= */
+
+        function doFlash() {
+
+            flash.classList.remove(
+                "active"
+            );
+
+            void flash.offsetWidth;
+
+            flash.classList.add(
+                "active"
+            );
+
+        }
+
+
+
+        /* =========================================
+           ENVIO DO FORMULÁRIO
+        ========================================= */
+
+        function handleSubmit(event) {
+
+            event.preventDefault();
+
+            const yourName =
+                yourNameInput.value.trim();
+
+
+            /*
+                Validação do nome
+            */
+
+            if (yourName === "") {
+
+                yourNameInput.classList.add(
+                    "error"
+                );
+
+                nameError.classList.add(
+                    "show"
+                );
+
+                return;
+
+            }
+
+
+            const companionName =
+                companionNameInput
+                .value.trim() || "sem +1";
+
+
+            /*
+                Dados pra enviar
+            */
+
+            const confirmacao = {
+
+                nome: yourName,
+                acompanhante: companionName,
+                data: new Date().toLocaleString('pt-BR')
+
+            };
+
+
+            console.log(
+                "Enviando:",
+                confirmacao
+            );
+
+
+            /*
+                ENVIAR PARA GITHUB GIST
+            */
+
+            enviarParaGist(confirmacao);
+
+
+            /*
+                Animar overlay de sucesso
+            */
+
+            successOverlay.classList.add(
+                "active"
+            );
+
+            doFlash();
+
+
+            /*
+                Desabilitar o formulário
+            */
+
+            form.style.pointerEvents =
+                "none";
+
+            form.style.opacity = "0.5";
+
+
+            /*
+                Depois de 3.5 segundos,
+                voltar pra home
+            */
+
+            setTimeout(function() {
+
+                window.location.href =
+                    "index.html";
+
+            }, 3500);
+
+        }
+
+
+        /* =========================================
+           ENVIAR PARA GITHUB GIST
+        ========================================= */
+
+        function enviarParaGist(confirmacao) {
+
+            /*
+                ⚠️ CONFIGURE AQUI:
+                1. GIST_ID: o ID do seu Gist
+                2. GITHUB_TOKEN: seu Personal Access Token
+            */
+
+            const GIST_ID = 
+                "9a4a346b53673e09ba0a140c4781f16b";
+
+            const GITHUB_TOKEN = 
+                "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";
+
+
+            if (
+                GIST_ID === "SEU_GIST_ID_AQUI" ||
+                GITHUB_TOKEN === "ghp_SEU_TOKEN_AQUI"
+            ) {
+
+                console.warn(
+                    "Configure GIST_ID e GITHUB_TOKEN!"
+                );
+
+                return;
+
+            }
+
+
+            /*
+                Busca o Gist atual
+            */
+
+            fetch(
+                `https://api.github.com/gists/${GIST_ID}`,
+                {
+
+                    headers: {
+
+                        "Authorization": 
+                            `token ${GITHUB_TOKEN}`,
+
+                        "Accept": 
+                            "application/vnd.github.v3+json"
+
+                    }
+
+                }
+            )
+            .then(response => 
+                response.json()
+            )
+            .then(data => {
+
+                /*
+                    Pega o conteúdo atual
+                */
+
+                const fileContent = 
+                    data.files[
+                        "confirmados.json"
+                    ].content;
+
+                const gistData = 
+                    JSON.parse(fileContent);
+
+
+                /*
+                    Adiciona novo confirmado
+                */
+
+                gistData.confirmados.push(
+                    confirmacao
+                );
+
+
+                /*
+                    Atualiza o Gist
+                */
+
+                return fetch(
+                    `https://api.github.com/gists/${GIST_ID}`,
+                    {
+
+                        method: "PATCH",
+
+                        headers: {
+
+                            "Authorization": 
+                                `token ${GITHUB_TOKEN}`,
+
+                            "Accept": 
+                                "application/vnd.github.v3+json",
+
+                            "Content-Type": 
+                                "application/json"
+
+                        },
+
+                        body: JSON.stringify({
+
+                            files: {
+
+                                "confirmados.json": {
+
+                                    content: 
+                                        JSON.stringify(
+                                            gistData,
+                                            null,
+                                            2
+                                        )
+
+                                }
+
+                            }
+
+                        })
+
+                    }
+                );
+
+            })
+            .then(response => {
+
+                if (response.ok) {
+
+                    console.log(
+                        "✅ Confirmado enviado ao Gist!"
+                    );
+
+                } else {
+
+                    console.error(
+                        "❌ Erro ao enviar ao Gist"
+                    );
+
+                }
+
+            })
+            .catch(error => {
+
+                console.error(
+                    "Erro na requisição:",
+                    error
+                );
+
+            });
+
+        }
+
+
+    </script>
+
+</body>
+
+</html>
