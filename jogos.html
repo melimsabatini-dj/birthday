@@ -1,1 +1,612 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
 
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    >
+
+    <title>JOGOS - SABATINI28</title>
+
+
+    <style>
+
+        /* =========================================
+           FONTES
+        ========================================= */
+
+        @font-face {
+
+            font-family: "POI Diode";
+
+            src:
+                url("fonts/POIDiodeTrial-Bold.woff2")
+                format("woff2");
+
+            font-weight: 700;
+            font-style: normal;
+
+            font-display: swap;
+
+        }
+
+
+
+        /* =========================================
+           RESET
+        ========================================= */
+
+        * {
+
+            box-sizing: border-box;
+
+            margin: 0;
+
+            padding: 0;
+
+        }
+
+
+        html,
+        body {
+
+            width: 100%;
+
+            min-height: 100%;
+
+            background: #000;
+
+        }
+
+
+        body {
+
+            overflow: hidden;
+
+            background: #000;
+
+        }
+
+
+
+        /* =========================================
+           PÁGINA
+        ========================================= */
+
+        .jogos-page {
+
+            position: relative;
+
+            width: 100vw;
+
+            height: 100dvh;
+
+            min-height: 100vh;
+
+            overflow: hidden;
+
+            background: #000;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+        }
+
+
+
+        /* =========================================
+           VOLTAR
+        ========================================= */
+
+        .back {
+
+            position: absolute;
+
+            top: 12px;
+
+            left: 14px;
+
+            border: 0;
+
+            background: none;
+
+            color: #FF5C00;
+
+            font-family:
+                "POI Diode",
+                sans-serif;
+
+            font-size: 42px;
+
+            line-height: 1;
+
+            cursor: pointer;
+
+            z-index: 20;
+
+            transition:
+                transform 100ms ease,
+                color 80ms linear;
+
+        }
+
+
+        .back:active {
+
+            transform:
+                translateX(-8px)
+                scale(1.15);
+
+        }
+
+
+
+        /* =========================================
+           MENU DE JOGOS
+        ========================================= */
+
+        .games-menu {
+
+            position: absolute;
+
+            inset: 0;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 5px;
+
+            padding: 20px;
+
+        }
+
+
+        .game-item {
+
+            position: relative;
+
+            display: block;
+
+            width: max-content;
+
+            max-width: 100%;
+
+            border: 0;
+
+            background: none;
+
+            color: #00FF38;
+
+            font-family:
+                "POI Diode",
+                sans-serif;
+
+            font-size:
+                clamp(
+                    40px,
+                    11vw,
+                    140px
+                );
+
+            font-weight: 700;
+
+            line-height: .78;
+
+            letter-spacing: -.04em;
+
+            text-decoration: none;
+
+            text-transform: uppercase;
+
+            cursor: pointer;
+
+            transition:
+                transform 100ms ease,
+                color 70ms linear;
+
+        }
+
+
+        .game-item:nth-child(2) {
+            color: #087AFF;
+        }
+
+        .game-item:nth-child(3) {
+            color: #B000FF;
+        }
+
+        .game-item:nth-child(4) {
+            color: #FF5C00;
+        }
+
+        .game-item:nth-child(5) {
+            color: #E5FF00;
+        }
+
+
+
+        /* =========================================
+           HOVER / TOUCH
+        ========================================= */
+
+        .game-item:hover {
+
+            transform:
+                skewX(-12deg)
+                scaleX(1.08)
+                scaleY(.94);
+
+        }
+
+
+        .game-item:active {
+
+            transform:
+                skewX(16deg)
+                scaleX(.88)
+                scaleY(1.08);
+
+        }
+
+
+
+        /* =========================================
+           CAOS NO MENU
+        ========================================= */
+
+        .game-item.chaos {
+
+            animation:
+                item-chaos
+                700ms
+                steps(1)
+                infinite;
+
+        }
+
+
+        @keyframes item-chaos {
+
+            0% {
+
+                transform:
+                    translate(
+                        -2vw,
+                        -1vh
+                    )
+                    rotate(-1deg)
+                    scaleX(1.04);
+
+            }
+
+            25% {
+
+                transform:
+                    translate(
+                        2vw,
+                        1vh
+                    )
+                    rotate(1deg)
+                    scaleX(.96);
+
+            }
+
+            50% {
+
+                transform:
+                    translate(
+                        -1vw,
+                        2vh
+                    )
+                    rotate(-2deg)
+                    scaleX(1.02);
+
+            }
+
+            75% {
+
+                transform:
+                    translate(
+                        2vw,
+                        -2vh
+                    )
+                    rotate(1deg)
+                    scaleX(.97);
+
+            }
+
+            100% {
+
+                transform:
+                    translate(
+                        0,
+                        0
+                    )
+                    rotate(0)
+                    scaleX(1);
+
+            }
+
+        }
+
+
+
+        /* =========================================
+           MOBILE
+        ========================================= */
+
+        @media (max-width: 600px) {
+
+            .games-menu {
+
+                gap: 9px;
+
+                padding: 15px;
+
+            }
+
+
+            .game-item {
+
+                font-size: 12vw;
+
+            }
+
+        }
+
+
+
+        /* =========================================
+           TELAS MUITO PEQUENAS
+        ========================================= */
+
+        @media (max-height: 650px) {
+
+            .games-menu {
+
+                gap: 4px;
+
+            }
+
+
+            .game-item {
+
+                font-size: 10vw;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <main class="jogos-page">
+
+
+        <!-- =====================================
+             VOLTAR
+        ====================================== -->
+
+        <button
+            class="back"
+            onclick="history.back()"
+            aria-label="Voltar"
+        >
+            ←
+        </button>
+
+
+
+        <!-- =====================================
+             MENU DE JOGOS
+        ====================================== -->
+
+        <nav class="games-menu">
+
+
+            <a
+                class="game-item"
+                href="#"
+            >
+                CLUB TO YOUR ARMS
+            </a>
+
+
+            <a
+                class="game-item"
+                href="#"
+            >
+                QUIZ VALE XOTÃO
+            </a>
+
+
+            <a
+                class="game-item"
+                href="#"
+            >
+                LOTERIA DO AZAR
+            </a>
+
+
+            <a
+                class="game-item"
+                href="#"
+            >
+                WHO'S THAT CHICK
+            </a>
+
+
+        </nav>
+
+
+    </main>
+
+
+
+    <script>
+
+
+        /* =========================================
+           PALETA
+        ========================================= */
+
+        const colors = [
+
+            "#087AFF",
+            "#B000FF",
+            "#FF5C00",
+            "#00FF38",
+            "#E5FF00"
+
+        ];
+
+
+
+        /* =========================================
+           COR ALEATÓRIA
+        ========================================= */
+
+        function randomColor() {
+
+            return colors[
+                Math.floor(
+                    Math.random()
+                    *
+                    colors.length
+                )
+            ];
+
+        }
+
+
+
+        /* =========================================
+           MENU COM CAOS
+        ========================================= */
+
+        function startGamesChaos() {
+
+            const items =
+                document.querySelectorAll(
+                    ".game-item"
+                );
+
+
+            setInterval(function() {
+
+                items.forEach(function(item) {
+
+                    const rotation =
+                        (
+                            Math.random()
+                            - .5
+                        )
+                        * 5;
+
+                    const scaleX =
+                        .92 +
+                        Math.random()
+                        * .18;
+
+                    const scaleY =
+                        .90 +
+                        Math.random()
+                        * .18;
+
+                    const x =
+                        (
+                            Math.random()
+                            - .5
+                        )
+                        * 5;
+
+                    const y =
+                        (
+                            Math.random()
+                            - .5
+                        )
+                        * 2;
+
+                    item.style.transform = `
+
+                        translate(
+                            ${x}vw,
+                            ${y}vh
+                        )
+
+                        rotate(
+                            ${rotation}deg
+                        )
+
+                        scaleX(
+                            ${scaleX}
+                        )
+
+                        scaleY(
+                            ${scaleY}
+                        )
+
+                    `;
+
+                    item.style.color =
+                        randomColor();
+
+                });
+
+            }, 700);
+
+        }
+
+
+        /*
+            Inicia o caos ao carregar
+        */
+
+        startGamesChaos();
+
+
+
+        /* =========================================
+           EVITAR O "#" DOS LINKS
+        ========================================= */
+
+        document
+            .querySelectorAll(
+                '.game-item[href="#"]'
+            )
+            .forEach(function(item) {
+
+                item.addEventListener(
+                    "click",
+                    function(event) {
+
+                        event.preventDefault();
+
+                    }
+                );
+
+            });
+
+
+    </script>
+
+</body>
+
+</html>
