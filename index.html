@@ -10,14 +10,13 @@
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
     >
 
-    <title>SABATINI28 — LOOKS</title>
+    <title>SABATINI28</title>
 
 
     <style>
 
-
         /* =========================================
-           FONTES
+           FONTE
         ========================================= */
 
         @font-face {
@@ -29,12 +28,1105 @@
                 format("woff2");
 
             font-weight: 700;
-
             font-style: normal;
 
             font-display: swap;
 
         }
+
+
+
+        /* =========================================
+           RESET
+        ========================================= */
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        html,
+        body {
+
+            width: 100%;
+            min-height: 100%;
+
+            background: #000;
+
+        }
+
+
+        body {
+
+            overflow: hidden;
+
+            background: #000;
+
+        }
+
+
+
+        /* =========================================
+           CONTAINER
+        ========================================= */
+
+        .screen {
+
+            position: relative;
+
+            width: 100vw;
+            height: 100dvh;
+
+            min-height: 100vh;
+
+            overflow: hidden;
+
+            background: #000;
+
+        }
+
+
+
+        /* =========================================
+           TELAS
+        ========================================= */
+
+        .scene {
+
+            position: absolute;
+
+            inset: 0;
+
+            width: 100%;
+            height: 100%;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            opacity: 0;
+
+            pointer-events: none;
+
+            transition:
+                opacity 100ms linear;
+
+        }
+
+
+        .scene.active {
+
+            opacity: 1;
+
+            pointer-events: auto;
+
+        }
+
+
+
+        /* =========================================
+           TEXTO PRINCIPAL
+        ========================================= */
+
+        .chaos-text {
+
+            position: absolute;
+
+            font-family:
+                "POI Diode",
+                sans-serif;
+
+            font-weight: 700;
+
+            line-height: 0.72;
+
+            letter-spacing: -0.045em;
+
+            text-align: center;
+
+            user-select: none;
+
+            white-space: nowrap;
+
+            will-change:
+                transform,
+                left,
+                top,
+                color;
+
+        }
+
+
+
+        /* =========================================
+           SABATINI28
+        ========================================= */
+
+        #introText {
+
+            font-size:
+                clamp(
+                    90px,
+                    23vw,
+                    300px
+                );
+
+            color: #00FF38;
+
+            animation:
+                intro-chaos
+                700ms
+                steps(1)
+                infinite;
+
+        }
+
+
+        @keyframes intro-chaos {
+
+            0% {
+
+                transform:
+                    translate(
+                        -3vw,
+                        -2vh
+                    )
+                    rotate(-2deg)
+                    scaleX(1.08);
+
+            }
+
+            20% {
+
+                transform:
+                    translate(
+                        4vw,
+                        2vh
+                    )
+                    rotate(1deg)
+                    scaleX(.94);
+
+            }
+
+            40% {
+
+                transform:
+                    translate(
+                        -2vw,
+                        4vh
+                    )
+                    rotate(-1deg)
+                    scaleX(1.02);
+
+            }
+
+            60% {
+
+                transform:
+                    translate(
+                        3vw,
+                        -3vh
+                    )
+                    rotate(2deg)
+                    scaleX(.96);
+
+            }
+
+            80% {
+
+                transform:
+                    translate(
+                        -4vw,
+                        1vh
+                    )
+                    rotate(-3deg)
+                    scaleX(1.06);
+
+            }
+
+            100% {
+
+                transform:
+                    translate(
+                        0,
+                        0
+                    )
+                    rotate(0)
+                    scaleX(1);
+
+            }
+
+        }
+
+
+
+        /* =========================================
+           DATA
+        ========================================= */
+
+        #dateText {
+
+            font-size:
+                clamp(
+                    90px,
+                    22vw,
+                    330px
+                );
+
+            color: #FF5C00;
+
+            transform:
+                scaleX(.95);
+
+        }
+
+
+
+        /* =========================================
+           LOCAL
+        ========================================= */
+
+        #venueText {
+
+            width: 100%;
+
+            padding: 20px;
+
+            font-size:
+                clamp(
+                    70px,
+                    17vw,
+                    240px
+                );
+
+            color: #087AFF;
+
+            text-align: center;
+
+        }
+
+
+
+        /* =========================================
+           MENU
+        ========================================= */
+
+        .menu {
+
+            position: absolute;
+
+            inset: 0;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 5px;
+
+            padding: 20px;
+
+        }
+
+
+        .menu-item {
+
+            position: relative;
+
+            display: block;
+
+            width: max-content;
+
+            max-width: 100%;
+
+            border: 0;
+
+            background: none;
+
+            color: #00FF38;
+
+            font-family:
+                "POI Diode",
+                sans-serif;
+
+            font-size:
+                clamp(
+                    48px,
+                    13vw,
+                    150px
+                );
+
+            font-weight: 700;
+
+            line-height: .78;
+
+            letter-spacing: -.04em;
+
+            text-decoration: none;
+
+            text-transform: uppercase;
+
+            cursor: pointer;
+
+            transition:
+                transform 100ms ease,
+                color 70ms linear;
+
+        }
+
+
+        /*
+            O preto nunca entra
+            na paleta do menu.
+        */
+
+        .menu-item:nth-child(1) {
+            color: #00FF38;
+        }
+
+        .menu-item:nth-child(2) {
+            color: #087AFF;
+        }
+
+        .menu-item:nth-child(3) {
+            color: #B000FF;
+        }
+
+        .menu-item:nth-child(4) {
+            color: #FF5C00;
+        }
+
+        .menu-item:nth-child(5) {
+            color: #E5FF00;
+        }
+
+
+
+        /* =========================================
+           HOVER / TOUCH
+        ========================================= */
+
+        .menu-item:hover {
+
+            transform:
+                skewX(-12deg)
+                scaleX(1.08)
+                scaleY(.94);
+
+        }
+
+
+        .menu-item:active {
+
+            transform:
+                skewX(16deg)
+                scaleX(.88)
+                scaleY(1.08);
+
+        }
+
+
+
+        /* =========================================
+           FLASH OCASIONAL
+        ========================================= */
+
+        .flash {
+
+            position: fixed;
+
+            inset: 0;
+
+            background: #FFF;
+
+            opacity: 0;
+
+            pointer-events: none;
+
+            z-index: 100;
+
+        }
+
+
+        .flash.active {
+
+            animation:
+                flash-effect
+                100ms
+                linear;
+
+        }
+
+
+        @keyframes flash-effect {
+
+            0% {
+                opacity: 0;
+            }
+
+            25% {
+                opacity: .8;
+            }
+
+            100% {
+                opacity: 0;
+            }
+
+        }
+
+
+
+        /* =========================================
+           MOBILE
+        ========================================= */
+
+        @media (max-width: 600px) {
+
+            #introText {
+
+                font-size:
+                    23vw;
+
+            }
+
+
+            #dateText {
+
+                font-size:
+                    22vw;
+
+                white-space: nowrap;
+
+            }
+
+
+            #venueText {
+
+                font-size:
+                    16vw;
+
+            }
+
+
+            .menu {
+
+                gap: 9px;
+
+                padding:
+                    15px;
+
+            }
+
+
+            .menu-item {
+
+                font-size:
+                    14vw;
+
+            }
+
+        }
+
+
+
+        /* =========================================
+           TELAS MUITO PEQUENAS
+        ========================================= */
+
+        @media (max-height: 650px) {
+
+            .menu {
+
+                gap: 4px;
+
+            }
+
+
+            .menu-item {
+
+                font-size:
+                    12vw;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <main class="screen">
+
+
+        <!-- =====================================
+             INTRO
+        ====================================== -->
+
+        <section
+            class="scene active"
+            id="intro"
+        >
+
+            <div
+                class="chaos-text"
+                id="introText"
+            >
+                SABATINI28
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================
+             DATA
+        ====================================== -->
+
+        <section
+            class="scene"
+            id="date"
+        >
+
+            <div
+                class="chaos-text"
+                id="dateText"
+            >
+                07/11/2026
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================
+             LOCAL
+        ====================================== -->
+
+        <section
+            class="scene"
+            id="venue"
+        >
+
+            <div
+                class="chaos-text"
+                id="venueText"
+            >
+                LOCAL
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================
+             MENU
+        ====================================== -->
+
+        <section
+            class="scene"
+            id="menu"
+        >
+
+            <nav class="menu">
+
+
+                <a
+                    class="menu-item"
+                    href="looks.html"
+                >
+                    LOOKS
+                </a>
+
+
+                <a
+                    class="menu-item"
+                    href="#"
+                >
+                    CONFIRMADOS
+                </a>
+
+
+                <a
+                    class="menu-item"
+                    href="#"
+                >
+                    MÚSICA
+                </a>
+
+
+                <a
+                    class="menu-item"
+                    href="#"
+                >
+                    JOGOS
+                </a>
+
+
+                <a
+                    class="menu-item"
+                    href="#"
+                >
+                    INFO
+                </a>
+
+
+            </nav>
+
+        </section>
+
+
+
+        <!-- =====================================
+             FLASH
+        ====================================== -->
+
+        <div
+            class="flash"
+            id="flash"
+        ></div>
+
+
+    </main>
+
+
+
+    <script>
+
+
+        /* =========================================
+           CENAS
+        ========================================= */
+
+        const intro =
+            document.getElementById(
+                "intro"
+            );
+
+
+        const date =
+            document.getElementById(
+                "date"
+            );
+
+
+        const venue =
+            document.getElementById(
+                "venue"
+            );
+
+
+        const menu =
+            document.getElementById(
+                "menu"
+            );
+
+
+        const introText =
+            document.getElementById(
+                "introText"
+            );
+
+
+        const dateText =
+            document.getElementById(
+                "dateText"
+            );
+
+
+        const venueText =
+            document.getElementById(
+                "venueText"
+            );
+
+
+        const flash =
+            document.getElementById(
+                "flash"
+            );
+
+
+
+        /* =========================================
+           PALETA
+        ========================================= */
+
+        const colors = [
+
+            "#087AFF",
+            "#B000FF",
+            "#FF5C00",
+            "#00FF38",
+            "#E5FF00"
+
+        ];
+
+
+
+        /* =========================================
+           COR ALEATÓRIA
+        ========================================= */
+
+        function randomColor() {
+
+            return colors[
+                Math.floor(
+                    Math.random()
+                    *
+                    colors.length
+                )
+            ];
+
+        }
+
+
+
+        /* =========================================
+           FLASH
+        ========================================= */
+
+        function doFlash() {
+
+            /*
+                Flash não acontece
+                o tempo inteiro.
+            */
+
+            if (
+                Math.random() < 0.65
+            ) {
+
+                flash.classList.remove(
+                    "active"
+                );
+
+
+                void flash.offsetWidth;
+
+
+                flash.classList.add(
+                    "active"
+                );
+
+            }
+
+        }
+
+
+
+        /* =========================================
+           INTRO CAÓTICO
+        ========================================= */
+
+        function randomizeIntro() {
+
+            const x =
+                (Math.random() - .5)
+                * 18;
+
+
+            const y =
+                (Math.random() - .5)
+                * 18;
+
+
+            const rotation =
+                (Math.random() - .5)
+                * 8;
+
+
+            const scaleX =
+                .85 +
+                Math.random() * .35;
+
+
+            const scaleY =
+                .85 +
+                Math.random() * .3;
+
+
+            introText.style.transform = `
+
+                translate(
+                    ${x}vw,
+                    ${y}vh
+                )
+
+                rotate(
+                    ${rotation}deg
+                )
+
+                scaleX(
+                    ${scaleX}
+                )
+
+                scaleY(
+                    ${scaleY}
+                )
+
+            `;
+
+
+            introText.style.color =
+                randomColor();
+
+        }
+
+
+
+        /* =========================================
+           INTRO
+        ========================================= */
+
+        const introInterval =
+            setInterval(function() {
+
+                randomizeIntro();
+
+                doFlash();
+
+            }, 250);
+
+
+
+        /*
+            Depois de aproximadamente
+            3 segundos → DATA
+        */
+
+        setTimeout(function() {
+
+            clearInterval(
+                introInterval
+            );
+
+
+            intro.classList.remove(
+                "active"
+            );
+
+
+            date.classList.add(
+                "active"
+            );
+
+
+            /*
+                Pequeno flash na troca.
+            */
+
+            doFlash();
+
+        }, 3200);
+
+
+
+        /* =========================================
+           DATA → LOCAL
+        ========================================= */
+
+        setTimeout(function() {
+
+            date.classList.remove(
+                "active"
+            );
+
+
+            venue.classList.add(
+                "active"
+            );
+
+
+            doFlash();
+
+        }, 5200);
+
+
+
+        /* =========================================
+           LOCAL → MENU
+        ========================================= */
+
+        setTimeout(function() {
+
+            venue.classList.remove(
+                "active"
+            );
+
+
+            menu.classList.add(
+                "active"
+            );
+
+
+            doFlash();
+
+
+            startMenuChaos();
+
+        }, 7200);
+
+
+
+        /* =========================================
+           MENU CAÓTICO
+        ========================================= */
+
+        function startMenuChaos() {
+
+            const items =
+                document.querySelectorAll(
+                    ".menu-item"
+                );
+
+
+            /*
+                Pequenas mudanças
+                contínuas.
+            */
+
+            setInterval(function() {
+
+
+                items.forEach(function(item) {
+
+
+                    /*
+                        Pequena rotação
+                    */
+
+                    const rotation =
+                        (
+                            Math.random()
+                            - .5
+                        )
+                        * 5;
+
+
+                    /*
+                        Escala
+                    */
+
+                    const scaleX =
+                        .92 +
+                        Math.random()
+                        * .18;
+
+
+                    const scaleY =
+                        .90 +
+                        Math.random()
+                        * .18;
+
+
+                    /*
+                        Deslocamento
+                    */
+
+                    const x =
+                        (
+                            Math.random()
+                            - .5
+                        )
+                        * 5;
+
+
+                    const y =
+                        (
+                            Math.random()
+                            - .5
+                        )
+                        * 2;
+
+
+                    item.style.transform = `
+
+                        translate(
+                            ${x}vw,
+                            ${y}vh
+                        )
+
+                        rotate(
+                            ${rotation}deg
+                        )
+
+                        scaleX(
+                            ${scaleX}
+                        )
+
+                        scaleY(
+                            ${scaleY}
+                        )
+
+                    `;
+
+
+                    /*
+                        Troca de cor.
+                        Nunca preto.
+                    */
+
+                    item.style.color =
+                        randomColor();
+
+                });
+
+
+                /*
+                    Flash ocasional.
+                */
+
+                if (
+                    Math.random() < .25
+                ) {
+
+                    doFlash();
+
+                }
+
+
+            }, 700);
+
+        }
+
+
+
+        /* =========================================
+           EVITAR O "#" DOS OUTROS LINKS
+        ========================================= */
+
+        document
+            .querySelectorAll(
+                '.menu-item[href="#"]'
+            )
+            .forEach(function(item) {
+
+                item.addEventListener(
+                    "click",
+                    function(event) {
+
+                        event.preventDefault();
+
+                    }
+                );
+
+            });
+
+
+    </script>
+
+</body>
+
+</html>        }
 
 
         @font-face {
