@@ -74,7 +74,8 @@
 
             transform-origin: center center;
 
-            color: #ffffff;
+            /* Nunca começa preta */
+            color: #087AFF;
 
             z-index: 2;
 
@@ -315,6 +316,9 @@
 
         /* =========================
            PALETA
+
+           IMPORTANTE:
+           PRETO NÃO ESTÁ AQUI.
         ========================= */
 
         const colors = [
@@ -433,7 +437,7 @@
 
 
                 /* =====================
-                   FOGE
+                   FOGE DO MOUSE
                 ===================== */
 
                 if (type === "escape") {
@@ -642,6 +646,9 @@
 
         /* =========================
            CORES INICIAIS
+           
+           TODAS AS CORES SÃO
+           DIFERENTES DE PRETO.
         ========================= */
 
         items.forEach(function(item) {
@@ -690,13 +697,9 @@
                 ];
 
 
-            const originalColor =
-                item.style.color;
-
-
             /*
-                Normalmente apenas
-                o texto muda de cor.
+                Flash normal:
+                apenas o texto muda.
             */
 
             item.style.color =
@@ -717,7 +720,9 @@
 
 
                 /*
-                    Contraste garantido
+                    AGORA sim o preto
+                    pode aparecer no texto,
+                    porque o fundo NÃO é preto.
                 */
 
                 items.forEach(function(word) {
@@ -738,12 +743,23 @@
                         "#000000";
 
 
+                    /*
+                        Restauramos as cores
+                        vibrantes anteriores.
+                    */
+
                     items.forEach(function(word) {
 
                         word.style.color =
                             word.dataset.previousColor
                             ||
-                            "#ffffff";
+                            colors[
+                                Math.floor(
+                                    Math.random()
+                                    *
+                                    colors.length
+                                )
+                            ];
 
                     });
 
@@ -802,6 +818,11 @@
 
                     setTimeout(function() {
 
+
+                        /*
+                            Volta para uma cor
+                            vibrante, nunca preto.
+                        */
 
                         item.style.color =
                             colors[
