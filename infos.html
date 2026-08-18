@@ -1,1 +1,778 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
 
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    >
+
+    <title>INFO - SABATINI28</title>
+
+
+    <style>
+
+        /* =========================================
+           FONTES
+        ========================================= */
+
+        @font-face {
+
+            font-family: "POI Diode";
+
+            src:
+                url("fonts/POIDiodeTrial-Bold.woff2")
+                format("woff2");
+
+            font-weight: 700;
+            font-style: normal;
+
+            font-display: swap;
+
+        }
+
+
+        @font-face {
+
+            font-family: "Moderat";
+
+            src:
+                url("fonts/Moderat-Mono-Light.woff2")
+                format("woff2");
+
+            font-weight: 300;
+            font-style: normal;
+
+            font-display: swap;
+
+        }
+
+
+
+        /* =========================================
+           RESET
+        ========================================= */
+
+        * {
+
+            box-sizing: border-box;
+
+            margin: 0;
+
+            padding: 0;
+
+        }
+
+
+        html,
+        body {
+
+            width: 100%;
+
+            min-height: 100%;
+
+            background: #000;
+
+        }
+
+
+        body {
+
+            overflow-x: hidden;
+
+            background: #000;
+
+        }
+
+
+
+        /* =========================================
+           PÁGINA
+        ========================================= */
+
+        .info-page {
+
+            position: relative;
+
+            width: 100%;
+
+            min-height: 100vh;
+
+            background: #000;
+
+            padding:
+                16px
+                16px
+                35px;
+
+        }
+
+
+        @media (min-width: 700px) {
+
+            .info-page {
+
+                padding:
+                    20px
+                    30px
+                    50px;
+
+            }
+
+        }
+
+
+        @media (max-width: 380px) {
+
+            .info-page {
+
+                padding-left: 11px;
+
+                padding-right: 11px;
+
+            }
+
+        }
+
+
+
+        /* =========================================
+           VOLTAR
+        ========================================= */
+
+        .back {
+
+            position: absolute;
+
+            top: 12px;
+
+            left: 14px;
+
+            border: 0;
+
+            background: none;
+
+            color: #FF5C00;
+
+            font-family:
+                "POI Diode",
+                sans-serif;
+
+            font-size: 42px;
+
+            line-height: 1;
+
+            cursor: pointer;
+
+            z-index: 20;
+
+            transition:
+                transform 100ms ease,
+                color 80ms linear;
+
+        }
+
+
+        .back:active {
+
+            transform:
+                translateX(-8px)
+                scale(1.15);
+
+        }
+
+
+
+        /* =========================================
+           TÍTULO
+        ========================================= */
+
+        .title {
+
+            width: 100%;
+
+            margin-top: 52px;
+
+            color: #00FF38;
+
+            font-family:
+                "POI Diode",
+                sans-serif;
+
+            font-size:
+                clamp(
+                    70px,
+                    19vw,
+                    200px
+                );
+
+            line-height: 0.72;
+
+            letter-spacing: -0.04em;
+
+            text-align: center;
+
+            user-select: none;
+
+            margin-bottom: 40px;
+
+        }
+
+
+        @media (max-width: 380px) {
+
+            .title {
+
+                font-size: 62px;
+
+            }
+
+        }
+
+
+
+        /* =========================================
+           CONTAINER DE CONTEÚDO
+        ========================================= */
+
+        .info-content {
+
+            width: 100%;
+
+            max-width: 900px;
+
+            margin: 0 auto;
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 24px;
+
+        }
+
+
+        @media (min-width: 700px) {
+
+            .info-content {
+
+                gap: 32px;
+
+            }
+
+        }
+
+
+        @media (max-width: 380px) {
+
+            .info-content {
+
+                gap: 16px;
+
+            }
+
+        }
+
+
+
+        /* =========================================
+           SEÇÃO
+        ========================================= */
+
+        .info-section {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 12px;
+
+        }
+
+
+        .section-title {
+
+            color: #087AFF;
+
+            font-family:
+                "POI Diode",
+                sans-serif;
+
+            font-size:
+                clamp(
+                    24px,
+                    7vw,
+                    48px
+                );
+
+            font-weight: 700;
+
+            text-transform: uppercase;
+
+            letter-spacing: -0.04em;
+
+            line-height: 0.9;
+
+        }
+
+
+        .section-text {
+
+            color: #00FF38;
+
+            font-family:
+                "Moderat",
+                monospace;
+
+            font-size:
+                clamp(
+                    16px,
+                    4vw,
+                    22px
+                );
+
+            font-weight: 300;
+
+            line-height: 1.6;
+
+            letter-spacing: -0.02em;
+
+        }
+
+
+        .section-highlight {
+
+            color: #E5FF00;
+
+            font-weight: 400;
+
+        }
+
+
+
+        /* =========================================
+           CAIXA DE INFORMAÇÃO
+        ========================================= */
+
+        .info-box {
+
+            width: 100%;
+
+            padding:
+                20px
+                16px;
+
+            border:
+                4px solid #B000FF;
+
+            background: #000;
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 8px;
+
+        }
+
+
+        .info-box-title {
+
+            color: #B000FF;
+
+            font-family:
+                "POI Diode",
+                sans-serif;
+
+            font-size:
+                clamp(
+                    18px,
+                    5vw,
+                    28px
+                );
+
+            font-weight: 700;
+
+            text-transform: uppercase;
+
+            letter-spacing: -0.03em;
+
+        }
+
+
+        .info-box-text {
+
+            color: #FF5C00;
+
+            font-family:
+                "Moderat",
+                monospace;
+
+            font-size:
+                clamp(
+                    16px,
+                    4vw,
+                    24px
+                );
+
+            font-weight: 300;
+
+            line-height: 1.5;
+
+        }
+
+
+        .info-box.location {
+
+            border-color: #FF5C00;
+
+        }
+
+
+        .info-box.location .info-box-title {
+
+            color: #FF5C00;
+
+        }
+
+
+        .info-box.dj {
+
+            border-color: #00FF38;
+
+        }
+
+
+        .info-box.dj .info-box-title {
+
+            color: #00FF38;
+
+        }
+
+
+        .info-box.dj .info-box-text {
+
+            color: #00FF38;
+
+        }
+
+
+
+        /* =========================================
+           PALAVRA-CHAVE
+        ========================================= */
+
+        .keyword {
+
+            color: #B000FF;
+
+            font-weight: 400;
+
+        }
+
+
+
+        /* =========================================
+           RESPONSIVO
+        ========================================= */
+
+        @media (min-width: 700px) {
+
+            .info-box {
+
+                padding:
+                    24px
+                    20px;
+
+            }
+
+            .section-text {
+
+                font-size:
+                    clamp(
+                        18px,
+                        2.5vw,
+                        26px
+                    );
+
+            }
+
+        }
+
+
+        @media (max-width: 380px) {
+
+            .info-section {
+
+                gap: 10px;
+
+            }
+
+            .info-box {
+
+                padding:
+                    16px
+                    12px;
+
+                border-width: 3px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <main class="info-page">
+
+
+        <!-- =====================================
+             VOLTAR
+        ====================================== -->
+
+        <button
+            class="back"
+            onclick="history.back()"
+            aria-label="Voltar"
+        >
+            ←
+        </button>
+
+
+
+        <!-- =====================================
+             TÍTULO
+        ====================================== -->
+
+        <h1 class="title">
+            INFO
+        </h1>
+
+
+
+        <!-- =====================================
+             CONTEÚDO
+        ====================================== -->
+
+        <section class="info-content">
+
+
+            <!-- INTRODUÇÃO -->
+
+            <div class="info-section">
+
+                <p class="section-text">
+
+                    O alemão possui um verbo chamado
+                    <span class="keyword">
+                        "reinfeiern"
+                    </span>
+                    . A tradução literal seria algo como
+                    <span class="section-highlight">
+                        "festejar entrando"
+                    </span>
+                    , e a palavra é usada para descrever exatamente isso:
+                    <span class="section-highlight">
+                        comemorar o aniversário na virada, entrando no novo ano de vida já festejando
+                    </span>
+                    .
+
+                </p>
+
+            </div>
+
+
+
+            <!-- O EVENTO -->
+
+            <div class="info-section">
+
+                <p class="section-text">
+
+                    No dia <span class="section-highlight">07/11/2026</span>, vamos fazer exatamente isso.
+                    À <span class="section-highlight">meia-noite</span>, no momento em que o relógio bater
+                    <span class="keyword">00:00</span>, eu completo <span class="keyword">28 anos</span>.
+
+                </p>
+
+                <p class="section-text">
+
+                    Estaremos no <span class="section-highlight">HAOMA</span>, dançando muito, então o objetivo é
+                    <span class="keyword">nem perceber que o dia virou</span>.
+
+                </p>
+
+            </div>
+
+
+
+            <!-- EXPECTATIVAS -->
+
+            <div class="info-section">
+
+                <p class="section-text">
+
+                    Estejam preparados para:
+
+                </p>
+
+                <ul style="
+
+                    list-style: none;
+                    margin-left: 0;
+
+                ">
+
+                    <li style="
+
+                        color: #087AFF;
+                        font-family: Moderat, monospace;
+                        font-size: clamp(16px, 4vw, 22px);
+                        font-weight: 300;
+                        line-height: 1.8;
+                        letter-spacing: -0.02em;
+
+                    ">
+
+                        🔊 Muita <span class="section-highlight">música alta</span>
+
+                    </li>
+
+                    <li style="
+
+                        color: #087AFF;
+                        font-family: Moderat, monospace;
+                        font-size: clamp(16px, 4vw, 22px);
+                        font-weight: 300;
+                        line-height: 1.8;
+                        letter-spacing: -0.02em;
+
+                    ">
+
+                        💃 <span class="section-highlight">Coreografias</span> e movimentos
+
+                    </li>
+
+                    <li style="
+
+                        color: #087AFF;
+                        font-family: Moderat, monospace;
+                        font-size: clamp(16px, 4vw, 22px);
+                        font-weight: 300;
+                        line-height: 1.8;
+                        letter-spacing: -0.02em;
+
+                    ">
+
+                        🎂 <span class="section-highlight">Bolo</span> na pista
+
+                    </li>
+
+                    <li style="
+
+                        color: #087AFF;
+                        font-family: Moderat, monospace;
+                        font-size: clamp(16px, 4vw, 22px);
+                        font-weight: 300;
+                        line-height: 1.8;
+                        letter-spacing: -0.02em;
+
+                    ">
+
+                        🍹 <span class="section-highlight">Drinks</span> preparados
+
+                    </li>
+
+                    <li style="
+
+                        color: #087AFF;
+                        font-family: Moderat, monospace;
+                        font-size: clamp(16px, 4vw, 22px);
+                        font-weight: 300;
+                        line-height: 1.8;
+                        letter-spacing: -0.02em;
+
+                    ">
+
+                        🕺 Principalmente, <span class="section-highlight">muita vontade de dançar sem parar</span>
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+
+            <!-- DATA E HORÁRIO -->
+
+            <div class="info-box">
+
+                <div class="info-box-title">
+                    Data e Horário
+                </div>
+
+                <div class="info-box-text">
+                    07/11/2026
+                </div>
+
+                <div class="info-box-text">
+                    20H ATÉ 02H
+                </div>
+
+            </div>
+
+
+
+            <!-- LOCAL -->
+
+            <div class="info-box location">
+
+                <div class="info-box-title">
+                    Local
+                </div>
+
+                <div class="info-box-text">
+                    HAOMA
+                </div>
+
+                <div class="info-box-text">
+                    Rua tal Bairro Tal número Tal
+                </div>
+
+            </div>
+
+
+
+            <!-- DJ SET -->
+
+            <div class="info-box dj">
+
+                <div class="info-box-title">
+                    Set
+                </div>
+
+                <div class="info-box-text">
+                    DJ SET BY SABATINI
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+</body>
+
+</html>
