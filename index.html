@@ -19,64 +19,141 @@
             width: 100%;
             height: 100%;
             overflow: hidden;
+            background: #000;
         }
 
         body {
-            background: #000;
             font-family: Arial Black, Arial, sans-serif;
+            cursor: crosshair;
         }
 
-        .screen {
+        .menu {
+            position: relative;
             width: 100vw;
             height: 100vh;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
             overflow: hidden;
-
-            transition:
-                background-color 0.05s linear;
+            background: #000;
         }
 
-        .logo {
-            color: #fff;
+        .item {
+            position: absolute;
 
             font-family: "Arial Black", Arial, sans-serif;
-            font-size: clamp(80px, 18vw, 320px);
+            font-weight: 900;
 
-            line-height: 0.75;
-            letter-spacing: -0.08em;
+            font-size: clamp(55px, 10vw, 180px);
+
+            line-height: 0.8;
 
             white-space: nowrap;
 
-            text-align: center;
-
+            cursor: pointer;
             user-select: none;
 
-            transform:
-                scaleX(1)
-                scaleY(1)
-                rotate(0deg)
-                skewX(0deg);
+            transform-origin: center center;
 
             transition:
-                transform 0.08s linear,
-                color 0.05s linear;
+                transform 0.12s cubic-bezier(.2,.8,.2,1),
+                color 0.08s linear;
+
+            will-change: transform;
         }
 
-        /* Reduz movimento para quem prefere menos animação */
-        @media (prefers-reduced-motion: reduce) {
+        .item:hover {
+            z-index: 100;
+        }
 
-            .screen {
-                background: #000 !important;
+
+        /* POSIÇÕES */
+
+        .confirme {
+            left: 2vw;
+            top: 5vh;
+        }
+
+        .quem {
+            left: 3vw;
+            top: 32vh;
+        }
+
+        .musica {
+            right: 2vw;
+            bottom: 5vh;
+        }
+
+        .look {
+            left: 50%;
+            top: 13vh;
+        }
+
+        .jogue {
+            right: 2vw;
+            top: 4vh;
+        }
+
+        .local {
+            left: 3vw;
+            bottom: 5vh;
+        }
+
+        .segredos {
+            left: 47%;
+            top: 45%;
+            writing-mode: vertical-rl;
+        }
+
+        .sabatini {
+            left: 4vw;
+            bottom: 16vh;
+        }
+
+
+        /* MOBILE */
+
+        @media (max-width: 600px) {
+
+            .item {
+                font-size: clamp(45px, 18vw, 110px);
             }
 
-            .logo {
-                color: #fff !important;
-                transform: none !important;
-                transition: none !important;
+            .confirme {
+                left: 2vw;
+                top: 5vh;
+            }
+
+            .quem {
+                left: 2vw;
+                top: 25vh;
+            }
+
+            .musica {
+                right: -5vw;
+                bottom: 4vh;
+            }
+
+            .look {
+                left: 45%;
+                top: 15vh;
+            }
+
+            .jogue {
+                right: -5vw;
+                top: 5vh;
+            }
+
+            .local {
+                left: 2vw;
+                bottom: 5vh;
+            }
+
+            .segredos {
+                left: 40%;
+                top: 45%;
+            }
+
+            .sabatini {
+                left: 2vw;
+                bottom: 18vh;
             }
 
         }
@@ -84,11 +161,40 @@
     </style>
 </head>
 
+
 <body>
 
-    <main class="screen" id="screen">
+    <main class="menu">
 
-        <div class="logo" id="logo">
+        <div class="item confirme" data-type="escape">
+            CONFIRME
+        </div>
+
+        <div class="item quem" data-type="shake">
+            QUEM VEM
+        </div>
+
+        <div class="item musica" data-type="pulse">
+            MÚSICA
+        </div>
+
+        <div class="item look" data-type="stretch">
+            LOOK
+        </div>
+
+        <div class="item jogue" data-type="escape">
+            JOGUE
+        </div>
+
+        <div class="item local" data-type="tilt">
+            LOCAL
+        </div>
+
+        <div class="item segredos" data-type="shake">
+            SEGREDOS
+        </div>
+
+        <div class="item sabatini" data-type="stretch">
             SABATINI28
         </div>
 
@@ -97,88 +203,250 @@
 
     <script>
 
-        const screen = document.getElementById("screen");
-        const logo = document.getElementById("logo");
-
+        const items = document.querySelectorAll(".item");
 
         const colors = [
-
-            "#000000",
             "#087AFF",
             "#B000FF",
             "#FF9500",
             "#00FF22",
             "#E5FF00"
-
         ];
 
 
-        const textColors = [
-
-            "#FFFFFF",
-            "#000000"
-
-        ];
+        let mouseX = 0;
+        let mouseY = 0;
 
 
-        function random(min, max) {
+        document.addEventListener("mousemove", (event) => {
 
-            return Math.random() * (max - min) + min;
+            mouseX = event.clientX;
+            mouseY = event.clientY;
+
+
+            items.forEach(item => {
+
+                const rect = item.getBoundingClientRect();
+
+                const centerX = rect.left + rect.width / 2;
+                const centerY = rect.top + rect.height / 2;
+
+                const distance = Math.sqrt(
+                    Math.pow(mouseX - centerX, 2) +
+                    Math.pow(mouseY - centerY, 2)
+                );
+
+
+                /*
+                    QUANTO MENOR A DISTÂNCIA,
+                    MAIOR A AGRESSÃO
+                */
+
+                const influence = Math.max(
+                    0,
+                    1 - distance / 350
+                );
+
+
+                if (influence <= 0) {
+                    return;
+                }
+
+
+                const type = item.dataset.type;
+
+
+                /* FOGE DO MOUSE */
+
+                if (type === "escape") {
+
+                    const angle =
+                        Math.atan2(
+                            centerY - mouseY,
+                            centerX - mouseX
+                        );
+
+                    const force = influence * 80;
+
+                    const x = Math.cos(angle) * force;
+                    const y = Math.sin(angle) * force;
+
+                    item.style.transform = `
+                        translate(${x}px, ${y}px)
+                        scaleX(${1 + influence * 0.8})
+                        rotate(${influence * 8}deg)
+                    `;
+
+                }
+
+
+                /* TREME */
+
+                if (type === "shake") {
+
+                    const x =
+                        (Math.random() - 0.5) *
+                        influence *
+                        25;
+
+                    const y =
+                        (Math.random() - 0.5) *
+                        influence *
+                        25;
+
+                    const rotation =
+                        (Math.random() - 0.5) *
+                        influence *
+                        15;
+
+                    item.style.transform = `
+                        translate(${x}px, ${y}px)
+                        rotate(${rotation}deg)
+                    `;
+
+                }
+
+
+                /* PULSA */
+
+                if (type === "pulse") {
+
+                    const scale =
+                        1 + influence * 0.7;
+
+                    item.style.transform = `
+                        scale(${scale})
+                        skewX(${influence * 15}deg)
+                    `;
+
+                }
+
+
+                /* FICA ABSURDAMENTE ESTICADO */
+
+                if (type === "stretch") {
+
+                    const scaleX =
+                        1 + influence * 2;
+
+                    const scaleY =
+                        1 - influence * 0.35;
+
+                    item.style.transform = `
+                        scaleX(${scaleX})
+                        scaleY(${scaleY})
+                    `;
+
+                }
+
+
+                /* INCLINA */
+
+                if (type === "tilt") {
+
+                    const direction =
+                        mouseX > centerX ? 1 : -1;
+
+                    item.style.transform = `
+                        rotate(${direction * influence * 25}deg)
+                        scaleX(${1 + influence * 0.5})
+                    `;
+
+                }
+
+            });
+
+        });
+
+
+        /*
+            FLASH DE COR
+        */
+
+        function flash() {
+
+            const randomColor =
+                colors[
+                    Math.floor(
+                        Math.random() * colors.length
+                    )
+                ];
+
+
+            const randomItem =
+                items[
+                    Math.floor(
+                        Math.random() * items.length
+                    )
+                ];
+
+
+            randomItem.style.color = randomColor;
+
+
+            /*
+                Alguns flashes mudam o fundo
+            */
+
+            if (Math.random() < 0.25) {
+
+                document.querySelector(".menu")
+                    .style.backgroundColor = randomColor;
+
+                randomItem.style.color = "#000";
+
+
+                setTimeout(() => {
+
+                    document.querySelector(".menu")
+                        .style.backgroundColor = "#000";
+
+                }, 70);
+
+            }
+
+
+            setTimeout(
+                flash,
+                250 + Math.random() * 900
+            );
 
         }
 
 
-        function chaos() {
-
-            // Escolhe uma cor aleatória
-
-            const backgroundColor =
-                colors[Math.floor(Math.random() * colors.length)];
+        flash();
 
 
-            const textColor =
-                textColors[Math.floor(Math.random() * textColors.length)];
+        /*
+            CLIQUE
+        */
+
+        items.forEach(item => {
+
+            item.addEventListener("click", () => {
+
+                item.style.color = "#fff";
+
+                item.style.transform = `
+                    scale(2.5)
+                    rotate(${Math.random() * 30 - 15}deg)
+                `;
 
 
-            // Muda o fundo
+                setTimeout(() => {
 
-            screen.style.backgroundColor = backgroundColor;
+                    item.style.color =
+                        colors[
+                            Math.floor(
+                                Math.random() * colors.length
+                            )
+                        ];
 
+                }, 150);
 
-            // Muda a cor do texto
+            });
 
-            logo.style.color = textColor;
-
-
-            // Distorções
-
-            const scaleX = random(0.35, 2.2);
-
-            const scaleY = random(0.5, 1.8);
-
-            const rotate = random(-8, 8);
-
-            const skew = random(-15, 15);
-
-
-            logo.style.transform = `
-                scaleX(${scaleX})
-                scaleY(${scaleY})
-                rotate(${rotate}deg)
-                skewX(${skew}deg)
-            `;
-
-
-            // Próximo flash
-
-            const nextChange = random(120, 650);
-
-            setTimeout(chaos, nextChange);
-
-        }
-
-
-        chaos();
+        });
 
     </script>
 
