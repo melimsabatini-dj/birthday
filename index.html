@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta
         name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
@@ -9,36 +12,84 @@
 
     <title>SABATINI28 — LOOKS</title>
 
+
     <style>
+
+
+        /* =========================================
+           FONTES
+        ========================================= */
+
+        @font-face {
+
+            font-family: "Memesique";
+
+            src:
+                url("fonts/Memesique-Regular.woff2")
+                format("woff2");
+
+            font-weight: normal;
+
+            font-style: normal;
+
+            font-display: swap;
+
+        }
+
+
+        @font-face {
+
+            font-family: "Moderat";
+
+            src:
+                url("fonts/Moderat-Mono-Light.woff2")
+                format("woff2");
+
+            font-weight: 300;
+
+            font-style: normal;
+
+            font-display: swap;
+
+        }
+
+
 
         /* =========================================
            RESET
         ========================================= */
 
         * {
+
             box-sizing: border-box;
+
             margin: 0;
+
             padding: 0;
+
         }
 
 
         html,
         body {
+
             width: 100%;
+
             min-height: 100%;
 
             background: #000;
 
-            font-family:
-                "Arial Black",
-                Arial,
-                sans-serif;
         }
 
 
         body {
+
             overflow-x: hidden;
+
+            background: #000;
+
         }
+
 
 
         /* =========================================
@@ -50,28 +101,31 @@
             position: relative;
 
             width: 100%;
+
             min-height: 100vh;
 
             background: #000;
 
             padding:
-                18px
-                18px
+                16px
+                16px
                 35px;
 
         }
 
 
+
         /* =========================================
-           BOTÃO VOLTAR
+           VOLTAR
         ========================================= */
 
         .back {
 
             position: absolute;
 
-            top: 14px;
-            left: 16px;
+            top: 12px;
+
+            left: 14px;
 
             border: 0;
 
@@ -80,8 +134,7 @@
             color: #FF5C00;
 
             font-family:
-                Arial Black,
-                Arial,
+                "Memesique",
                 sans-serif;
 
             font-size: 42px;
@@ -108,6 +161,7 @@
         }
 
 
+
         /* =========================================
            TÍTULO
         ========================================= */
@@ -116,38 +170,35 @@
 
             width: 100%;
 
-            margin-top: 45px;
+            margin-top: 52px;
 
             color: #00FF38;
 
             font-family:
-                Arial Black,
-                Arial,
+                "Memesique",
                 sans-serif;
 
             font-size:
                 clamp(
-                    65px,
-                    18vw,
-                    190px
+                    70px,
+                    19vw,
+                    200px
                 );
 
-            line-height: 0.75;
+            line-height: 0.72;
 
-            letter-spacing: -0.07em;
+            letter-spacing: -0.04em;
 
             text-align: center;
-
-            transform:
-                scaleX(1.15);
 
             user-select: none;
 
         }
 
 
+
         /* =========================================
-           GERAR
+           BOTÃO GERAR
         ========================================= */
 
         .generate {
@@ -155,12 +206,12 @@
             display: block;
 
             margin:
-                28px auto
-                32px;
+                30px auto
+                34px;
 
             padding:
-                10px
-                22px;
+                12px
+                24px;
 
             border:
                 4px solid #FF5C00;
@@ -170,26 +221,23 @@
             color: #FF5C00;
 
             font-family:
-                Arial Black,
-                Arial,
+                "Memesique",
                 sans-serif;
 
             font-size:
                 clamp(
-                    20px,
-                    5vw,
-                    34px
+                    25px,
+                    6vw,
+                    42px
                 );
 
-            line-height: 1;
+            line-height: 0.9;
 
             cursor: pointer;
 
-            text-transform: uppercase;
-
             transition:
-                background-color 80ms linear,
-                color 80ms linear,
+                background-color 70ms linear,
+                color 70ms linear,
                 transform 100ms ease;
 
         }
@@ -202,10 +250,11 @@
             color: #000;
 
             transform:
-                scaleX(1.08)
-                scaleY(0.92);
+                scaleX(1.10)
+                scaleY(0.90);
 
         }
+
 
 
         /* =========================================
@@ -216,7 +265,7 @@
 
             width: 100%;
 
-            max-width: 850px;
+            max-width: 900px;
 
             margin:
                 0 auto;
@@ -225,13 +274,14 @@
 
             flex-direction: column;
 
-            gap: 14px;
+            gap: 12px;
 
         }
 
 
+
         /* =========================================
-           RETÂNGULOS
+           CAIXAS
         ========================================= */
 
         .look-box {
@@ -241,7 +291,7 @@
             min-height: 78px;
 
             padding:
-                14px
+                13px
                 12px;
 
             border:
@@ -257,92 +307,145 @@
 
             background: #000;
 
+            /*
+                Moderat para as opções.
+            */
+
             color: #00FF38;
 
-            text-align: center;
-
             font-family:
-                Arial Black,
-                Arial,
-                sans-serif;
+                "Moderat",
+                monospace;
+
+            font-weight: 300;
 
             font-size:
                 clamp(
-                    23px,
-                    7vw,
-                    54px
+                    21px,
+                    6vw,
+                    48px
                 );
 
-            line-height: 0.9;
+            line-height: 1;
 
-            letter-spacing: -0.035em;
+            letter-spacing: -0.04em;
+
+            text-align: center;
 
             text-transform: uppercase;
 
             user-select: none;
 
+            /*
+                IMPORTANTE:
+                Começa invisível.
+            */
+
+            opacity: 0;
+
             transition:
-                transform 120ms
+                transform 100ms
                 cubic-bezier(.2,.8,.2,1),
 
-                background-color 80ms linear,
-
-                color 80ms linear,
-
-                border-color 80ms linear;
+                color 70ms linear;
 
         }
+
+
+        /*
+            Quando já foi gerado,
+            fica visível.
+        */
+
+        .look-box.visible {
+
+            opacity: 1;
+
+        }
+
 
 
         /* =========================================
-           EFEITO QUANDO GERA
+           ANIMAÇÃO DE EMBARALHAMENTO
         ========================================= */
 
-        .look-box.generating {
+        .look-box.spinning {
 
             animation:
-                generate-chaos
-                220ms
-                ease;
+                box-shake
+                80ms
+                infinite;
 
         }
 
 
-        @keyframes generate-chaos {
+        @keyframes box-shake {
 
             0% {
 
                 transform:
-                    scaleX(1)
-                    scaleY(1)
-                    skewX(0deg);
-
-            }
-
-            25% {
-
-                transform:
-                    scaleX(1.04)
-                    scaleY(0.88)
-                    skewX(-4deg);
+                    translateX(-2px)
+                    scaleX(1.01);
 
             }
 
             50% {
 
                 transform:
-                    scaleX(0.97)
-                    scaleY(1.08)
-                    skewX(4deg);
+                    translateX(2px)
+                    scaleX(0.99);
 
             }
 
-            75% {
+            100% {
 
                 transform:
-                    scaleX(1.03)
-                    scaleY(0.94)
-                    skewX(-2deg);
+                    translateX(-2px)
+                    scaleX(1.01);
+
+            }
+
+        }
+
+
+
+        /* =========================================
+           FLASH AO FINALIZAR
+        ========================================= */
+
+        .look-box.finished {
+
+            animation:
+                finish-box
+                180ms
+                ease;
+
+        }
+
+
+        @keyframes finish-box {
+
+            0% {
+
+                transform:
+                    scaleX(1)
+                    scaleY(1);
+
+            }
+
+            35% {
+
+                transform:
+                    scaleX(1.06)
+                    scaleY(0.91);
+
+            }
+
+            65% {
+
+                transform:
+                    scaleX(0.98)
+                    scaleY(1.05);
 
             }
 
@@ -350,12 +453,12 @@
 
                 transform:
                     scaleX(1)
-                    scaleY(1)
-                    skewX(0deg);
+                    scaleY(1);
 
             }
 
         }
+
 
 
         /* =========================================
@@ -376,34 +479,36 @@
 
             .title {
 
-                margin-top: 40px;
+                margin-top: 45px;
 
             }
 
 
             .generate {
 
-                margin-top: 35px;
+                margin-top: 36px;
+
+                margin-bottom: 38px;
 
             }
 
 
             .outfit {
 
-                gap: 18px;
+                gap: 16px;
 
             }
 
 
             .look-box {
 
-                min-height: 92px;
+                min-height: 90px;
 
                 font-size:
                     clamp(
-                        32px,
+                        30px,
                         4vw,
-                        62px
+                        58px
                     );
 
             }
@@ -411,16 +516,18 @@
         }
 
 
+
         /* =========================================
-           TELAS MUITO PEQUENAS
+           CELULARES PEQUENOS
         ========================================= */
 
         @media (max-width: 380px) {
 
             .looks-page {
 
-                padding-left: 12px;
-                padding-right: 12px;
+                padding-left: 11px;
+
+                padding-right: 11px;
 
             }
 
@@ -432,28 +539,41 @@
             }
 
 
-            .look-box {
+            .generate {
 
-                min-height: 70px;
+                margin-top: 24px;
 
-                font-size: 21px;
+                margin-bottom: 26px;
 
                 border-width: 3px;
 
             }
 
 
+            .look-box {
+
+                min-height: 67px;
+
+                border-width: 3px;
+
+                font-size: 19px;
+
+            }
+
+
             .outfit {
 
-                gap: 10px;
+                gap: 9px;
 
             }
 
         }
 
+
     </style>
 
 </head>
+
 
 
 <body>
@@ -462,9 +582,7 @@
     <main class="looks-page">
 
 
-        <!-- =====================================
-             VOLTAR
-        ====================================== -->
+        <!-- VOLTAR -->
 
         <button
             class="back"
@@ -475,18 +593,16 @@
         </button>
 
 
-        <!-- =====================================
-             TÍTULO
-        ====================================== -->
+
+        <!-- TÍTULO -->
 
         <h1 class="title">
             LOOKS
         </h1>
 
 
-        <!-- =====================================
-             GERAR
-        ====================================== -->
+
+        <!-- GERAR -->
 
         <button
             class="generate"
@@ -496,11 +612,8 @@
         </button>
 
 
-        <!-- =====================================
-             RESULTADO
-             
-             AS CATEGORIAS NÃO APARECEM.
-        ====================================== -->
+
+        <!-- RESULTADO -->
 
         <section
             class="outfit"
@@ -551,7 +664,6 @@
         /* =========================================
            BANCO DE LOOKS
         ========================================= */
-
 
         const looks = {
 
@@ -650,25 +762,30 @@
 
         const boxes = {
 
+
             accessory:
                 document.getElementById(
                     "accessory"
                 ),
+
 
             top:
                 document.getElementById(
                     "top"
                 ),
 
+
             bottom:
                 document.getElementById(
                     "bottom"
                 ),
 
+
             shoes:
                 document.getElementById(
                     "shoes"
                 ),
+
 
             outer:
                 document.getElementById(
@@ -686,7 +803,7 @@
 
 
         /* =========================================
-           PALETA
+           CORES
         ========================================= */
 
         const colors = [
@@ -706,7 +823,7 @@
 
 
         /* =========================================
-           ESCOLHER ALEATORIAMENTE
+           ESCOLHER ITEM
         ========================================= */
 
         function randomItem(array) {
@@ -724,74 +841,208 @@
 
 
         /* =========================================
-           GERAR LOOK
+           ESCOLHER COR
+        ========================================= */
+
+        function randomColor() {
+
+            return colors[
+                Math.floor(
+                    Math.random()
+                    *
+                    colors.length
+                )
+            ];
+
+        }
+
+
+
+        /* =========================================
+           EMBARALHAR UMA CAIXA
+        ========================================= */
+
+        function spinBox(
+            category,
+            box,
+            delay
+        ) {
+
+
+            setTimeout(function() {
+
+
+                /*
+                    Torna visível
+                */
+
+                box.classList.add(
+                    "visible"
+                );
+
+
+                /*
+                    Começa a tremer
+                */
+
+                box.classList.add(
+                    "spinning"
+                );
+
+
+                /*
+                    Troca rapidamente
+                    as opções.
+                */
+
+                let counter = 0;
+
+
+                const totalSpins =
+                    10 +
+                    Math.floor(
+                        Math.random() * 7
+                    );
+
+
+                const speed = 65;
+
+
+                const spinner =
+                    setInterval(function() {
+
+
+                        box.textContent =
+                            randomItem(
+                                looks[category]
+                            ).toUpperCase();
+
+
+                        box.style.color =
+                            randomColor();
+
+
+                        counter++;
+
+
+                        /*
+                            Depois de algumas
+                            trocas, para.
+                        */
+
+                        if (
+                            counter >=
+                            totalSpins
+                        ) {
+
+
+                            clearInterval(
+                                spinner
+                            );
+
+
+                            /*
+                                Resultado final
+                            */
+
+                            box.textContent =
+                                randomItem(
+                                    looks[category]
+                                ).toUpperCase();
+
+
+                            box.style.color =
+                                randomColor();
+
+
+                            box.classList.remove(
+                                "spinning"
+                            );
+
+
+                            /*
+                                Pequeno impacto
+                                ao parar.
+                            */
+
+                            box.classList.add(
+                                "finished"
+                            );
+
+
+                            setTimeout(function() {
+
+                                box.classList.remove(
+                                    "finished"
+                                );
+
+                            }, 180);
+
+                        }
+
+
+                    }, speed);
+
+
+            }, delay);
+
+        }
+
+
+
+        /* =========================================
+           GERAR LOOK COMPLETO
         ========================================= */
 
         function generateLook() {
 
 
-            Object.keys(boxes)
-                .forEach(function(category) {
+            /*
+                Cada caixa começa
+                em um momento diferente.
+            */
+
+            spinBox(
+                "accessory",
+                boxes.accessory,
+                0
+            );
 
 
-                    const box =
-                        boxes[category];
+            spinBox(
+                "top",
+                boxes.top,
+                160
+            );
 
 
-                    /*
-                        Nova opção
-                    */
-
-                    box.textContent =
-                        randomItem(
-                            looks[category]
-                        ).toUpperCase();
+            spinBox(
+                "bottom",
+                boxes.bottom,
+                320
+            );
 
 
-                    /*
-                        Reinicia animação
-                    */
-
-                    box.classList.remove(
-                        "generating"
-                    );
+            spinBox(
+                "shoes",
+                boxes.shoes,
+                480
+            );
 
 
-                    /*
-                        Força o navegador
-                        a reiniciar a animação
-                    */
-
-                    void box.offsetWidth;
-
-
-                    box.classList.add(
-                        "generating"
-                    );
-
-
-                    /*
-                        Cor aleatória
-                    */
-
-                    box.style.color =
-                        colors[
-                            Math.floor(
-                                Math.random()
-                                *
-                                colors.length
-                            )
-                        ];
-
-                });
+            spinBox(
+                "outer",
+                boxes.outer,
+                640
+            );
 
 
             /*
-                Pequena reação do botão
+                Reação do botão
             */
 
             generate.style.transform =
-                "scaleX(1.12) scaleY(.9)";
+                "scaleX(1.12) scaleY(.88)";
 
 
             setTimeout(function() {
@@ -806,15 +1057,13 @@
 
 
         /* =========================================
-           PRIMEIRO LOOK
-        ========================================= */
+           IMPORTANTE:
+           
+           NÃO chamamos generateLook()
+           aqui.
 
-        generateLook();
-
-
-
-        /* =========================================
-           BOTÃO
+           As caixas permanecem vazias
+           até o primeiro clique.
         ========================================= */
 
         generate.addEventListener(
@@ -825,11 +1074,7 @@
 
 
         /* =========================================
-           INTERAÇÃO COM OS RETÂNGULOS
-           
-           No desktop, o mouse deforma.
-           No mobile, o toque dá uma
-           pequena reação.
+           INTERAÇÃO DESKTOP
         ========================================= */
 
         Object.values(boxes)
@@ -839,6 +1084,17 @@
                 box.addEventListener(
                     "mousemove",
                     function(event) {
+
+
+                        if (
+                            box.classList.contains(
+                                "spinning"
+                            )
+                        ) {
+
+                            return;
+
+                        }
 
 
                         const rect =
@@ -860,13 +1116,17 @@
                                 percentage -
                                 0.5
                             )
-                            *
-                            5;
+                            * 5;
 
 
                         box.style.transform = `
-                            skewX(${rotation}deg)
+
+                            skewX(
+                                ${rotation}deg
+                            )
+
                             scaleX(1.015)
+
                         `;
 
                     }
@@ -877,12 +1137,24 @@
                     "mouseleave",
                     function() {
 
-                        box.style.transform =
-                            "";
+                        if (
+                            !box.classList.contains(
+                                "spinning"
+                            )
+                        ) {
+
+                            box.style.transform =
+                                "";
+
+                        }
 
                     }
                 );
 
+
+                /* =================================
+                   MOBILE
+                ================================= */
 
                 box.addEventListener(
                     "touchstart",
@@ -914,819 +1186,9 @@
 
             });
 
-    </script>
-
-</body>
-</html>
-            width: 100vw;
-            height: 100vh;
-
-            overflow: hidden;
-
-            background: #000;
-
-            transition:
-                background-color 80ms linear;
-        }
-
-
-        /* =========================
-           PALAVRAS
-        ========================= */
-
-        .item {
-
-            position: absolute;
-
-            display: block;
-
-            font-family:
-                "Arial Black",
-                Arial,
-                sans-serif;
-
-            font-weight: 900;
-
-            line-height: 0.78;
-
-            white-space: nowrap;
-
-            user-select: none;
-
-            cursor: pointer;
-
-            transform-origin: center center;
-
-            /* Nunca começa preta */
-            color: #087AFF;
-
-            z-index: 2;
-
-            will-change:
-                transform,
-                color;
-
-            transition:
-                transform 140ms cubic-bezier(.2,.8,.2,1),
-                color 80ms linear;
-
-        }
-
-
-        /* =========================
-           TAMANHOS
-        ========================= */
-
-        .confirme {
-            font-size: clamp(70px, 10vw, 150px);
-        }
-
-        .quem {
-            font-size: clamp(65px, 9vw, 140px);
-        }
-
-        .musica {
-            font-size: clamp(65px, 10vw, 160px);
-        }
-
-        .look {
-            font-size: clamp(90px, 13vw, 210px);
-        }
-
-        .jogue {
-            font-size: clamp(70px, 11vw, 170px);
-        }
-
-        .local {
-            font-size: clamp(65px, 9vw, 140px);
-        }
-
-        .segredos {
-            font-size: clamp(55px, 7vw, 110px);
-        }
-
-        .sabatini {
-            font-size: clamp(50px, 6vw, 100px);
-        }
-
-
-        /* =========================
-           POSIÇÕES
-        ========================= */
-
-        .confirme {
-            left: 3vw;
-            top: 6vh;
-        }
-
-        .quem {
-            left: 5vw;
-            top: 30vh;
-        }
-
-        .musica {
-            right: 3vw;
-            bottom: 7vh;
-        }
-
-        .look {
-            right: 7vw;
-            top: 14vh;
-        }
-
-        .jogue {
-            left: 34vw;
-            bottom: 10vh;
-        }
-
-        .local {
-            left: 4vw;
-            bottom: 6vh;
-        }
-
-        .segredos {
-            right: 42vw;
-            top: 48vh;
-
-            writing-mode: vertical-rl;
-
-            font-size: clamp(45px, 6vw, 100px);
-        }
-
-        .sabatini {
-            right: 3vw;
-            top: 43vh;
-        }
-
-
-        /* =========================
-           HOVER
-        ========================= */
-
-        .item:hover {
-            z-index: 20;
-        }
-
-
-        /* =========================
-           MOBILE
-        ========================= */
-
-        @media (max-width: 600px) {
-
-            .confirme {
-                left: 2vw;
-                top: 7vh;
-            }
-
-            .quem {
-                left: 3vw;
-                top: 27vh;
-            }
-
-            .look {
-                right: 2vw;
-                top: 15vh;
-            }
-
-            .musica {
-                right: 2vw;
-                bottom: 7vh;
-            }
-
-            .jogue {
-                left: 8vw;
-                bottom: 20vh;
-            }
-
-            .local {
-                left: 3vw;
-                bottom: 7vh;
-            }
-
-            .segredos {
-                right: 20vw;
-                top: 45vh;
-            }
-
-            .sabatini {
-                right: 2vw;
-                top: 43vh;
-            }
-
-        }
-
-    </style>
-</head>
-
-
-<body>
-
-
-    <main class="menu" id="menu">
-
-
-        <div
-            class="item confirme"
-            data-type="escape">
-            CONFIRME
-        </div>
-
-
-        <div
-            class="item quem"
-            data-type="shake">
-            QUEM VEM
-        </div>
-
-
-        <div
-            class="item musica"
-            data-type="pulse">
-            MÚSICA
-        </div>
-
-
-        <div
-            class="item look"
-            data-type="stretch">
-            LOOK
-        </div>
-
-
-        <div
-            class="item jogue"
-            data-type="escape">
-            JOGUE
-        </div>
-
-
-        <div
-            class="item local"
-            data-type="tilt">
-            LOCAL
-        </div>
-
-
-        <div
-            class="item segredos"
-            data-type="shake">
-            SEGREDOS
-        </div>
-
-
-        <div
-            class="item sabatini"
-            data-type="stretch">
-            SABATINI28
-        </div>
-
-
-    </main>
-
-
-
-    <script>
-
-
-        const menu =
-            document.getElementById("menu");
-
-
-        const items =
-            document.querySelectorAll(".item");
-
-
-        /* =========================
-           PALETA
-
-           IMPORTANTE:
-           PRETO NÃO ESTÁ AQUI.
-        ========================= */
-
-        const colors = [
-
-            "#087AFF",
-            "#B000FF",
-            "#FF5C00",
-            "#00FF38",
-            "#E5FF00"
-
-        ];
-
-
-        let mouseX = -1000;
-        let mouseY = -1000;
-
-
-
-        /* =========================
-           MOUSE
-        ========================= */
-
-        document.addEventListener(
-            "mousemove",
-            function(event) {
-
-                mouseX = event.clientX;
-                mouseY = event.clientY;
-
-            }
-        );
-
-
-
-        /* =========================
-           INTERAÇÃO
-        ========================= */
-
-        function animateItems() {
-
-
-            items.forEach(function(item) {
-
-
-                const rect =
-                    item.getBoundingClientRect();
-
-
-                const centerX =
-                    rect.left +
-                    rect.width / 2;
-
-
-                const centerY =
-                    rect.top +
-                    rect.height / 2;
-
-
-                const distance =
-                    Math.sqrt(
-
-                        Math.pow(
-                            mouseX - centerX,
-                            2
-                        )
-
-                        +
-
-                        Math.pow(
-                            mouseY - centerY,
-                            2
-                        )
-
-                    );
-
-
-                /*
-                    Área de influência
-                */
-
-                const radius = 280;
-
-
-                let influence =
-                    1 - distance / radius;
-
-
-                influence =
-                    Math.max(
-                        0,
-                        Math.min(
-                            1,
-                            influence
-                        )
-                    );
-
-
-                const type =
-                    item.dataset.type;
-
-
-
-                /* =====================
-                   SEM INTERAÇÃO
-                ===================== */
-
-                if (influence <= 0) {
-
-                    item.style.transform =
-                        "translate(0,0) scaleX(1) scaleY(1) rotate(0deg)";
-
-                    return;
-
-                }
-
-
-
-                /* =====================
-                   FOGE DO MOUSE
-                ===================== */
-
-                if (type === "escape") {
-
-
-                    const angle =
-                        Math.atan2(
-                            centerY - mouseY,
-                            centerX - mouseX
-                        );
-
-
-                    const force =
-                        influence * 45;
-
-
-                    const x =
-                        Math.cos(angle) *
-                        force;
-
-
-                    const y =
-                        Math.sin(angle) *
-                        force;
-
-
-                    item.style.transform = `
-
-                        translate(
-                            ${x}px,
-                            ${y}px
-                        )
-
-                        scaleX(
-                            ${1 + influence * 0.15}
-                        )
-
-                        rotate(
-                            ${influence * 4}deg
-                        )
-
-                    `;
-
-                }
-
-
-
-                /* =====================
-                   TREME
-                ===================== */
-
-                if (type === "shake") {
-
-
-                    const x =
-                        (Math.random() - 0.5)
-                        *
-                        influence
-                        *
-                        12;
-
-
-                    const y =
-                        (Math.random() - 0.5)
-                        *
-                        influence
-                        *
-                        12;
-
-
-                    const rotation =
-                        (Math.random() - 0.5)
-                        *
-                        influence
-                        *
-                        7;
-
-
-                    item.style.transform = `
-
-                        translate(
-                            ${x}px,
-                            ${y}px
-                        )
-
-                        rotate(
-                            ${rotation}deg
-                        )
-
-                    `;
-
-                }
-
-
-
-                /* =====================
-                   PULSA
-                ===================== */
-
-                if (type === "pulse") {
-
-
-                    const scale =
-                        1 +
-                        influence *
-                        0.25;
-
-
-                    item.style.transform = `
-
-                        scale(
-                            ${scale}
-                        )
-
-                        skewX(
-                            ${influence * 6}deg
-                        )
-
-                    `;
-
-                }
-
-
-
-                /* =====================
-                   ESTICA
-                ===================== */
-
-                if (type === "stretch") {
-
-
-                    const scaleX =
-                        1 +
-                        influence *
-                        0.7;
-
-
-                    const scaleY =
-                        1 -
-                        influence *
-                        0.12;
-
-
-                    item.style.transform = `
-
-                        scaleX(
-                            ${scaleX}
-                        )
-
-                        scaleY(
-                            ${scaleY}
-                        )
-
-                    `;
-
-                }
-
-
-
-                /* =====================
-                   ENTORTA
-                ===================== */
-
-                if (type === "tilt") {
-
-
-                    const direction =
-                        mouseX >
-                        centerX
-                            ? 1
-                            : -1;
-
-
-                    item.style.transform = `
-
-                        rotate(
-                            ${direction *
-                            influence *
-                            14}deg
-                        )
-
-                        scaleX(
-                            ${1 +
-                            influence *
-                            0.15}
-                        )
-
-                    `;
-
-                }
-
-
-            });
-
-
-            requestAnimationFrame(
-                animateItems
-            );
-
-        }
-
-
-        animateItems();
-
-
-
-        /* =========================
-           CORES INICIAIS
-           
-           TODAS AS CORES SÃO
-           DIFERENTES DE PRETO.
-        ========================= */
-
-        items.forEach(function(item) {
-
-            const color =
-                colors[
-                    Math.floor(
-                        Math.random()
-                        *
-                        colors.length
-                    )
-                ];
-
-
-            item.style.color =
-                color;
-
-        });
-
-
-
-        /* =========================
-           FLASHES
-        ========================= */
-
-        function flash() {
-
-
-            const item =
-                items[
-                    Math.floor(
-                        Math.random()
-                        *
-                        items.length
-                    )
-                ];
-
-
-            const color =
-                colors[
-                    Math.floor(
-                        Math.random()
-                        *
-                        colors.length
-                    )
-                ];
-
-
-            /*
-                Flash normal:
-                apenas o texto muda.
-            */
-
-            item.style.color =
-                color;
-
-
-
-            /*
-                Pequena chance de
-                flash no fundo.
-            */
-
-            if (Math.random() < 0.12) {
-
-
-                menu.style.backgroundColor =
-                    color;
-
-
-                /*
-                    AGORA sim o preto
-                    pode aparecer no texto,
-                    porque o fundo NÃO é preto.
-                */
-
-                items.forEach(function(word) {
-
-                    word.dataset.previousColor =
-                        word.style.color;
-
-                    word.style.color =
-                        "#000000";
-
-                });
-
-
-                setTimeout(function() {
-
-
-                    menu.style.backgroundColor =
-                        "#000000";
-
-
-                    /*
-                        Restauramos as cores
-                        vibrantes anteriores.
-                    */
-
-                    items.forEach(function(word) {
-
-                        word.style.color =
-                            word.dataset.previousColor
-                            ||
-                            colors[
-                                Math.floor(
-                                    Math.random()
-                                    *
-                                    colors.length
-                                )
-                            ];
-
-                    });
-
-
-                }, 90);
-
-            }
-
-
-            setTimeout(
-                flash,
-                350 +
-                Math.random() *
-                1100
-            );
-
-        }
-
-
-        flash();
-
-
-
-        /* =========================
-           CLIQUE
-        ========================= */
-
-        items.forEach(function(item) {
-
-
-            item.addEventListener(
-                "click",
-                function() {
-
-
-                    item.style.color =
-                        "#ffffff";
-
-
-                    item.style.transform = `
-
-                        scale(
-                            1.35
-                        )
-
-                        rotate(
-                            ${
-                                Math.random()
-                                * 10
-                                - 5
-                            }deg
-                        )
-
-                    `;
-
-
-                    setTimeout(function() {
-
-
-                        /*
-                            Volta para uma cor
-                            vibrante, nunca preto.
-                        */
-
-                        item.style.color =
-                            colors[
-                                Math.floor(
-                                    Math.random()
-                                    *
-                                    colors.length
-                                )
-                            ];
-
-
-                    }, 180);
-
-
-                }
-            );
-
-        });
-
 
     </script>
 
 </body>
+
 </html>
