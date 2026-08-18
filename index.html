@@ -27,133 +27,207 @@
             cursor: crosshair;
         }
 
+
+        /* =========================
+           ÁREA PRINCIPAL
+        ========================= */
+
         .menu {
             position: relative;
+
             width: 100vw;
             height: 100vh;
+
             overflow: hidden;
+
             background: #000;
+
+            transition:
+                background-color 80ms linear;
         }
 
+
+        /* =========================
+           PALAVRAS
+        ========================= */
+
         .item {
+
             position: absolute;
 
-            font-family: "Arial Black", Arial, sans-serif;
+            display: block;
+
+            font-family:
+                "Arial Black",
+                Arial,
+                sans-serif;
+
             font-weight: 900;
 
-            font-size: clamp(55px, 10vw, 180px);
-
-            line-height: 0.8;
+            line-height: 0.78;
 
             white-space: nowrap;
 
-            cursor: pointer;
             user-select: none;
+
+            cursor: pointer;
 
             transform-origin: center center;
 
+            color: #ffffff;
+
+            z-index: 2;
+
+            will-change:
+                transform,
+                color;
+
             transition:
-                transform 0.12s cubic-bezier(.2,.8,.2,1),
-                color 0.08s linear;
+                transform 140ms cubic-bezier(.2,.8,.2,1),
+                color 80ms linear;
 
-            will-change: transform;
-        }
-
-        .item:hover {
-            z-index: 100;
         }
 
 
-        /* POSIÇÕES */
+        /* =========================
+           TAMANHOS
+        ========================= */
 
         .confirme {
-            left: 2vw;
-            top: 5vh;
+            font-size: clamp(70px, 10vw, 150px);
         }
 
         .quem {
-            left: 3vw;
-            top: 32vh;
+            font-size: clamp(65px, 9vw, 140px);
         }
 
         .musica {
-            right: 2vw;
-            bottom: 5vh;
+            font-size: clamp(65px, 10vw, 160px);
         }
 
         .look {
-            left: 50%;
-            top: 13vh;
+            font-size: clamp(90px, 13vw, 210px);
         }
 
         .jogue {
-            right: 2vw;
-            top: 4vh;
+            font-size: clamp(70px, 11vw, 170px);
         }
 
         .local {
-            left: 3vw;
-            bottom: 5vh;
+            font-size: clamp(65px, 9vw, 140px);
         }
 
         .segredos {
-            left: 47%;
-            top: 45%;
-            writing-mode: vertical-rl;
+            font-size: clamp(55px, 7vw, 110px);
         }
 
         .sabatini {
-            left: 4vw;
-            bottom: 16vh;
+            font-size: clamp(50px, 6vw, 100px);
         }
 
 
-        /* MOBILE */
+        /* =========================
+           POSIÇÕES
+        ========================= */
+
+        .confirme {
+            left: 3vw;
+            top: 6vh;
+        }
+
+        .quem {
+            left: 5vw;
+            top: 30vh;
+        }
+
+        .musica {
+            right: 3vw;
+            bottom: 7vh;
+        }
+
+        .look {
+            right: 7vw;
+            top: 14vh;
+        }
+
+        .jogue {
+            left: 34vw;
+            bottom: 10vh;
+        }
+
+        .local {
+            left: 4vw;
+            bottom: 6vh;
+        }
+
+        .segredos {
+            right: 42vw;
+            top: 48vh;
+
+            writing-mode: vertical-rl;
+
+            font-size: clamp(45px, 6vw, 100px);
+        }
+
+        .sabatini {
+            right: 3vw;
+            top: 43vh;
+        }
+
+
+        /* =========================
+           HOVER
+        ========================= */
+
+        .item:hover {
+            z-index: 20;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
 
         @media (max-width: 600px) {
 
-            .item {
-                font-size: clamp(45px, 18vw, 110px);
-            }
-
             .confirme {
                 left: 2vw;
-                top: 5vh;
+                top: 7vh;
             }
 
             .quem {
-                left: 2vw;
-                top: 25vh;
-            }
-
-            .musica {
-                right: -5vw;
-                bottom: 4vh;
+                left: 3vw;
+                top: 27vh;
             }
 
             .look {
-                left: 45%;
+                right: 2vw;
                 top: 15vh;
             }
 
+            .musica {
+                right: 2vw;
+                bottom: 7vh;
+            }
+
             .jogue {
-                right: -5vw;
-                top: 5vh;
+                left: 8vw;
+                bottom: 20vh;
             }
 
             .local {
-                left: 2vw;
-                bottom: 5vh;
+                left: 3vw;
+                bottom: 7vh;
             }
 
             .segredos {
-                left: 40%;
-                top: 45%;
+                right: 20vw;
+                top: 45vh;
             }
 
             .sabatini {
-                left: 2vw;
-                bottom: 18vh;
+                right: 2vw;
+                top: 43vh;
             }
 
         }
@@ -164,101 +238,206 @@
 
 <body>
 
-    <main class="menu">
 
-        <div class="item confirme" data-type="escape">
+    <main class="menu" id="menu">
+
+
+        <div
+            class="item confirme"
+            data-type="escape">
             CONFIRME
         </div>
 
-        <div class="item quem" data-type="shake">
+
+        <div
+            class="item quem"
+            data-type="shake">
             QUEM VEM
         </div>
 
-        <div class="item musica" data-type="pulse">
+
+        <div
+            class="item musica"
+            data-type="pulse">
             MÚSICA
         </div>
 
-        <div class="item look" data-type="stretch">
+
+        <div
+            class="item look"
+            data-type="stretch">
             LOOK
         </div>
 
-        <div class="item jogue" data-type="escape">
+
+        <div
+            class="item jogue"
+            data-type="escape">
             JOGUE
         </div>
 
-        <div class="item local" data-type="tilt">
+
+        <div
+            class="item local"
+            data-type="tilt">
             LOCAL
         </div>
 
-        <div class="item segredos" data-type="shake">
+
+        <div
+            class="item segredos"
+            data-type="shake">
             SEGREDOS
         </div>
 
-        <div class="item sabatini" data-type="stretch">
+
+        <div
+            class="item sabatini"
+            data-type="stretch">
             SABATINI28
         </div>
+
 
     </main>
 
 
+
     <script>
 
-        const items = document.querySelectorAll(".item");
+
+        const menu =
+            document.getElementById("menu");
+
+
+        const items =
+            document.querySelectorAll(".item");
+
+
+        /* =========================
+           PALETA
+        ========================= */
 
         const colors = [
+
             "#087AFF",
             "#B000FF",
-            "#FF9500",
-            "#00FF22",
+            "#FF5C00",
+            "#00FF38",
             "#E5FF00"
+
         ];
 
 
-        let mouseX = 0;
-        let mouseY = 0;
+        let mouseX = -1000;
+        let mouseY = -1000;
 
 
-        document.addEventListener("mousemove", (event) => {
 
-            mouseX = event.clientX;
-            mouseY = event.clientY;
+        /* =========================
+           MOUSE
+        ========================= */
+
+        document.addEventListener(
+            "mousemove",
+            function(event) {
+
+                mouseX = event.clientX;
+                mouseY = event.clientY;
+
+            }
+        );
 
 
-            items.forEach(item => {
 
-                const rect = item.getBoundingClientRect();
+        /* =========================
+           INTERAÇÃO
+        ========================= */
 
-                const centerX = rect.left + rect.width / 2;
-                const centerY = rect.top + rect.height / 2;
+        function animateItems() {
 
-                const distance = Math.sqrt(
-                    Math.pow(mouseX - centerX, 2) +
-                    Math.pow(mouseY - centerY, 2)
-                );
+
+            items.forEach(function(item) {
+
+
+                const rect =
+                    item.getBoundingClientRect();
+
+
+                const centerX =
+                    rect.left +
+                    rect.width / 2;
+
+
+                const centerY =
+                    rect.top +
+                    rect.height / 2;
+
+
+                const distance =
+                    Math.sqrt(
+
+                        Math.pow(
+                            mouseX - centerX,
+                            2
+                        )
+
+                        +
+
+                        Math.pow(
+                            mouseY - centerY,
+                            2
+                        )
+
+                    );
 
 
                 /*
-                    QUANTO MENOR A DISTÂNCIA,
-                    MAIOR A AGRESSÃO
+                    Área de influência
                 */
 
-                const influence = Math.max(
-                    0,
-                    1 - distance / 350
-                );
+                const radius = 280;
 
+
+                let influence =
+                    1 - distance / radius;
+
+
+                influence =
+                    Math.max(
+                        0,
+                        Math.min(
+                            1,
+                            influence
+                        )
+                    );
+
+
+                const type =
+                    item.dataset.type;
+
+
+
+                /* =====================
+                   SEM INTERAÇÃO
+                ===================== */
 
                 if (influence <= 0) {
+
+                    item.style.transform =
+                        "translate(0,0) scaleX(1) scaleY(1) rotate(0deg)";
+
                     return;
+
                 }
 
 
-                const type = item.dataset.type;
 
-
-                /* FOGE DO MOUSE */
+                /* =====================
+                   FOGE
+                ===================== */
 
                 if (type === "escape") {
+
 
                     const angle =
                         Math.atan2(
@@ -266,149 +445,319 @@
                             centerX - mouseX
                         );
 
-                    const force = influence * 80;
 
-                    const x = Math.cos(angle) * force;
-                    const y = Math.sin(angle) * force;
+                    const force =
+                        influence * 45;
+
+
+                    const x =
+                        Math.cos(angle) *
+                        force;
+
+
+                    const y =
+                        Math.sin(angle) *
+                        force;
+
 
                     item.style.transform = `
-                        translate(${x}px, ${y}px)
-                        scaleX(${1 + influence * 0.8})
-                        rotate(${influence * 8}deg)
+
+                        translate(
+                            ${x}px,
+                            ${y}px
+                        )
+
+                        scaleX(
+                            ${1 + influence * 0.15}
+                        )
+
+                        rotate(
+                            ${influence * 4}deg
+                        )
+
                     `;
 
                 }
 
 
-                /* TREME */
+
+                /* =====================
+                   TREME
+                ===================== */
 
                 if (type === "shake") {
 
+
                     const x =
-                        (Math.random() - 0.5) *
-                        influence *
-                        25;
+                        (Math.random() - 0.5)
+                        *
+                        influence
+                        *
+                        12;
+
 
                     const y =
-                        (Math.random() - 0.5) *
-                        influence *
-                        25;
+                        (Math.random() - 0.5)
+                        *
+                        influence
+                        *
+                        12;
+
 
                     const rotation =
-                        (Math.random() - 0.5) *
-                        influence *
-                        15;
+                        (Math.random() - 0.5)
+                        *
+                        influence
+                        *
+                        7;
+
 
                     item.style.transform = `
-                        translate(${x}px, ${y}px)
-                        rotate(${rotation}deg)
+
+                        translate(
+                            ${x}px,
+                            ${y}px
+                        )
+
+                        rotate(
+                            ${rotation}deg
+                        )
+
                     `;
 
                 }
 
 
-                /* PULSA */
+
+                /* =====================
+                   PULSA
+                ===================== */
 
                 if (type === "pulse") {
 
+
                     const scale =
-                        1 + influence * 0.7;
+                        1 +
+                        influence *
+                        0.25;
+
 
                     item.style.transform = `
-                        scale(${scale})
-                        skewX(${influence * 15}deg)
+
+                        scale(
+                            ${scale}
+                        )
+
+                        skewX(
+                            ${influence * 6}deg
+                        )
+
                     `;
 
                 }
 
 
-                /* FICA ABSURDAMENTE ESTICADO */
+
+                /* =====================
+                   ESTICA
+                ===================== */
 
                 if (type === "stretch") {
 
+
                     const scaleX =
-                        1 + influence * 2;
+                        1 +
+                        influence *
+                        0.7;
+
 
                     const scaleY =
-                        1 - influence * 0.35;
+                        1 -
+                        influence *
+                        0.12;
+
 
                     item.style.transform = `
-                        scaleX(${scaleX})
-                        scaleY(${scaleY})
+
+                        scaleX(
+                            ${scaleX}
+                        )
+
+                        scaleY(
+                            ${scaleY}
+                        )
+
                     `;
 
                 }
 
 
-                /* INCLINA */
+
+                /* =====================
+                   ENTORTA
+                ===================== */
 
                 if (type === "tilt") {
 
+
                     const direction =
-                        mouseX > centerX ? 1 : -1;
+                        mouseX >
+                        centerX
+                            ? 1
+                            : -1;
+
 
                     item.style.transform = `
-                        rotate(${direction * influence * 25}deg)
-                        scaleX(${1 + influence * 0.5})
+
+                        rotate(
+                            ${direction *
+                            influence *
+                            14}deg
+                        )
+
+                        scaleX(
+                            ${1 +
+                            influence *
+                            0.15}
+                        )
+
                     `;
 
                 }
 
+
             });
+
+
+            requestAnimationFrame(
+                animateItems
+            );
+
+        }
+
+
+        animateItems();
+
+
+
+        /* =========================
+           CORES INICIAIS
+        ========================= */
+
+        items.forEach(function(item) {
+
+            const color =
+                colors[
+                    Math.floor(
+                        Math.random()
+                        *
+                        colors.length
+                    )
+                ];
+
+
+            item.style.color =
+                color;
 
         });
 
 
-        /*
-            FLASH DE COR
-        */
+
+        /* =========================
+           FLASHES
+        ========================= */
 
         function flash() {
 
-            const randomColor =
-                colors[
-                    Math.floor(
-                        Math.random() * colors.length
-                    )
-                ];
 
-
-            const randomItem =
+            const item =
                 items[
                     Math.floor(
-                        Math.random() * items.length
+                        Math.random()
+                        *
+                        items.length
                     )
                 ];
 
 
-            randomItem.style.color = randomColor;
+            const color =
+                colors[
+                    Math.floor(
+                        Math.random()
+                        *
+                        colors.length
+                    )
+                ];
+
+
+            const originalColor =
+                item.style.color;
 
 
             /*
-                Alguns flashes mudam o fundo
+                Normalmente apenas
+                o texto muda de cor.
             */
 
-            if (Math.random() < 0.25) {
-
-                document.querySelector(".menu")
-                    .style.backgroundColor = randomColor;
-
-                randomItem.style.color = "#000";
+            item.style.color =
+                color;
 
 
-                setTimeout(() => {
 
-                    document.querySelector(".menu")
-                        .style.backgroundColor = "#000";
+            /*
+                Pequena chance de
+                flash no fundo.
+            */
 
-                }, 70);
+            if (Math.random() < 0.12) {
+
+
+                menu.style.backgroundColor =
+                    color;
+
+
+                /*
+                    Contraste garantido
+                */
+
+                items.forEach(function(word) {
+
+                    word.dataset.previousColor =
+                        word.style.color;
+
+                    word.style.color =
+                        "#000000";
+
+                });
+
+
+                setTimeout(function() {
+
+
+                    menu.style.backgroundColor =
+                        "#000000";
+
+
+                    items.forEach(function(word) {
+
+                        word.style.color =
+                            word.dataset.previousColor
+                            ||
+                            "#ffffff";
+
+                    });
+
+
+                }, 90);
 
             }
 
 
             setTimeout(
                 flash,
-                250 + Math.random() * 900
+                350 +
+                Math.random() *
+                1100
             );
 
         }
@@ -417,36 +766,61 @@
         flash();
 
 
-        /*
-            CLIQUE
-        */
 
-        items.forEach(item => {
+        /* =========================
+           CLIQUE
+        ========================= */
 
-            item.addEventListener("click", () => {
-
-                item.style.color = "#fff";
-
-                item.style.transform = `
-                    scale(2.5)
-                    rotate(${Math.random() * 30 - 15}deg)
-                `;
+        items.forEach(function(item) {
 
 
-                setTimeout(() => {
+            item.addEventListener(
+                "click",
+                function() {
+
 
                     item.style.color =
-                        colors[
-                            Math.floor(
-                                Math.random() * colors.length
-                            )
-                        ];
+                        "#ffffff";
 
-                }, 150);
 
-            });
+                    item.style.transform = `
+
+                        scale(
+                            1.35
+                        )
+
+                        rotate(
+                            ${
+                                Math.random()
+                                * 10
+                                - 5
+                            }deg
+                        )
+
+                    `;
+
+
+                    setTimeout(function() {
+
+
+                        item.style.color =
+                            colors[
+                                Math.floor(
+                                    Math.random()
+                                    *
+                                    colors.length
+                                )
+                            ];
+
+
+                    }, 180);
+
+
+                }
+            );
 
         });
+
 
     </script>
 
