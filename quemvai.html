@@ -1,144 +1,1203 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QUEM VAI</title>
-    <!-- Importa a mesma stylesheet das outras páginas -->
-    <link rel="stylesheet" href="style.css"> 
-    
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    >
+
+    <title>SABATINI28 — QUEM VAI</title>
+
+
     <style>
+
         /* =========================================
-           ESTRUTURA DA PÁGINA QUEM VAI
+           FONTE
         ========================================= */
-        
-        /* Container fixo para as fotos ao fundo */
-        #photo-background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: 1; /* Fica atrás do conteúdo */
-            pointer-events: none; /* Não interfere nos cliques */
+
+        @font-face {
+
+            font-family: "POI Diode";
+
+            src:
+                url("fonts/POIDiodeTrial-Bold.woff2")
+                format("woff2");
+
+            font-weight: 700;
+            font-style: normal;
+
+            font-display: swap;
+
+        }
+
+
+
+        /* =========================================
+           RESET
+        ========================================= */
+
+        * {
+
+            box-sizing: border-box;
+
+            margin: 0;
+            padding: 0;
+
+        }
+
+
+        html,
+        body {
+
+            width: 100%;
+            height: 100%;
+
+            background: #000;
+
+        }
+
+
+        body {
+
             overflow: hidden;
+
+            background: #000;
+
         }
 
-        /* Foto individual que irá piscar/mover */
+
+
+        /* =========================================
+           ÁREA DAS FOTOS
+        ========================================= */
+
+        #photo-background {
+
+            position: fixed;
+
+            inset: 0;
+
+            width: 100vw;
+            height: 100dvh;
+
+            overflow: hidden;
+
+            z-index: 1;
+
+            pointer-events: none;
+
+        }
+
+
+
+        /* =========================================
+           FOTOS
+        ========================================= */
+
         .bg-photo {
+
             position: absolute;
+
+            display: block;
+
             object-fit: cover;
-            border-radius: 8px;
+
+            /*
+                Nada de cantos arredondados.
+            */
+
+            border-radius: 0;
+
+            /*
+                Sem sombra suave.
+            */
+
+            box-shadow: none;
+
             opacity: 0;
-            /* Suaviza o surgimento/desaparecimento e o movimento */
-            transition: opacity 0.4s ease-in-out, transform 1.2s ease-out;
-            will-change: opacity, transform;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+
+            will-change:
+                transform,
+                opacity;
+
+            /*
+                As fotos são "secas",
+                não fazem fade delicado.
+            */
+
+            transition:
+                opacity 80ms linear,
+                transform 250ms
+                cubic-bezier(.2,.8,.2,1);
+
         }
 
-        /* Mantém o título e conteúdo acima do fundo */
-        .scene {
+
+
+        /* =========================================
+           CONTEÚDO
+        ========================================= */
+
+        .content {
+
             position: relative;
-            z-index: 2;
+
+            width: 100vw;
+            height: 100dvh;
+
+            z-index: 10;
+
+            pointer-events: none;
+
         }
+
+
+
+        /* =========================================
+           TÍTULO
+        ========================================= */
+
+        .title {
+
+            position: absolute;
+
+            top: 50%;
+            left: 50%;
+
+            width: max-content;
+
+            transform:
+                translate(-50%, -50%);
+
+            color: #00FF38;
+
+            font-family:
+                "POI Diode",
+                sans-serif;
+
+            font-size:
+                clamp(
+                    90px,
+                    27vw,
+                    340px
+                );
+
+            line-height: .70;
+
+            letter-spacing: -.055em;
+
+            text-align: center;
+
+            white-space: nowrap;
+
+            z-index: 20;
+
+            /*
+                Texto sempre acima
+                das fotos.
+            */
+
+            mix-blend-mode: normal;
+
+            user-select: none;
+
+            transition:
+                transform 120ms ease,
+                color 70ms linear;
+
+        }
+
+
+
+        /* =========================================
+           LINHAS DO TÍTULO
+        ========================================= */
+
+        .title span {
+
+            display: block;
+
+        }
+
+
+        .title .quem {
+
+            transform:
+                translateX(-5vw)
+                rotate(-2deg);
+
+        }
+
+
+        .title .vai {
+
+            transform:
+                translateX(5vw)
+                rotate(2deg);
+
+        }
+
+
+
+        /* =========================================
+           BOTÃO VOLTAR
+        ========================================= */
+
+        .back {
+
+            position: fixed;
+
+            left: 15px;
+            bottom: 14px;
+
+            z-index: 50;
+
+            pointer-events: auto;
+
+            border: 0;
+
+            background: none;
+
+            color: #FF5C00;
+
+            font-family:
+                "POI Diode",
+                sans-serif;
+
+            font-size:
+                clamp(
+                    25px,
+                    7vw,
+                    50px
+                );
+
+            line-height: .8;
+
+            text-decoration: none;
+
+            cursor: pointer;
+
+            transition:
+                transform 100ms ease,
+                color 70ms linear;
+
+        }
+
+
+        .back:hover {
+
+            transform:
+                skewX(-15deg)
+                scaleX(1.1);
+
+        }
+
+
+        .back:active {
+
+            transform:
+                scaleX(.8)
+                scaleY(1.2);
+
+        }
+
+
+
+        /* =========================================
+           FLASH
+        ========================================= */
+
+        .flash {
+
+            position: fixed;
+
+            inset: 0;
+
+            z-index: 100;
+
+            background: #fff;
+
+            opacity: 0;
+
+            pointer-events: none;
+
+        }
+
+
+        .flash.active {
+
+            animation:
+                flash
+                100ms
+                steps(2);
+
+        }
+
+
+        @keyframes flash {
+
+            0% {
+
+                opacity: 0;
+
+            }
+
+            30% {
+
+                opacity: .9;
+
+            }
+
+            100% {
+
+                opacity: 0;
+
+            }
+
+        }
+
+
+
+        /* =========================================
+           MOBILE
+        ========================================= */
+
+        @media (max-width: 600px) {
+
+            .title {
+
+                font-size:
+                    28vw;
+
+            }
+
+
+            .title .quem {
+
+                transform:
+                    translateX(-8vw)
+                    rotate(-3deg);
+
+            }
+
+
+            .title .vai {
+
+                transform:
+                    translateX(8vw)
+                    rotate(3deg);
+
+            }
+
+        }
+
+
+
+        /* =========================================
+           DESKTOP
+        ========================================= */
+
+        @media (min-width: 700px) {
+
+            .title {
+
+                font-size:
+                    clamp(
+                        150px,
+                        22vw,
+                        340px
+                    );
+
+            }
+
+        }
+
     </style>
+
 </head>
+
+
+
 <body>
 
-    <!-- Fundo dinâmico com fotos piscando -->
-    <div id="photo-background"></div>
 
-    <!-- Estrutura padrão de cena -->
-    <section class="scene">
+    <!-- =========================================
+         FOTOS
+    ========================================== -->
 
-        <!-- Título na identidade do projeto -->
-        <h1 class="title">QUEM VAI:</h1>
+    <div
+        id="photo-background"
+    ></div>
 
-        <!-- Opções ou botão de voltar para a INDEX -->
-        <nav class="menu" style="margin-top: 2rem;">
-            <a class="menu-item" href="index.html">
-                VOLTAR
-            </a>
-        </nav>
 
-    </section>
 
-    <!-- Script de animação das fotos -->
+    <!-- =========================================
+         CONTEÚDO
+    ========================================== -->
+
+    <main class="content">
+
+
+        <h1 class="title">
+
+            <span class="quem">
+                QUEM
+            </span>
+
+            <span class="vai">
+                VAI
+            </span>
+
+        </h1>
+
+
+
+        <a
+            href="index.html"
+            class="back"
+        >
+            ← VOLTAR
+        </a>
+
+
+    </main>
+
+
+
+    <!-- =========================================
+         FLASH
+    ========================================== -->
+
+    <div
+        class="flash"
+        id="flash"
+    ></div>
+
+
+
     <script>
-        // CONFIGURAÇÕES DAS FOTOS
-        const TOTAL_FOTOS = 20; // Altere para a quantidade de fotos na pasta 'photos'
-        const PASTA_FOTOS = 'photos/'; 
-        const EXTENSAO = '.jpg'; // Extensão das imagens (.jpg, .png, etc)
-        
-        const MAX_FOTOS_SIMULTANEAS = 5; // Quantidade de fotos em tela ao mesmo tempo
-        const FREQUENCIA_TROCA = 500; // Intervalo para sortear novas fotos (em ms)
 
-        const container = document.getElementById('photo-background');
 
-        // Formata número com zeros à esquerda (1 -> 001, 10 -> 010)
-        function formatarNumero(num) {
-            return String(num).padStart(3, '0');
+        /* =========================================
+           CONFIGURAÇÕES
+        ========================================= */
+
+
+        /*
+            Quantas fotos existem
+            na pasta photos.
+        */
+
+        const TOTAL_FOTOS = 20;
+
+
+        /*
+            Caminho da pasta.
+        */
+
+        const PASTA_FOTOS =
+            "photos/";
+
+
+        /*
+            Formato das imagens.
+        */
+
+        const EXTENSAO =
+            ".jpg";
+
+
+        /*
+            Fotos simultâneas.
+
+            No mobile usamos menos
+            para manter a leitura.
+        */
+
+        const MOBILE_FOTOS = 4;
+
+        const DESKTOP_FOTOS = 6;
+
+
+        /*
+            Intervalo entre aparições.
+        */
+
+        const INTERVALO =
+            420;
+
+
+
+        /* =========================================
+           ELEMENTOS
+        ========================================= */
+
+        const container =
+            document.getElementById(
+                "photo-background"
+            );
+
+
+        const title =
+            document.querySelector(
+                ".title"
+            );
+
+
+        const flash =
+            document.getElementById(
+                "flash"
+            );
+
+
+
+        /* =========================================
+           CORES
+        ========================================= */
+
+        const colors = [
+
+            "#087AFF",
+
+            "#B000FF",
+
+            "#FF5C00",
+
+            "#00FF38",
+
+            "#E5FF00"
+
+        ];
+
+
+
+        /* =========================================
+           ALEATÓRIO
+        ========================================= */
+
+        function random(
+            min,
+            max
+        ) {
+
+            return Math.random()
+                * (max - min)
+                + min;
+
         }
 
-        function random(min, max) {
-            return Math.random() * (max - min) + min;
+
+
+        /* =========================================
+           COR ALEATÓRIA
+        ========================================= */
+
+        function randomColor() {
+
+            return colors[
+                Math.floor(
+                    Math.random()
+                    * colors.length
+                )
+            ];
+
         }
+
+
+
+        /* =========================================
+           NÚMERO DA FOTO
+        ========================================= */
+
+        function formatarNumero(
+            numero
+        ) {
+
+            return String(numero)
+                .padStart(3, "0");
+
+        }
+
+
+
+        /* =========================================
+           LIMITE DE FOTOS
+        ========================================= */
+
+        function maxFotos() {
+
+            return window.innerWidth < 700
+
+                ? MOBILE_FOTOS
+
+                : DESKTOP_FOTOS;
+
+        }
+
+
+
+        /* =========================================
+           FLASH
+        ========================================= */
+
+        function doFlash() {
+
+            /*
+                Não pisca o tempo todo.
+            */
+
+            if (
+                Math.random() > .72
+            ) {
+
+                return;
+
+            }
+
+
+            flash.classList.remove(
+                "active"
+            );
+
+
+            /*
+                Força o navegador
+                a reiniciar a animação.
+            */
+
+            void flash.offsetWidth;
+
+
+            flash.classList.add(
+                "active"
+            );
+
+        }
+
+
+
+        /* =========================================
+           CRIAR FOTO
+        ========================================= */
 
         function spawnPhoto() {
-            // Seleciona uma imagem aleatória da pasta 'photos/'
-            const idFoto = Math.floor(random(1, TOTAL_FOTOS + 1));
-            const path = `${PASTA_FOTOS}${formatarNumero(idFoto)}${EXTENSAO}`;
 
-            const img = document.createElement('img');
-            img.src = path;
-            img.className = 'bg-photo';
 
-            // Tamanho aleatório para a foto
-            const largura = random(140, 260);
-            img.style.width = `${largura}px`;
+            /*
+                Não ultrapassar o
+                número máximo.
+            */
 
-            // Posição inicial na tela (%)
-            const x = random(5, 75);
-            const y = random(5, 75);
-            img.style.left = `${x}%`;
-            img.style.top = `${y}%`;
+            if (
+                container.children.length
+                >=
+                maxFotos()
+            ) {
 
-            // Rotação inicial
-            const rotInicial = random(-20, 20);
-            img.style.transform = `scale(0.8) rotate(${rotInicial}deg)`;
+                return;
 
-            container.appendChild(img);
+            }
 
-            // Animação de entrada (Pisca / Aparece se movendo)
-            setTimeout(() => {
-                const moveX = random(-40, 40);
-                const moveY = random(-40, 40);
-                const rotFinal = rotInicial + random(-10, 10);
 
-                img.style.opacity = random(0.5, 0.9).toString();
-                img.style.transform = `translate(${moveX}px, ${moveY}px) scale(1) rotate(${rotFinal}deg)`;
-            }, 50);
 
-            // Tempo de vida da foto na tela antes de sumir
-            const tempoExibicao = random(1500, 3000);
+            /* -------------------------------------
+               FOTO ALEATÓRIA
+            ------------------------------------- */
 
-            setTimeout(() => {
-                img.style.opacity = '0';
-                img.style.transform += ' scale(0.6)';
+            const idFoto =
+                Math.floor(
+                    random(
+                        1,
+                        TOTAL_FOTOS + 1
+                    )
+                );
 
-                // Remove do HTML após esmaecer completamente
-                setTimeout(() => {
+
+            const path =
+                `${PASTA_FOTOS}${formatarNumero(idFoto)}${EXTENSAO}`;
+
+
+
+            /* -------------------------------------
+               ELEMENTO
+            ------------------------------------- */
+
+            const img =
+                document.createElement(
+                    "img"
+                );
+
+
+            img.src =
+                path;
+
+
+            img.className =
+                "bg-photo";
+
+
+
+            /* -------------------------------------
+               TAMANHO
+            ------------------------------------- */
+
+            const isMobile =
+                window.innerWidth < 700;
+
+
+            let largura;
+
+
+            if (isMobile) {
+
+                largura =
+                    random(
+                        190,
+                        380
+                    );
+
+            } else {
+
+                largura =
+                    random(
+                        280,
+                        620
+                    );
+
+            }
+
+
+            img.style.width =
+                `${largura}px`;
+
+
+
+            /* -------------------------------------
+               POSIÇÃO
+            ------------------------------------- */
+
+            /*
+                Permitimos que a foto
+                saia parcialmente da tela.
+            */
+
+            const x =
+                random(
+                    -15,
+                    85
+                );
+
+
+            const y =
+                random(
+                    -10,
+                    82
+                );
+
+
+            img.style.left =
+                `${x}%`;
+
+
+            img.style.top =
+                `${y}%`;
+
+
+
+            /* -------------------------------------
+               ROTAÇÃO
+            ------------------------------------- */
+
+            const rotation =
+                random(
+                    -24,
+                    24
+                );
+
+
+            const initialScale =
+                random(
+                    .75,
+                    .95
+                );
+
+
+            img.style.transform = `
+
+                scale(
+                    ${initialScale}
+                )
+
+                rotate(
+                    ${rotation}deg
+                )
+
+            `;
+
+
+
+            /* -------------------------------------
+               SOBREPOSIÇÃO
+            ------------------------------------- */
+
+            img.style.zIndex =
+                Math.floor(
+                    random(
+                        1,
+                        18
+                    )
+                );
+
+
+
+            /* -------------------------------------
+               ADICIONAR
+            ------------------------------------- */
+
+            container.appendChild(
+                img
+            );
+
+
+
+            /* -------------------------------------
+               APARECER
+            ------------------------------------- */
+
+            setTimeout(function() {
+
+
+                const moveX =
+                    random(
+                        -35,
+                        35
+                    );
+
+
+                const moveY =
+                    random(
+                        -35,
+                        35
+                    );
+
+
+                const finalRotation =
+                    rotation +
+                    random(
+                        -8,
+                        8
+                    );
+
+
+                const finalScale =
+                    random(
+                        .95,
+                        1.08
+                    );
+
+
+                img.style.opacity =
+                    random(
+                        .65,
+                        .95
+                    );
+
+
+                img.style.transform = `
+
+                    translate(
+                        ${moveX}px,
+                        ${moveY}px
+                    )
+
+                    scale(
+                        ${finalScale}
+                    )
+
+                    rotate(
+                        ${finalRotation}deg
+                    )
+
+                `;
+
+
+                /*
+                    Pequena chance
+                    de flash.
+                */
+
+                doFlash();
+
+
+            }, 30);
+
+
+
+            /* -------------------------------------
+               VIDA DA FOTO
+            ------------------------------------- */
+
+            const tempoVida =
+                random(
+                    1300,
+                    2600
+                );
+
+
+            setTimeout(function() {
+
+
+                /*
+                    Desaparece quase
+                    instantaneamente.
+                */
+
+                img.style.opacity =
+                    "0";
+
+
+                img.style.transform +=
+                    ` scale(.72)`;
+
+
+                setTimeout(function() {
+
                     img.remove();
-                }, 500);
-            }, tempoExibicao);
+
+                }, 180);
+
+
+            }, tempoVida);
+
         }
 
-        // Loop contínuo que mantém as fotos piscando/surgindo
-        setInterval(() => {
-            if (container.children.length < MAX_FOTOS_SIMULTANEAS) {
+
+
+        /* =========================================
+           CAOS DO TÍTULO
+        ========================================= */
+
+        function disturbTitle() {
+
+
+            const x =
+                random(
+                    -3,
+                    3
+                );
+
+
+            const y =
+                random(
+                    -2,
+                    2
+                );
+
+
+            const rotation =
+                random(
+                    -2.5,
+                    2.5
+                );
+
+
+            const scaleX =
+                random(
+                    .94,
+                    1.08
+                );
+
+
+            const scaleY =
+                random(
+                    .94,
+                    1.06
+                );
+
+
+            title.style.transform = `
+
+                translate(
+                    calc(-50% + ${x}vw),
+                    calc(-50% + ${y}vh)
+                )
+
+                rotate(
+                    ${rotation}deg
+                )
+
+                scaleX(
+                    ${scaleX}
+                )
+
+                scaleY(
+                    ${scaleY}
+                )
+
+            `;
+
+
+            title.style.color =
+                randomColor();
+
+        }
+
+
+
+        /* =========================================
+           LOOP DAS FOTOS
+        ========================================= */
+
+        setInterval(function() {
+
+            spawnPhoto();
+
+        }, INTERVALO);
+
+
+
+        /* =========================================
+           LOOP DO TÍTULO
+        ========================================= */
+
+        setInterval(function() {
+
+            disturbTitle();
+
+        }, 650);
+
+
+
+        /* =========================================
+           PRIMEIRAS FOTOS
+        ========================================= */
+
+        /*
+            Não esperamos o intervalo
+            para preencher a tela.
+        */
+
+        setTimeout(
+            spawnPhoto,
+            100
+        );
+
+
+        setTimeout(
+            spawnPhoto,
+            250
+        );
+
+
+        setTimeout(
+            spawnPhoto,
+            400
+        );
+
+
+        setTimeout(
+            spawnPhoto,
+            550
+        );
+
+
+
+        /* =========================================
+           TOQUE NO MOBILE
+        ========================================= */
+
+        document.addEventListener(
+            "touchstart",
+            function() {
+
+
+                /*
+                    Um toque pode
+                    causar um pequeno
+                    ataque visual.
+                */
+
+                disturbTitle();
+
+
+                doFlash();
+
+
+                /*
+                    E pode criar uma
+                    foto imediatamente.
+                */
+
                 spawnPhoto();
+
+            },
+            {
+                passive: true
             }
-        }, FREQUENCIA_TROCA);
+        );
+
+
+
+        /* =========================================
+           MOUSE
+        ========================================= */
+
+        document.addEventListener(
+            "mousemove",
+            function(event) {
+
+
+                /*
+                    O título reage
+                    levemente à posição
+                    do mouse.
+                */
+
+                if (
+                    window.innerWidth < 700
+                ) {
+
+                    return;
+
+                }
+
+
+                const x =
+                    (
+                        event.clientX /
+                        window.innerWidth
+                        - .5
+                    )
+                    * 8;
+
+
+                const y =
+                    (
+                        event.clientY /
+                        window.innerHeight
+                        - .5
+                    )
+                    * 5;
+
+
+                title.style.transform = `
+
+                    translate(
+                        calc(-50% + ${x}vw),
+                        calc(-50% + ${y}vh)
+                    )
+
+                `;
+
+            }
+        );
+
     </script>
+
 </body>
+
 </html>
