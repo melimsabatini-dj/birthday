@@ -1,1 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QUEM VAI</title>
+    <link rel="stylesheet" href="style.css"> <!-- Seu CSS geral se tiver -->
+    <style>
+        /* =========================================
+           ESTILOS DA PÁGINA QUEM VAI
+        ========================================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            background-color: #000; /* Fundo escuro realça o efeito */
+            color: #fff;
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            overflow: hidden; /* Evita barras de rolagem com fotos saindo da tela */
+            position: relative;
+        }
+
+        /* Container do Fundo Animado */
+        #photo-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 1; /* Fica atrás do conteúdo principal */
+            pointer-events: none; /* Garante que os cliques atravessem o fundo */
+        }
+
+        /* Estilo base de cada foto gerada dinamicamente */
+        .bg-photo {
+            position: absolute;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+            will-change: opacity, transform;
+        }
+
+        /* Conteúdo Principal (Sobreposto ao Fundo) */
+        .content {
+            position: relative;
+            z-index: 2; /* Fica acima do fundo */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Título Estilizado */
+        .page-title {
+            font-size: 4rem;
+            font-weight: 900;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.8),
+                         0 0 40px rgba(255, 0, 128, 0.5);
+            background: linear-gradient(45deg, #fff, #ff0080);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 2rem;
+        }
+
+        /* Botão para voltar ao menu (opcional) */
+        .btn-back {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            color: #fff;
+            text-decoration: none;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 20px;
+            backdrop-filter: blur(5px);
+            background: rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .btn-back:hover {
+            background: #fff;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Container do fundo com fotos -->
+    <div id="photo-background"></div>
+
+    <!-- Conteúdo Principal -->
+    <main class="content">
+        <h1 class="page-title">QUEM VAI:</h1>
+        
+        <!-- Botão opcional para retornar -->
+        <a href="menu.html" class="btn-back">← Voltar ao Menu</a>
+    </main>
+
+    <!-- Script para controle do efeito visual -->
+    <script>
+        // CONFIGURAÇÕES
+        const TOTAL_FOTOS = 20; // Altere para a quantidade total de fotos que você tiver
+        const PASTA_FOTOS = 'photos/';
+        const EXTENSAO = '.jpg'; // Altere para .png se suas fotos forem PNG
+        const MAX_FOTOS_SIMULTANEAS = 6; // Quantas fotos aparecem na tela ao mesmo tempo
+        const INTERVALO = 600; // Tempo em milissegundos para trocar/animar uma foto
+
+        const container = document.getElementById('photo-background');
+
+        // Função para formatar o número no padrão 001, 002, 010...
+        function formatarNumero(num) {
+            return String(num).padStart(3, '0');
+        }
+
+        // Função para gerar número aleatório entre min e max
+        function random(min, max) {
+            return Math.random() * (max - min) + min;
+        }
+
+        // Cria e anima uma foto na tela
+        function spawnPhoto() {
+            // Escolhe uma foto aleatória da pasta
+            const idFoto = Math.floor(random(1, TOTAL_FOTOS + 1));
+            const fileName = `${PASTA_FOTOS}${formatarNumero(idFoto)}${EXTENSAO}`;
+
+            const img = document.createElement('img');
+            img.src = fileName;
+            img.className = 'bg-photo';
+
+            // Tamanho aleatório para variabilidade visual
+            const width = random(120, 250);
+            img.style.width = `${width}px`;
+
+            // Posição inicial aleatória
+            const posX = random(5, 80); // em %
+            const posY = random(5, 80); // em %
+            img.style.left = `${posX}%`;
+            img.style.top = `${posY}%`;
+
+            // Rotação inicial leve
+            const rotInicial = random(-25, 25);
+            img.style.transform = `scale(0.8) rotate(${rotInicial}deg)`;
+
+            container.appendChild(img);
+
+            // Animação de Entrada ("Piscar" / Aparecer e Mover)
+            setTimeout(() => {
+                const rotFinal = rotInicial + random(-15, 15);
+                const moveX = random(-30, 30);
+                const moveY = random(-30, 30);
+
+                img.style.opacity = random(0.4, 0.95); // Opacidade variável
+                img.style.transform = `translate(${moveX}px, ${moveY}px) scale(1.1) rotate(${rotFinal}deg)`;
+            }, 50);
+
+            // Animação de Saída e Remoção do DOM
+            const tempoVida = random(2000, 4500); // Quanto tempo a foto fica visível
+            setTimeout(() => {
+                img.style.opacity = '0';
+                img.style.transform += ' scale(0.7)';
+                
+                // Remove o elemento da tela após sumir
+                setTimeout(() => {
+                    img.remove();
+                }, 800);
+            }, tempoVida);
+        }
+
+        // Loop contínuo de controle da quantidade de fotos
+        setInterval(() => {
+            if (container.children.length < MAX_FOTOS_SIMULTANEAS) {
+                spawnPhoto();
+            }
+        }, INTERVALO);
+    </script>
+</body>
+</html>
