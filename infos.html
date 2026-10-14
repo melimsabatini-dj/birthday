@@ -475,6 +475,36 @@
 
 
 
+        .venue-link,
+        .venue-instagram {
+            color: inherit;
+            text-decoration: underline;
+            text-decoration-thickness: 1px;
+            text-underline-offset: 3px;
+            overflow-wrap: anywhere;
+        }
+
+        .venue-link:active,
+        .venue-instagram:active {
+            opacity: .7;
+        }
+
+        .event-notes {
+            list-style: none;
+            margin-left: 0;
+            color: #087AFF;
+            font-family: "Moderat", monospace;
+            font-size: clamp(16px, 4vw, 22px);
+            font-weight: 300;
+            line-height: 1.8;
+            letter-spacing: -0.02em;
+        }
+
+        .event-notes li::before {
+            content: "꩜ ";
+            color: #E5FF00;
+        }
+
         /* =========================================
            RESPONSIVO
         ========================================= */
@@ -564,208 +594,53 @@
 
         <section class="info-content">
 
-
-            <!-- INTRODUÇÃO -->
-
+            <!-- APRESENTAÇÃO -->
             <div class="info-section">
-
                 <p class="section-text">
-
-                    O alemão possui um verbo chamado
-                    <span class="keyword">
-                        "reinfeiern"
-                    </span>
-                    . A tradução literal seria algo como
-                    <span class="section-highlight">
-                        "festejar entrando"
-                    </span>
-                    , e a palavra é usada para descrever exatamente isso:
-                    <span class="section-highlight">
-                        comemorar o aniversário na virada, entrando no novo ano de vida já festejando
-                    </span>
-                    .
-
+                    Oi gente! Sei que o momento é delicado pra muitos de nós, e que comemorar ultimamente parece meio estranho e intempestivo. De qualquer forma, venho planejando isso há alguns meses e não queria deixar de lado uma noite que vai ser tão linda! Por isso, quero convidar vocês pra comemorar meu aniversário na virada! Dia 7 de novembro, no Bohô Bar &amp; Pista, vamos nos encontrar pra dançar muito, beber drinks e bater muitos papos. Espero que à meia-noite estejamos dançando tanto que nem percebemos que o dia virou, então estejam preparados pra dançar sem parar, um som delicioso, bolo na pista e muito amor!
                 </p>
-
             </div>
-
-
-
-            <!-- O EVENTO -->
-
-            <div class="info-section">
-
-                <p class="section-text">
-
-                    No dia <span class="section-highlight">07/11/2026</span>, vamos fazer exatamente isso.
-                    À <span class="section-highlight">meia-noite</span>, no momento em que o relógio bater
-                    <span class="keyword">00:00</span>, eu completo <span class="keyword">28 anos</span>.
-
-                </p>
-
-                <p class="section-text">
-
-                    Estaremos no <span class="section-highlight">HAOMA</span>, dançando muito, então o objetivo é
-                    <span class="keyword">nem perceber que o dia virou</span>.
-
-                </p>
-
-            </div>
-
-
-
-            <!-- EXPECTATIVAS -->
-
-            <div class="info-section">
-
-                <p class="section-text">
-
-                    Estejam preparados para:
-
-                </p>
-
-                <ul style="
-
-                    list-style: none;
-                    margin-left: 0;
-
-                ">
-
-                    <li style="
-
-                        color: #087AFF;
-                        font-family: Moderat, monospace;
-                        font-size: clamp(16px, 4vw, 22px);
-                        font-weight: 300;
-                        line-height: 1.8;
-                        letter-spacing: -0.02em;
-
-                    ">
-
-                        🔊 Muita <span class="section-highlight">música alta</span>
-
-                    </li>
-
-                    <li style="
-
-                        color: #087AFF;
-                        font-family: Moderat, monospace;
-                        font-size: clamp(16px, 4vw, 22px);
-                        font-weight: 300;
-                        line-height: 1.8;
-                        letter-spacing: -0.02em;
-
-                    ">
-
-                        💃 <span class="section-highlight">Coreografias</span> e movimentos
-
-                    </li>
-
-                    <li style="
-
-                        color: #087AFF;
-                        font-family: Moderat, monospace;
-                        font-size: clamp(16px, 4vw, 22px);
-                        font-weight: 300;
-                        line-height: 1.8;
-                        letter-spacing: -0.02em;
-
-                    ">
-
-                        🎂 <span class="section-highlight">Bolo</span> na pista
-
-                    </li>
-
-                    <li style="
-
-                        color: #087AFF;
-                        font-family: Moderat, monospace;
-                        font-size: clamp(16px, 4vw, 22px);
-                        font-weight: 300;
-                        line-height: 1.8;
-                        letter-spacing: -0.02em;
-
-                    ">
-
-                        🍹 <span class="section-highlight">Drinks</span> preparados
-
-                    </li>
-
-                    <li style="
-
-                        color: #087AFF;
-                        font-family: Moderat, monospace;
-                        font-size: clamp(16px, 4vw, 22px);
-                        font-weight: 300;
-                        line-height: 1.8;
-                        letter-spacing: -0.02em;
-
-                    ">
-
-                        🕺 Principalmente, <span class="section-highlight">muita vontade de dançar sem parar</span>
-
-                    </li>
-
-                </ul>
-
-            </div>
-
-
 
             <!-- DATA E HORÁRIO -->
-
             <div class="info-box">
-
-                <div class="info-box-title">
-                    Data e Horário
-                </div>
-
-                <div class="info-box-text">
-                    07/11/2026
-                </div>
-
-                <div class="info-box-text">
-                    20H ATÉ 02H
-                </div>
-
+                <div class="info-box-title">DATA E HORÁRIO</div>
+                <div class="info-box-text">07/11/2026</div>
+                <div class="info-box-text">20H</div>
             </div>
-
-
 
             <!-- LOCAL -->
-
             <div class="info-box location">
-
-                <div class="info-box-title">
-                    Local
-                </div>
-
+                <div class="info-box-title">LOCAL</div>
+                <div class="info-box-text">BOHÔ BAR &amp; PISTA</div>
                 <div class="info-box-text">
-                    HAOMA
+                    <a class="venue-link" href="https://www.instagram.com/bohofloripa/" target="_blank" rel="noopener noreferrer">
+                        R. Victor Meirelles, 226 - Centro, Florianópolis - SC, 88010-440
+                    </a>
                 </div>
-
                 <div class="info-box-text">
-                    Rua tal Bairro Tal número Tal
+                    <a class="venue-instagram" href="https://www.instagram.com/bohofloripa/" target="_blank" rel="noopener noreferrer">
+                        @bohofloripa
+                    </a>
                 </div>
-
             </div>
 
-
-
-            <!-- DJ SET -->
-
+            <!-- ATRAÇÕES -->
             <div class="info-box dj">
-
-                <div class="info-box-title">
-                    Set
-                </div>
-
-                <div class="info-box-text">
-                    DJ SET BY SABATINI
-                </div>
-
+                <div class="info-box-title">ATRAÇÕES</div>
+                <div class="info-box-text">DJ SET BY SABATINI</div>
+                <div class="info-box-text">DJ SET BY ESSP</div>
+                <div class="info-box-text">DJ SET BY ITONIS</div>
             </div>
 
+            <!-- INFORMAÇÕES IMPORTANTES -->
+            <div class="info-section">
+                <ul class="event-notes">
+                    <li>Entrada gratuita</li>
+                    <li>Não é permitido entrar com bebida de fora</li>
+                    <li>Confirme pra garantir seu nome na lista</li>
+                    <li>Qualquer dúvida manda um zap!</li>
+                </ul>
+            </div>
 
         </section>
 
