@@ -20,36 +20,20 @@
         ========================================= */
 
         @font-face {
-
             font-family: "POI Diode";
-
-            src:
-                url("fonts/POIDiodeTrial-Bold.woff2")
-                format("woff2");
-
+            src: url("fonts/POIDiodeTrial-Bold.woff2") format("woff2");
             font-weight: 700;
             font-style: normal;
-
             font-display: swap;
-
         }
-
 
         @font-face {
-
             font-family: "Moderat";
-
-            src:
-                url("fonts/Moderat-Mono-Light.woff2")
-                format("woff2");
-
+            src: url("fonts/Moderat-Mono-Light.woff2") format("woff2");
             font-weight: 300;
             font-style: normal;
-
             font-display: swap;
-
         }
-
 
 
         /* =========================================
@@ -57,36 +41,22 @@
         ========================================= */
 
         * {
-
             box-sizing: border-box;
-
             margin: 0;
-
             padding: 0;
-
         }
-
 
         html,
         body {
-
             width: 100%;
-
             min-height: 100%;
-
             background: #000;
-
         }
-
 
         body {
-
             overflow-x: hidden;
-
             background: #000;
-
         }
-
 
 
         /* =========================================
@@ -94,49 +64,25 @@
         ========================================= */
 
         .loteria-page {
-
             position: relative;
-
             width: 100%;
-
             min-height: 100vh;
-
             background: #000;
-
-            padding:
-                16px
-                16px
-                35px;
-
+            padding: 16px 16px 35px;
         }
-
 
         @media (min-width: 700px) {
-
             .loteria-page {
-
-                padding:
-                    20px
-                    30px
-                    50px;
-
+                padding: 20px 30px 50px;
             }
-
         }
-
 
         @media (max-width: 380px) {
-
             .loteria-page {
-
                 padding-left: 11px;
-
                 padding-right: 11px;
-
             }
-
         }
-
 
 
         /* =========================================
@@ -144,46 +90,25 @@
         ========================================= */
 
         .back {
-
             position: absolute;
-
             top: 12px;
-
             left: 14px;
-
             border: 0;
-
             background: none;
-
             color: #FF5C00;
-
-            font-family:
-                "POI Diode",
-                sans-serif;
-
+            font-family: "POI Diode", sans-serif;
             font-size: 42px;
-
             line-height: 1;
-
             cursor: pointer;
-
             z-index: 20;
-
             transition:
                 transform 100ms ease,
                 color 80ms linear;
-
         }
-
 
         .back:active {
-
-            transform:
-                translateX(-8px)
-                scale(1.15);
-
+            transform: translateX(-8px) scale(1.15);
         }
-
 
 
         /* =========================================
@@ -191,47 +116,23 @@
         ========================================= */
 
         .title {
-
             width: 100%;
-
             margin-top: 52px;
-
             color: #00FF38;
-
-            font-family:
-                "POI Diode",
-                sans-serif;
-
-            font-size:
-                clamp(
-                    70px,
-                    19vw,
-                    200px
-                );
-
+            font-family: "POI Diode", sans-serif;
+            font-size: clamp(70px, 19vw, 200px);
             line-height: 0.72;
-
             letter-spacing: -0.04em;
-
             text-align: center;
-
             user-select: none;
-
             margin-bottom: 40px;
-
         }
-
 
         @media (max-width: 380px) {
-
             .title {
-
                 font-size: 62px;
-
             }
-
         }
-
 
 
         /* =========================================
@@ -239,101 +140,50 @@
         ========================================= */
 
         .play {
-
             display: block;
-
-            margin:
-                30px auto
-                34px;
-
-            padding:
-                12px
-                24px;
-
-            border:
-                4px solid #FF5C00;
-
+            margin: 30px auto 34px;
+            padding: 12px 24px;
+            border: 4px solid #FF5C00;
             background: #000;
-
             color: #FF5C00;
-
-            font-family:
-                "POI Diode",
-                sans-serif;
-
-            font-size:
-                clamp(
-                    25px,
-                    6vw,
-                    42px
-                );
-
+            font-family: "POI Diode", sans-serif;
+            font-size: clamp(25px, 6vw, 42px);
             line-height: 0.9;
-
             cursor: pointer;
-
             transition:
                 background-color 70ms linear,
                 color 70ms linear,
                 transform 100ms ease,
                 opacity 200ms ease;
-
             text-transform: uppercase;
-
             letter-spacing: -0.04em;
-
         }
-
 
         .play:active {
-
             background: #FF5C00;
-
             color: #000;
-
-            transform:
-                scaleX(1.10)
-                scaleY(0.90);
-
+            transform: scaleX(1.10) scaleY(0.90);
         }
-
 
         .play.hidden {
-
             opacity: 0;
-
             pointer-events: none;
-
         }
-
 
         @media (min-width: 700px) {
-
             .play {
-
                 margin-top: 36px;
-
                 margin-bottom: 38px;
-
             }
-
         }
-
 
         @media (max-width: 380px) {
-
             .play {
-
                 margin-top: 24px;
-
                 margin-bottom: 26px;
-
                 border-width: 3px;
-
             }
-
         }
-
 
 
         /* =========================================
@@ -341,23 +191,14 @@
         ========================================= */
 
         .result-container {
-
             width: 100%;
-
             max-width: 900px;
-
             margin: 0 auto;
-
             display: flex;
-
             align-items: center;
-
             justify-content: center;
-
             min-height: 150px;
-
         }
-
 
 
         /* =========================================
@@ -365,187 +206,173 @@
         ========================================= */
 
         .result-box {
-
             width: 100%;
-
             min-height: 78px;
-
-            padding:
-                13px
-                12px;
-
-            border:
-                4px solid #FF5C00;
-
+            padding: 13px 12px;
+            border: 4px solid #FF5C00;
             display: flex;
-
             align-items: center;
-
             justify-content: center;
-
             overflow: hidden;
-
             background: #000;
-
             color: #00FF38;
-
-            font-family:
-                "Moderat",
-                monospace;
-
+            font-family: "Moderat", monospace;
             font-weight: 300;
-
-            font-size:
-                clamp(
-                    21px,
-                    6vw,
-                    48px
-                );
-
+            font-size: clamp(21px, 6vw, 48px);
             line-height: 1.4;
-
             letter-spacing: -0.04em;
-
             text-align: center;
-
             text-transform: uppercase;
-
             user-select: none;
-
             opacity: 0;
-
             transition:
-                transform 100ms
-                cubic-bezier(.2,.8,.2,1),
-
+                transform 100ms cubic-bezier(.2, .8, .2, 1),
                 color 70ms linear;
-
         }
-
 
         .result-box.visible {
-
             opacity: 1;
-
         }
-
 
         .result-box.spinning {
-
-            animation:
-                box-shake
-                80ms
-                infinite;
-
+            animation: box-shake 80ms infinite;
         }
-
 
         @keyframes box-shake {
-
-            0% {
-
-                transform:
-                    translateX(-2px)
-                    scaleX(1.01);
-
-            }
-
-            50% {
-
-                transform:
-                    translateX(2px)
-                    scaleX(0.99);
-
-            }
-
-            100% {
-
-                transform:
-                    translateX(-2px)
-                    scaleX(1.01);
-
-            }
-
+            0%   { transform: translateX(-2px) scaleX(1.01); }
+            50%  { transform: translateX(2px) scaleX(0.99); }
+            100% { transform: translateX(-2px) scaleX(1.01); }
         }
-
 
         .result-box.finished {
-
-            animation:
-                finish-box
-                180ms
-                ease;
-
+            animation: finish-box 180ms ease;
         }
-
 
         @keyframes finish-box {
-
-            0% {
-
-                transform:
-                    scaleX(1)
-                    scaleY(1);
-
-            }
-
-            35% {
-
-                transform:
-                    scaleX(1.06)
-                    scaleY(0.91);
-
-            }
-
-            65% {
-
-                transform:
-                    scaleX(0.98)
-                    scaleY(1.05);
-
-            }
-
-            100% {
-
-                transform:
-                    scaleX(1)
-                    scaleY(1);
-
-            }
-
+            0%   { transform: scaleX(1) scaleY(1); }
+            35%  { transform: scaleX(1.06) scaleY(0.91); }
+            65%  { transform: scaleX(0.98) scaleY(1.05); }
+            100% { transform: scaleX(1) scaleY(1); }
         }
-
 
         @media (min-width: 700px) {
-
             .result-box {
-
                 min-height: 90px;
-
-                font-size:
-                    clamp(
-                        30px,
-                        4vw,
-                        58px
-                    );
-
+                font-size: clamp(30px, 4vw, 58px);
             }
+        }
 
+        @media (max-width: 380px) {
+            .result-box {
+                min-height: 67px;
+                border-width: 3px;
+                font-size: 19px;
+            }
         }
 
 
-        @media (max-width: 380px) {
+        /* =========================================
+           AVISO DO PRINT (só aparece quando ganha)
+        ========================================= */
 
-            .result-box {
+        .print-msg {
+            width: 100%;
+            max-width: 900px;
+            margin: 22px auto 0;
+            color: #B000FF;
+            font-family: "Moderat", monospace;
+            font-weight: 300;
+            font-size: clamp(16px, 4.5vw, 28px);
+            line-height: 1.4;
+            letter-spacing: -0.03em;
+            text-align: center;
+            text-transform: uppercase;
+            opacity: 0;
+            transform: translateY(8px);
+            transition:
+                opacity 250ms ease,
+                transform 250ms ease;
+            pointer-events: none;
+        }
 
-                min-height: 67px;
+        .print-msg.show {
+            opacity: 1;
+            transform: translateY(0);
+            animation: print-colors 700ms steps(1) infinite;
+        }
 
-                border-width: 3px;
+        @keyframes print-colors {
+            0%   { color: #B000FF; }
+            20%  { color: #00FF38; }
+            40%  { color: #FF5C00; }
+            60%  { color: #087AFF; }
+            80%  { color: #E5FF00; }
+            100% { color: #B000FF; }
+        }
 
-                font-size: 19px;
 
+        /* =========================================
+           CONFETE (canvas criado pelo JavaScript)
+        ========================================= */
+
+        .fx-canvas {
+            position: fixed;
+            inset: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 50;
+        }
+
+
+        /* =========================================
+           CARINHAS TRISTES SUBINDO
+        ========================================= */
+
+        .sad-layer {
+            position: fixed;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 50;
+        }
+
+        .sad-face {
+            position: absolute;
+            bottom: -150px;
+            opacity: 0;
+            animation-name: sad-rise;
+            animation-timing-function: linear;
+            animation-fill-mode: forwards;
+        }
+
+        .sad-face svg {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        @keyframes sad-rise {
+            0% {
+                opacity: 0;
+                transform: translate(0, 0) rotate(-10deg);
             }
+            10% {
+                opacity: 1;
+            }
+            50% {
+                transform: translate(3vw, -60vh) rotate(9deg);
+            }
+            100% {
+                opacity: .9;
+                transform: translate(-3vw, -130vh) rotate(-8deg);
+            }
+        }
 
+        @media (prefers-reduced-motion: reduce) {
+            .print-msg.show {
+                animation: none;
+            }
         }
 
     </style>
@@ -555,14 +382,9 @@
 
 <body>
 
-
     <main class="loteria-page">
 
-
-        <!-- =====================================
-             VOLTAR
-        ====================================== -->
-
+        <!-- VOLTAR -->
         <button
             class="back"
             onclick="history.back()"
@@ -572,21 +394,13 @@
         </button>
 
 
-
-        <!-- =====================================
-             TÍTULO
-        ====================================== -->
-
+        <!-- TÍTULO -->
         <h1 class="title">
             LOTERIA DO AZAR
         </h1>
 
 
-
-        <!-- =====================================
-             BOTÃO JOGAR
-        ====================================== -->
-
+        <!-- BOTÃO JOGAR -->
         <button
             class="play"
             id="play"
@@ -595,11 +409,7 @@
         </button>
 
 
-
-        <!-- =====================================
-             RESULTADO
-        ====================================== -->
-
+        <!-- RESULTADO -->
         <section class="result-container">
 
             <div
@@ -610,18 +420,33 @@
         </section>
 
 
-    </main>
+        <!-- AVISO DO PRINT -->
+        <p
+            class="print-msg"
+            id="printMsg"
+        >
+            Me manda o print do que você ganhou!
+        </p>
 
+    </main>
 
 
     <script>
 
-
         /* =========================================
            OPÇÕES DA LOTERIA
+
+           PREMIOS: quem cai aqui GANHOU algo
+           (confete + aviso para mandar o print).
+
+           AZAR: quem cai aqui não levou nada
+           (carinhas tristes subindo na tela).
+
+           Para mudar uma frase de lado, é só mover
+           a linha de uma lista para a outra.
         ========================================= */
 
-        const loteriaOpcoes = [
+        const premios = [
 
             "BILLIE EILISH: VOCÊ DEVE UM XOTÃO PRO ANIVERSARIANTE",
             "CHAPPELL ROAN: VOCÊ DEVE UM XOTÃO PRO ANIVERSARIANTE",
@@ -630,6 +455,13 @@
             "KATSEYE: VOCÊ TEM QUE APRENDER UMA COREOGRAFIA PRA APRESENTAR",
             "CHAPPELL ROAN: VOCÊ GANHOU UM XOTÃO",
             "ANITTA: VOCÊ GANHOU UM BEIJO DO ANIVERSARIANTE",
+            "CHAPPELL ROAN: O SABATINI GANHA XOTÃO",
+            "ARIANA GRANDE: PODE ROUBAR O MARIDO DE ALGUÉM"
+
+        ];
+
+        const azar = [
+
             "RITA ORA: VOCÊ NÃO LEVA NADA",
             "KATY PERRY: PERDEU",
             "AVA MAX: SE FERROU",
@@ -640,8 +472,6 @@
             "CAN I GET A WITNESS?",
             "AVA MAX: FLOPOU",
             "RITA ORA: COITADA",
-            "CHAPPELL ROAN: O SABATINI GANHA XOTÃO",
-            "ARIANA GRANDE: PODE ROUBAR O MARIDO DE ALGUÉM",
             "FLOPOU AMORE",
             "KKKKKKK",
             "TU JURA",
@@ -653,22 +483,21 @@
 
         ];
 
+        /* Todas juntas (cada frase tem a mesma chance de sair) */
+
+        const loteriaOpcoes = premios.concat(azar);
 
 
         /* =========================================
            ELEMENTOS
         ========================================= */
 
-        const playBtn =
-            document.getElementById(
-                "play"
-            );
+        const playBtn = document.getElementById("play");
+        const resultBox = document.getElementById("result");
+        const printMsg = document.getElementById("printMsg");
 
-        const resultBox =
-            document.getElementById(
-                "result"
-            );
-
+        const reduzirMovimento =
+            window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 
         /* =========================================
@@ -676,51 +505,200 @@
         ========================================= */
 
         const colors = [
-
             "#087AFF",
             "#B000FF",
             "#FF5C00",
             "#00FF38",
             "#E5FF00"
-
         ];
 
-
-
-        /* =========================================
-           ITEM ALEATÓRIO
-        ========================================= */
-
         function randomItem(array) {
-
-            return array[
-                Math.floor(
-                    Math.random()
-                    *
-                    array.length
-                )
-            ];
-
+            return array[Math.floor(Math.random() * array.length)];
         }
-
-
-
-        /* =========================================
-           COR ALEATÓRIA
-        ========================================= */
 
         function randomColor() {
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
 
-            return colors[
-                Math.floor(
-                    Math.random()
-                    *
-                    colors.length
-                )
-            ];
+        function random(min, max) {
+            return Math.random() * (max - min) + min;
+        }
+
+
+        /* =========================================
+           CONFETE
+           Explosão a partir da caixa de resultado
+           + chuva vinda do topo, nas cores do site.
+        ========================================= */
+
+        function launchConfetti() {
+
+            if (reduzirMovimento) return;
+
+            const canvas = document.createElement("canvas");
+
+            canvas.className = "fx-canvas";
+
+            document.body.appendChild(canvas);
+
+            const ctx = canvas.getContext("2d");
+
+            const dpr = window.devicePixelRatio || 1;
+
+            canvas.width = window.innerWidth * dpr;
+            canvas.height = window.innerHeight * dpr;
+
+            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+            const rect = resultBox.getBoundingClientRect();
+
+            const originX = rect.left + rect.width / 2;
+            const originY = Math.min(
+                Math.max(rect.top + rect.height / 2, 0),
+                window.innerHeight
+            );
+
+            const pecas = [];
+
+            /* Explosão */
+
+            for (let i = 0; i < 130; i++) {
+
+                const angulo = random(-Math.PI * 0.95, -Math.PI * 0.05);
+                const velocidade = random(7, 18);
+
+                pecas.push({
+                    x: originX,
+                    y: originY,
+                    vx: Math.cos(angulo) * velocidade,
+                    vy: Math.sin(angulo) * velocidade,
+                    w: random(8, 18),
+                    h: random(4, 10),
+                    rot: random(0, Math.PI * 2),
+                    vr: random(-.3, .3),
+                    cor: randomColor()
+                });
+
+            }
+
+            /* Chuva do topo */
+
+            for (let i = 0; i < 70; i++) {
+
+                pecas.push({
+                    x: random(0, window.innerWidth),
+                    y: random(-400, -20),
+                    vx: random(-1, 1),
+                    vy: random(2, 5),
+                    w: random(8, 16),
+                    h: random(4, 9),
+                    rot: random(0, Math.PI * 2),
+                    vr: random(-.25, .25),
+                    cor: randomColor()
+                });
+
+            }
+
+            const duracao = 4200;
+            const inicio = performance.now();
+
+            function quadro(agora) {
+
+                const t = agora - inicio;
+
+                ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+
+                const restante = duracao - t;
+
+                ctx.globalAlpha = restante < 900 ? Math.max(restante / 900, 0) : 1;
+
+                pecas.forEach(function (p) {
+
+                    p.vy += .28;
+                    p.vx *= .992;
+                    p.x += p.vx;
+                    p.y += p.vy;
+                    p.rot += p.vr;
+
+                    ctx.save();
+                    ctx.translate(p.x, p.y);
+                    ctx.rotate(p.rot);
+                    ctx.fillStyle = p.cor;
+                    ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+                    ctx.restore();
+
+                });
+
+                if (t < duracao) {
+                    requestAnimationFrame(quadro);
+                } else {
+                    canvas.remove();
+                }
+
+            }
+
+            requestAnimationFrame(quadro);
 
         }
 
+
+        /* =========================================
+           CARINHAS TRISTES SUBINDO
+           Desenhadas em SVG com traço grosso,
+           nas cores do site.
+        ========================================= */
+
+        const carinhaTriste = `
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="50" cy="50" r="44" fill="none"
+                    stroke="currentColor" stroke-width="8"/>
+                <circle cx="35" cy="42" r="6" fill="currentColor"/>
+                <circle cx="65" cy="42" r="6" fill="currentColor"/>
+                <path d="M30 72 Q50 54 70 72" fill="none"
+                    stroke="currentColor" stroke-width="8"
+                    stroke-linecap="round"/>
+                <path d="M33 52 Q27 61 33 65 Q39 61 33 52 Z"
+                    fill="currentColor"/>
+            </svg>
+        `;
+
+        function launchSadFaces() {
+
+            if (reduzirMovimento) return;
+
+            const camada = document.createElement("div");
+
+            camada.className = "sad-layer";
+
+            document.body.appendChild(camada);
+
+            const total = 24;
+
+            for (let i = 0; i < total; i++) {
+
+                const face = document.createElement("div");
+
+                const tamanho = Math.round(random(44, 110));
+
+                face.className = "sad-face";
+                face.innerHTML = carinhaTriste;
+
+                face.style.width = tamanho + "px";
+                face.style.height = tamanho + "px";
+                face.style.left = random(0, 92) + "vw";
+                face.style.color = randomColor();
+                face.style.animationDuration = random(3.6, 6) + "s";
+                face.style.animationDelay = random(0, 2.2) + "s";
+
+                camada.appendChild(face);
+
+            }
+
+            setTimeout(function () {
+                camada.remove();
+            }, 9000);
+
+        }
 
 
         /* =========================================
@@ -729,207 +707,134 @@
 
         function playLoteria() {
 
-            /*
-                Torna visível
-            */
+            /* Torna visível */
 
-            resultBox.classList.add(
-                "visible"
-            );
+            resultBox.classList.add("visible");
 
+            /* Começa animação */
 
-            /*
-                Começa animação
-            */
-
-            resultBox.classList.add(
-                "spinning"
-            );
-
+            resultBox.classList.add("spinning");
 
             let counter = 0;
 
-            const totalSpins =
-                15 +
-                Math.floor(
-                    Math.random() * 10
-                );
+            const totalSpins = 15 + Math.floor(Math.random() * 10);
 
             const speed = 65;
 
-            const spinner =
-                setInterval(function() {
+            const spinner = setInterval(function () {
 
-                    resultBox.textContent =
-                        randomItem(
-                            loteriaOpcoes
-                        );
+                resultBox.textContent = randomItem(loteriaOpcoes);
 
-                    resultBox.style.color =
-                        randomColor();
+                resultBox.style.color = randomColor();
 
-                    counter++;
+                counter++;
 
-                    if (
-                        counter >=
-                        totalSpins
-                    ) {
+                if (counter >= totalSpins) {
 
-                        clearInterval(
-                            spinner
-                        );
+                    clearInterval(spinner);
 
-                        resultBox.textContent =
-                            randomItem(
-                                loteriaOpcoes
-                            );
+                    /* Resultado final */
 
-                        resultBox.style.color =
-                            randomColor();
+                    const resultado = randomItem(loteriaOpcoes);
 
-                        resultBox.classList.remove(
-                            "spinning"
-                        );
+                    const ganhou = premios.indexOf(resultado) !== -1;
 
-                        resultBox.classList.add(
-                            "finished"
-                        );
+                    resultBox.textContent = resultado;
 
-                        setTimeout(function() {
+                    resultBox.style.color = randomColor();
 
-                            resultBox.classList.remove(
-                                "finished"
-                            );
+                    resultBox.classList.remove("spinning");
 
-                        }, 180);
+                    resultBox.classList.add("finished");
 
-                        /*
-                            Esconde botão
-                        */
+                    setTimeout(function () {
+                        resultBox.classList.remove("finished");
+                    }, 180);
 
-                        playBtn.classList.add(
-                            "hidden"
-                        );
+                    /* Esconde botão */
+
+                    playBtn.classList.add("hidden");
+
+                    /* Ganhou: confete + aviso do print.
+                       Perdeu: carinhas tristes subindo. */
+
+                    if (ganhou) {
+
+                        printMsg.classList.add("show");
+
+                        launchConfetti();
+
+                    } else {
+
+                        launchSadFaces();
 
                     }
 
-                }, speed);
+                }
+
+            }, speed);
 
         }
-
 
 
         /* =========================================
            EVENT LISTENER
         ========================================= */
 
-        playBtn.addEventListener(
-            "click",
-            playLoteria
-        );
-
+        playBtn.addEventListener("click", playLoteria);
 
 
         /* =========================================
            INTERAÇÃO DESKTOP
         ========================================= */
 
-        resultBox.addEventListener(
-            "mousemove",
-            function(event) {
+        resultBox.addEventListener("mousemove", function (event) {
 
-                if (
-                    resultBox.classList.contains(
-                        "spinning"
-                    )
-                ) {
-                    return;
-                }
-
-                const rect =
-                    resultBox.getBoundingClientRect();
-
-                const x =
-                    event.clientX -
-                    rect.left;
-
-                const percentage =
-                    x /
-                    rect.width;
-
-                const rotation =
-                    (
-                        percentage -
-                        0.5
-                    )
-                    * 5;
-
-                resultBox.style.transform = `
-
-                    skewX(
-                        ${rotation}deg
-                    )
-
-                    scaleX(1.015)
-
-                `;
-
+            if (resultBox.classList.contains("spinning")) {
+                return;
             }
-        );
 
+            const rect = resultBox.getBoundingClientRect();
 
-        resultBox.addEventListener(
-            "mouseleave",
-            function() {
+            const x = event.clientX - rect.left;
 
-                if (
-                    !resultBox.classList.contains(
-                        "spinning"
-                    )
-                ) {
+            const percentage = x / rect.width;
 
-                    resultBox.style.transform =
-                        "";
+            const rotation = (percentage - 0.5) * 5;
 
-                }
+            resultBox.style.transform = `
+                skewX(${rotation}deg)
+                scaleX(1.015)
+            `;
 
+        });
+
+        resultBox.addEventListener("mouseleave", function () {
+
+            if (!resultBox.classList.contains("spinning")) {
+                resultBox.style.transform = "";
             }
-        );
 
+        });
 
 
         /* =========================================
            INTERAÇÃO MOBILE
         ========================================= */
 
-        resultBox.addEventListener(
-            "touchstart",
-            function() {
+        resultBox.addEventListener("touchstart", function () {
 
-                resultBox.style.transform =
-                    "scaleX(1.025) scaleY(.96)";
+            resultBox.style.transform = "scaleX(1.025) scaleY(.96)";
 
-            },
-            {
-                passive: true
-            }
-        );
+        }, { passive: true });
 
+        resultBox.addEventListener("touchend", function () {
 
-        resultBox.addEventListener(
-            "touchend",
-            function() {
+            setTimeout(function () {
+                resultBox.style.transform = "";
+            }, 100);
 
-                setTimeout(function() {
-
-                    resultBox.style.transform =
-                        "";
-
-                }, 100);
-
-            }
-        );
-
+        });
 
     </script>
 
