@@ -20,20 +20,12 @@
         ========================================= */
 
         @font-face {
-
             font-family: "POI Diode";
-
-            src:
-                url("fonts/POIDiodeTrial-Bold.woff2")
-                format("woff2");
-
+            src: url("fonts/POIDiodeTrial-Bold.woff2") format("woff2");
             font-weight: 700;
             font-style: normal;
-
             font-display: swap;
-
         }
-
 
 
         /* =========================================
@@ -46,26 +38,17 @@
             padding: 0;
         }
 
-
         html,
         body {
-
             width: 100%;
             min-height: 100%;
-
             background: #000;
-
         }
-
 
         body {
-
             overflow: hidden;
-
             background: #000;
-
         }
-
 
 
         /* =========================================
@@ -73,20 +56,13 @@
         ========================================= */
 
         .screen {
-
             position: relative;
-
             width: 100vw;
             height: 100dvh;
-
             min-height: 100vh;
-
             overflow: hidden;
-
             background: #000;
-
         }
-
 
 
         /* =========================================
@@ -94,37 +70,22 @@
         ========================================= */
 
         .scene {
-
             position: absolute;
-
             inset: 0;
-
             width: 100%;
             height: 100%;
-
             display: flex;
-
             align-items: center;
             justify-content: center;
-
             opacity: 0;
-
             pointer-events: none;
-
-            transition:
-                opacity 100ms linear;
-
+            transition: opacity 100ms linear;
         }
-
 
         .scene.active {
-
             opacity: 1;
-
             pointer-events: auto;
-
         }
-
 
 
         /* =========================================
@@ -132,83 +93,41 @@
         ========================================= */
 
         #intro {
-
             display: block;
-
             overflow: hidden;
-
         }
-
 
         .intro-grid {
-
             position: absolute;
-
             inset: 0;
-
             width: 100%;
             height: 100%;
-
             display: flex;
-
             flex-direction: column;
-
             justify-content: space-around;
-
             align-items: center;
-
             overflow: hidden;
-
         }
-
 
         .intro-line {
-
             position: relative;
-
             width: 100%;
-
             flex: 1;
-
             display: flex;
-
             align-items: center;
-
             justify-content: center;
-
             overflow: visible;
-
-            font-family:
-                "POI Diode",
-                sans-serif;
-
+            font-family: "POI Diode", sans-serif;
             font-weight: 700;
-
-            font-size:
-                clamp(
-                    42px,
-                    12vw,
-                    170px
-                );
-
+            font-size: clamp(42px, 12vw, 170px);
             line-height: .72;
-
             letter-spacing: -.045em;
-
             white-space: nowrap;
-
             text-align: center;
-
             user-select: none;
-
-            will-change:
-                transform,
-                color;
-
+            will-change: transform, color;
             color: #00FF38;
-
         }
-
 
 
         /* =========================================
@@ -216,41 +135,18 @@
         ========================================= */
 
         #dateText {
-
             width: 100%;
-
-            padding:
-                0 4vw;
-
-            font-family:
-                "POI Diode",
-                sans-serif;
-
+            padding: 0 4vw;
+            font-family: "POI Diode", sans-serif;
             font-weight: 700;
-
-            font-size:
-                clamp(
-                    48px,
-                    14vw,
-                    190px
-                );
-
+            font-size: clamp(48px, 14vw, 190px);
             line-height: .8;
-
             letter-spacing: -.045em;
-
             color: #FF5C00;
-
             text-align: center;
-
             white-space: nowrap;
-
-            will-change:
-                transform,
-                color;
-
+            will-change: transform, color;
         }
-
 
 
         /* =========================================
@@ -258,32 +154,15 @@
         ========================================= */
 
         #venueText {
-
             width: 100%;
-
             padding: 20px;
-
-            font-family:
-                "POI Diode",
-                sans-serif;
-
+            font-family: "POI Diode", sans-serif;
             font-weight: 700;
-
-            font-size:
-                clamp(
-                    40px,
-                    9vw,
-                    130px
-                );
-
+            font-size: clamp(40px, 9vw, 130px);
             line-height: .8;
-
             color: #087AFF;
-
             text-align: center;
-
         }
-
 
 
         /* =========================================
@@ -291,101 +170,45 @@
         ========================================= */
 
         .menu {
-
             position: absolute;
-
             inset: 0;
-
             display: flex;
-
             flex-direction: column;
-
             align-items: center;
-
             justify-content: center;
-
             gap: 5px;
-
             padding: 20px;
-
         }
 
-
         .menu-item {
-
             position: relative;
-
             display: block;
-
             width: max-content;
-
             max-width: 100%;
-
             border: 0;
-
             background: none;
-
             color: #00FF38;
-
-            font-family:
-                "POI Diode",
-                sans-serif;
-
-            font-size:
-                clamp(
-                    48px,
-                    13vw,
-                    150px
-                );
-
+            font-family: "POI Diode", sans-serif;
+            font-size: clamp(48px, 13vw, 150px);
             font-weight: 700;
-
             line-height: .78;
-
             letter-spacing: -.04em;
-
             text-decoration: none;
-
             text-transform: uppercase;
-
             cursor: pointer;
-
             transition:
                 transform 100ms ease,
                 color 70ms linear;
-
         }
 
+        /* O preto nunca entra na paleta do menu. */
 
-        /*
-            O preto nunca entra
-            na paleta do menu.
-        */
-
-        .menu-item:nth-child(1) {
-            color: #00FF38;
-        }
-
-        .menu-item:nth-child(2) {
-            color: #087AFF;
-        }
-
-        .menu-item:nth-child(3) {
-            color: #B000FF;
-        }
-
-        .menu-item:nth-child(4) {
-            color: #FF5C00;
-        }
-
-        .menu-item:nth-child(5) {
-            color: #E5FF00;
-        }
-
-        .menu-item:nth-child(6) {
-            color: #00FF38;
-        }
-
+        .menu-item:nth-child(1) { color: #00FF38; }
+        .menu-item:nth-child(2) { color: #087AFF; }
+        .menu-item:nth-child(3) { color: #B000FF; }
+        .menu-item:nth-child(4) { color: #FF5C00; }
+        .menu-item:nth-child(5) { color: #E5FF00; }
+        .menu-item:nth-child(6) { color: #00FF38; }
 
 
         /* =========================================
@@ -393,24 +216,12 @@
         ========================================= */
 
         .menu-item:hover {
-
-            transform:
-                skewX(-12deg)
-                scaleX(1.08)
-                scaleY(.94);
-
+            transform: skewX(-12deg) scaleX(1.08) scaleY(.94);
         }
-
 
         .menu-item:active {
-
-            transform:
-                skewX(16deg)
-                scaleX(.88)
-                scaleY(1.08);
-
+            transform: skewX(16deg) scaleX(.88) scaleY(1.08);
         }
-
 
 
         /* =========================================
@@ -418,48 +229,23 @@
         ========================================= */
 
         .flash {
-
             position: fixed;
-
             inset: 0;
-
             background: #FFF;
-
             opacity: 0;
-
             pointer-events: none;
-
             z-index: 100;
-
         }
-
 
         .flash.active {
-
-            animation:
-                flash-effect
-                100ms
-                linear;
-
+            animation: flash-effect 100ms linear;
         }
-
 
         @keyframes flash-effect {
-
-            0% {
-                opacity: 0;
-            }
-
-            25% {
-                opacity: .8;
-            }
-
-            100% {
-                opacity: 0;
-            }
-
+            0% { opacity: 0; }
+            25% { opacity: .8; }
+            100% { opacity: 0; }
         }
-
 
 
         /* =========================================
@@ -469,65 +255,34 @@
         @media (max-width: 600px) {
 
             .intro-line {
-
                 /*
-                    Mantemos o texto pequeno o
-                    suficiente para NUNCA cortar
-                    o SABATINI28.
+                    Largura quase total da tela, sem cortar.
+                    A quantidade de linhas é calculada no JS
+                    para que elas se sobreponham como no desktop.
                 */
-
-                font-size:
-                    12vw;
-
-                line-height:
-                    .72;
-
+                font-size: 11.5vw;
+                line-height: .72;
             }
-
 
             #dateText {
-
-                /*
-                    A data agora tem bastante
-                    margem lateral.
-                */
-
-                font-size:
-                    14vw;
-
-                padding:
-                    0 3vw;
-
+                font-size: 14vw;
+                padding: 0 3vw;
             }
-
 
             #venueText {
-
-                font-size:
-                    9vw;
-
+                font-size: 9vw;
             }
-
 
             .menu {
-
                 gap: 9px;
-
-                padding:
-                    15px;
-
+                padding: 15px;
             }
 
-
             .menu-item {
-
-                font-size:
-                    14vw;
-
+                font-size: 14vw;
             }
 
         }
-
 
 
         /* =========================================
@@ -537,25 +292,15 @@
         @media (max-height: 650px) {
 
             .intro-line {
-
-                font-size:
-                    11vw;
-
+                font-size: 11vw;
             }
-
 
             .menu {
-
                 gap: 4px;
-
             }
 
-
             .menu-item {
-
-                font-size:
-                    12vw;
-
+                font-size: 12vw;
             }
 
         }
@@ -567,14 +312,9 @@
 
 <body>
 
-
     <main class="screen">
 
-
-        <!-- =====================================
-             INTRO
-        ====================================== -->
-
+        <!-- INTRO -->
         <section
             class="scene active"
             id="intro"
@@ -584,60 +324,39 @@
                 class="intro-grid"
                 id="introGrid"
             >
-
-                <!--
-                    As linhas serão criadas
-                    automaticamente pelo JavaScript.
-                -->
-
+                <!-- As linhas são criadas pelo JavaScript. -->
             </div>
 
         </section>
 
 
-
-        <!-- =====================================
-             DATA
-        ====================================== -->
-
+        <!-- DATA -->
         <section
             class="scene"
             id="date"
         >
 
-            <div
-                id="dateText"
-            >
+            <div id="dateText">
                 07/11/2026
             </div>
 
         </section>
 
 
-
-        <!-- =====================================
-             LOCAL
-        ====================================== -->
-
+        <!-- LOCAL -->
         <section
             class="scene"
             id="venue"
         >
 
-            <div
-                id="venueText"
-            >
+            <div id="venueText">
                 BOHÔ BAR &amp; PISTA
             </div>
 
         </section>
 
 
-
-        <!-- =====================================
-             MENU
-        ====================================== -->
-
+        <!-- MENU -->
         <section
             class="scene"
             id="menu"
@@ -645,122 +364,46 @@
 
             <nav class="menu">
 
-                <a
-                    class="menu-item"
-                    href="confirme.html"
-                >
-                    CONFIRME
-                </a>
+                <a class="menu-item" href="confirme.html">CONFIRME</a>
 
-                <a
-                    class="menu-item"
-                    href="quemvai.html"
-                >
-                    QUEM VAI
-                </a>
+                <a class="menu-item" href="quemvai.html">QUEM VAI</a>
 
-                <a
-                    class="menu-item"
-                    href="musica.html"
-                >
-                    MÚSICA
-                </a>
+                <a class="menu-item" href="musica.html">MÚSICA</a>
 
-                <a
-                    class="menu-item"
-                    href="looks.html"
-                >
-                    LOOKS
-                </a>
+                <a class="menu-item" href="looks.html">LOOKS</a>
 
-                <a
-                    class="menu-item"
-                    href="jogos.html"
-                >
-                    JOGOS
-                </a>
+                <a class="menu-item" href="jogos.html">JOGOS</a>
 
-                <a
-                    class="menu-item"
-                    href="infos.html"
-                >
-                    INFO
-                </a>
+                <a class="menu-item" href="infos.html">INFO</a>
 
             </nav>
 
         </section>
 
 
-
-        <!-- =====================================
-             FLASH
-        ====================================== -->
-
+        <!-- FLASH -->
         <div
             class="flash"
             id="flash"
         ></div>
 
-
     </main>
 
 
-
     <script>
-
 
         /* =========================================
            CENAS
         ========================================= */
 
-        const intro =
-            document.getElementById(
-                "intro"
-            );
-
-
-        const date =
-            document.getElementById(
-                "date"
-            );
-
-
-        const venue =
-            document.getElementById(
-                "venue"
-            );
-
-
-        const menu =
-            document.getElementById(
-                "menu"
-            );
-
-
-        const introGrid =
-            document.getElementById(
-                "introGrid"
-            );
-
-
-        const dateText =
-            document.getElementById(
-                "dateText"
-            );
-
-
-        const venueText =
-            document.getElementById(
-                "venueText"
-            );
-
-
-        const flash =
-            document.getElementById(
-                "flash"
-            );
-
+        const intro = document.getElementById("intro");
+        const date = document.getElementById("date");
+        const venue = document.getElementById("venue");
+        const menu = document.getElementById("menu");
+        const introGrid = document.getElementById("introGrid");
+        const dateText = document.getElementById("dateText");
+        const venueText = document.getElementById("venueText");
+        const flash = document.getElementById("flash");
 
 
         /* =========================================
@@ -768,172 +411,142 @@
         ========================================= */
 
         const colors = [
-
             "#087AFF",   // azul
             "#B000FF",   // roxo
             "#FF5C00",   // laranja
             "#00FF38",   // verde
-            "#E5FF00",   // amarelo
-
+            "#E5FF00"    // amarelo
         ];
 
-
-
-        /* =========================================
-           COR ALEATÓRIA
-        ========================================= */
-
         function randomColor() {
-
-            return colors[
-                Math.floor(
-                    Math.random()
-                    *
-                    colors.length
-                )
-            ];
-
+            return colors[Math.floor(Math.random() * colors.length)];
         }
 
-
-
-        /* =========================================
-           RANDOM
-        ========================================= */
-
-        function random(
-            min,
-            max
-        ) {
-
-            return (
-                Math.random()
-                *
-                (max - min)
-            )
-            + min;
-
+        function random(min, max) {
+            return Math.random() * (max - min) + min;
         }
 
+        function isMobile() {
+            return window.innerWidth <= 600;
+        }
 
 
         /* =========================================
            CRIAÇÃO DAS LINHAS
+
+           A quantidade de linhas depende do tamanho
+           da fonte e da altura da tela, assim as
+           linhas se sobrepõem do mesmo jeito no
+           celular e no desktop.
+
+           DENSIDADE: quanto MENOR o número, mais as
+           linhas se sobrepõem (0.9 = como no desktop).
         ========================================= */
 
-        const TOTAL_LINHAS = 8;
-
+        const DENSIDADE = 0.9;
 
         const introLines = [];
 
+        function calcularTotalLinhas() {
 
-        for (
-            let i = 0;
-            i < TOTAL_LINHAS;
-            i++
-        ) {
+            const probe = document.createElement("div");
 
-            const line =
-                document.createElement(
-                    "div"
-                );
+            probe.className = "intro-line";
+            probe.style.position = "absolute";
+            probe.style.visibility = "hidden";
+            probe.textContent = "SABATINI28";
 
+            introGrid.appendChild(probe);
 
-            line.className =
-                "intro-line";
-
-
-            line.textContent =
-                "SABATINI28";
-
-
-            line.style.color =
-                randomColor();
-
-
-            introGrid.appendChild(
-                line
+            const fontSize = parseFloat(
+                getComputedStyle(probe).fontSize
             );
 
+            introGrid.removeChild(probe);
 
-            introLines.push(
-                line
-            );
+            const altura = introGrid.clientHeight || window.innerHeight;
+
+            const total = Math.round(altura / (fontSize * DENSIDADE));
+
+            return Math.max(6, Math.min(total, 24));
 
         }
 
+        function criarLinhas() {
+
+            introGrid.innerHTML = "";
+            introLines.length = 0;
+
+            const total = calcularTotalLinhas();
+
+            for (let i = 0; i < total; i++) {
+
+                const line = document.createElement("div");
+
+                line.className = "intro-line";
+                line.textContent = "SABATINI28";
+                line.style.color = randomColor();
+
+                introGrid.appendChild(line);
+                introLines.push(line);
+
+            }
+
+        }
+
+        criarLinhas();
+
+
+        /* Recalcula se a tela girar ou mudar de tamanho */
+
+        let resizeTimer;
+
+        window.addEventListener("resize", function () {
+
+            clearTimeout(resizeTimer);
+
+            resizeTimer = setTimeout(function () {
+
+                if (intro.classList.contains("active")) {
+                    criarLinhas();
+                    animateIntro();
+                }
+
+            }, 200);
+
+        });
 
 
         /* =========================================
            DEFORMA UMA LINHA
         ========================================= */
 
-        function randomizeLine(
-            line
-        ) {
+        function randomizeLine(line) {
 
-            const x =
-                random(
-                    -3,
-                    3
-                );
+            /*
+                No celular a margem lateral é menor,
+                então a deformação horizontal é mais
+                contida para nunca cortar o SABATINI28.
+            */
 
+            const mobile = isMobile();
 
-            const y =
-                random(
-                    -1.5,
-                    1.5
-                );
-
-
-            const rotation =
-                random(
-                    -2.5,
-                    2.5
-                );
-
-
-            const scaleX =
-                random(
-                    .88,
-                    1.12
-                );
-
-
-            const scaleY =
-                random(
-                    .88,
-                    1.12
-                );
-
+            const x = mobile ? random(-2, 2) : random(-3, 3);
+            const y = random(-1.5, 1.5);
+            const rotation = random(-2.5, 2.5);
+            const scaleX = mobile ? random(.90, 1.08) : random(.88, 1.12);
+            const scaleY = random(.88, 1.12);
 
             line.style.transform = `
-
-                translate(
-                    ${x}vw,
-                    ${y}vh
-                )
-
-                rotate(
-                    ${rotation}deg
-                )
-
-                scaleX(
-                    ${scaleX}
-                )
-
-                scaleY(
-                    ${scaleY}
-                )
-
+                translate(${x}vw, ${y}vh)
+                rotate(${rotation}deg)
+                scaleX(${scaleX})
+                scaleY(${scaleY})
             `;
 
-
-            line.style.color =
-                randomColor();
+            line.style.color = randomColor();
 
         }
-
 
 
         /* =========================================
@@ -942,74 +555,35 @@
 
         function animateIntro() {
 
-            introLines.forEach(
-                function(line) {
-
-                    /*
-                        Cada linha recebe
-                        uma deformação própria.
-                    */
-
-                    randomizeLine(
-                        line
-                    );
-
-                }
-            );
+            introLines.forEach(function (line) {
+                randomizeLine(line);
+            });
 
         }
 
-
-        /*
-            Começa imediatamente.
-        */
+        /* Começa imediatamente. */
 
         animateIntro();
 
+        /* Mudanças rápidas, como um letreiro de nightclub. */
 
-        /*
-            Mudanças rápidas,
-            como um letreiro
-            de nightclub.
-        */
+        const introInterval = setInterval(function () {
 
-        const introInterval =
-            setInterval(
-                function() {
+            /* Nem todas as linhas mudam ao mesmo tempo. */
 
-                    /*
-                        Nem todas as linhas
-                        mudam ao mesmo tempo.
-                    */
+            introLines.forEach(function (line) {
 
-                    introLines.forEach(
-                        function(line) {
+                if (Math.random() < .75) {
+                    randomizeLine(line);
+                }
 
-                            if (
-                                Math.random()
-                                < .75
-                            ) {
+            });
 
-                                randomizeLine(
-                                    line
-                                );
+            /* Flash ocasional. */
 
-                            }
+            doFlash();
 
-                        }
-                    );
-
-
-                    /*
-                        Flash ocasional.
-                    */
-
-                    doFlash();
-
-                },
-                250
-            );
-
+        }, 250);
 
 
         /* =========================================
@@ -1018,165 +592,84 @@
 
         function doFlash() {
 
-            /*
-                Chance de acontecer.
-            */
+            /* Chance de acontecer. */
 
-            if (
-                Math.random()
-                < .30
-            ) {
+            if (Math.random() < .30) {
 
-                flash.classList.remove(
-                    "active"
-                );
-
+                flash.classList.remove("active");
 
                 void flash.offsetWidth;
 
-
-                flash.classList.add(
-                    "active"
-                );
+                flash.classList.add("active");
 
             }
 
         }
 
 
-
         /* =========================================
            INTRO → DATA
         ========================================= */
 
-        setTimeout(
-            function() {
+        setTimeout(function () {
 
-                clearInterval(
-                    introInterval
-                );
+            clearInterval(introInterval);
 
+            intro.classList.remove("active");
 
-                intro.classList.remove(
-                    "active"
-                );
+            date.classList.add("active");
 
+            /* Pequena deformação da data. */
 
-                date.classList.add(
-                    "active"
-                );
+            dateText.style.transform = `
+                scaleX(${random(.92, 1.05)})
+                rotate(${random(-2, 2)}deg)
+            `;
 
+            dateText.style.color = randomColor();
 
-                /*
-                    Pequena deformação
-                    da data.
-                */
+            doFlash();
 
-                dateText.style.transform = `
-
-                    scaleX(
-                        ${random(
-                            .92,
-                            1.05
-                        )}
-                    )
-
-                    rotate(
-                        ${random(
-                            -2,
-                            2
-                        )}deg
-                    )
-
-                `;
-
-
-                dateText.style.color =
-                    randomColor();
-
-
-                doFlash();
-
-            },
-            3200
-        );
-
+        }, 3200);
 
 
         /* =========================================
            DATA → LOCAL
         ========================================= */
 
-        setTimeout(
-            function() {
+        setTimeout(function () {
 
-                date.classList.remove(
-                    "active"
-                );
+            date.classList.remove("active");
 
+            venue.classList.add("active");
 
-                venue.classList.add(
-                    "active"
-                );
+            venueText.style.color = randomColor();
 
+            venueText.style.transform = `
+                scaleX(${random(.85, 1.05)})
+                rotate(${random(-3, 3)}deg)
+            `;
 
-                venueText.style.color =
-                    randomColor();
+            doFlash();
 
-
-                venueText.style.transform = `
-
-                    scaleX(
-                        ${random(
-                            .85,
-                            1.05
-                        )}
-                    )
-
-                    rotate(
-                        ${random(
-                            -3,
-                            3
-                        )}deg
-                    )
-
-                `;
-
-
-                doFlash();
-
-            },
-            5200
-        );
-
+        }, 5200);
 
 
         /* =========================================
            LOCAL → MENU
         ========================================= */
 
-        setTimeout(
-            function() {
+        setTimeout(function () {
 
-                venue.classList.remove(
-                    "active"
-                );
+            venue.classList.remove("active");
 
+            menu.classList.add("active");
 
-                menu.classList.add(
-                    "active"
-                );
+            doFlash();
 
+            startMenuChaos();
 
-                doFlash();
-
-
-                startMenuChaos();
-
-            },
-            7200
-        );
-
+        }, 7200);
 
 
         /* =========================================
@@ -1185,125 +678,40 @@
 
         function startMenuChaos() {
 
-            const items =
-                document.querySelectorAll(
-                    ".menu-item"
-                );
+            const items = document.querySelectorAll(".menu-item");
 
+            setInterval(function () {
 
-            setInterval(
-                function() {
+                items.forEach(function (item) {
 
-                    items.forEach(
-                        function(item) {
+                    const rotation = (Math.random() - .5) * 5;
+                    const scaleX = .92 + Math.random() * .18;
+                    const scaleY = .90 + Math.random() * .18;
+                    const x = (Math.random() - .5) * 5;
+                    const y = (Math.random() - .5) * 2;
 
+                    item.style.transform = `
+                        translate(${x}vw, ${y}vh)
+                        rotate(${rotation}deg)
+                        scaleX(${scaleX})
+                        scaleY(${scaleY})
+                    `;
 
-                            /*
-                                Rotação
-                            */
+                    /* Nunca preto. */
 
-                            const rotation =
-                                (
-                                    Math.random()
-                                    - .5
-                                )
-                                * 5;
+                    item.style.color = randomColor();
 
+                });
 
-                            /*
-                                Escala horizontal
-                            */
+                /* Flash ocasional. */
 
-                            const scaleX =
-                                .92
-                                +
-                                Math.random()
-                                * .18;
+                if (Math.random() < .25) {
+                    doFlash();
+                }
 
-
-                            /*
-                                Escala vertical
-                            */
-
-                            const scaleY =
-                                .90
-                                +
-                                Math.random()
-                                * .18;
-
-
-                            /*
-                                Pequeno deslocamento
-                            */
-
-                            const x =
-                                (
-                                    Math.random()
-                                    - .5
-                                )
-                                * 5;
-
-
-                            const y =
-                                (
-                                    Math.random()
-                                    - .5
-                                )
-                                * 2;
-
-
-                            item.style.transform = `
-
-                                translate(
-                                    ${x}vw,
-                                    ${y}vh
-                                )
-
-                                rotate(
-                                    ${rotation}deg
-                                )
-
-                                scaleX(
-                                    ${scaleX}
-                                )
-
-                                scaleY(
-                                    ${scaleY}
-                                )
-
-                            `;
-
-
-                            /*
-                                Nunca preto.
-                            */
-
-                            item.style.color =
-                                randomColor();
-
-                        }
-                    );
-
-
-                    /*
-                        Flash ocasional.
-                    */
-
-                    if (
-                        Math.random()
-                        < .25
-                    ) {
-
-                        doFlash();
-
-                    }
-
-                },
-                700
-            );
+            }, 700);
 
         }
-
 
 
         /* =========================================
@@ -1311,24 +719,14 @@
         ========================================= */
 
         document
-            .querySelectorAll(
-                '.menu-item[href="#"]'
-            )
-            .forEach(
-                function(item) {
+            .querySelectorAll('.menu-item[href="#"]')
+            .forEach(function (item) {
 
-                    item.addEventListener(
-                        "click",
-                        function(event) {
+                item.addEventListener("click", function (event) {
+                    event.preventDefault();
+                });
 
-                            event.preventDefault();
-
-                        }
-                    );
-
-                }
-            );
-
+            });
 
     </script>
 
