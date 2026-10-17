@@ -663,26 +663,30 @@
 
 
         /* =========================================
-           ENVIAR PARA GOOGLE SHEETS
-           (aba "confirmados", via Apps Script)
+           ENVIAR PARA FORMSPREE
+           (cada confirmação chega por e-mail
+           e fica salva no painel do Formspree)
         ========================================= */
 
         function enviarParaPlanilha(confirmacao) {
 
-            const URL_SCRIPT =
-                "https://script.google.com/macros/s/AKfycby0pWnLouRs83NLEwpM-wNG5znQ2O6noms9R2lROCbE82o4YQM8lDFeQPNB3gM-9jT0/exec";
+            const URL_FORM = "https://formspree.io/f/mnpjwkdd";
 
-            fetch(URL_SCRIPT, {
+            fetch(URL_FORM, {
 
                 method: "POST",
 
-                mode: "no-cors",
+                headers: {
+                    "Accept": "application/json",
+                    "Content-Type": "application/json"
+                },
 
                 keepalive: true,
 
-                body: new URLSearchParams({
+                body: JSON.stringify({
                     nome: confirmacao.nome,
-                    acompanhante: confirmacao.acompanhante
+                    acompanhante: confirmacao.acompanhante,
+                    data: confirmacao.data
                 })
 
             }).catch(function (err) {
