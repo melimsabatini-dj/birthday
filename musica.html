@@ -504,6 +504,29 @@
         }
 
         /* =========================================
+           ENVIAR PARA FORMSPREE
+           (cada sugestão chega por e-mail e fica
+           salva no painel do Formspree)
+        ========================================= */
+        function enviarSugestao(sugestao) {
+
+            const URL_FORM = "https://formspree.io/f/xzedolro";
+
+            fetch(URL_FORM, {
+                method: "POST",
+                headers: {
+                    "Accept": "application/json",
+                    "Content-Type": "application/json"
+                },
+                keepalive: true,
+                body: JSON.stringify(sugestao)
+            }).catch(function (err) {
+                console.error("Erro ao enviar:", err);
+            });
+
+        }
+
+        /* =========================================
            ENVIO DO FORMULÁRIO
         ========================================= */
         function handleSubmit(event) {
@@ -520,6 +543,7 @@
 
             /* -----------------------------------------
                REGRA DE BLOQUEIO: TAYLOR / TAYLOR SWIFT
+               (não envia nada, só mostra o erro)
             ----------------------------------------- */
             if (query.includes("TAYLOR") || query.includes("TAYLOR SWIFT")) {
                 doFlash();
@@ -536,7 +560,12 @@
             /* -----------------------------------------
                FLUXO NORMAL DE SUCESSO
             ----------------------------------------- */
-            console.log("Música sugerida:", query);
+
+            // Envia a sugestão para o Formspree
+            enviarSugestao({
+                musica: query,
+                data: new Date().toLocaleString("pt-BR")
+            });
 
             // Gerar a nuvem de músicas piscando
             renderFloatingSongs(query);
