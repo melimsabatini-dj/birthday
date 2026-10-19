@@ -702,16 +702,110 @@
 
 
         /* =========================================
-           JOGAR
+           MEMÓRIA DO JOGADOR
+
+           Guarda no próprio aparelho o resultado que
+           saiu. Assim, recarregar a página não dá outra
+           chance: mostra o mesmo resultado de novo.
+
+           Para testar do zero, abra a página com
+           ?reset no final do endereço:
+           loteria.html?reset
         ========================================= */
 
-        function playLoteria() {
+        const CHAVE = "sabatini_loteria";
 
-            /* Torna visível */
+        function lerEstado() {
+
+            try {
+                return JSON.parse(localStorage.getItem(CHAVE));
+            } catch (e) {
+                return null;
+            }
+
+        }
+
+        function gravarEstado(estado) {
+
+            try {
+                localStorage.setItem(CHAVE, JSON.stringify(estado));
+            } catch (e) { }
+
+        }
+
+        if (window.location.search.indexOf("reset") !== -1) {
+
+            try {
+                localStorage.removeItem(CHAVE);
+            } catch (e) { }
+
+            window.location.replace(window.location.pathname);
+
+        }
+
+
+        /* =========================================
+           MOSTRAR O RESULTADO FINAL
+           Ganhou: aviso do print + confete.
+           Perdeu: carinhas tristes subindo.
+        ========================================= */
+
+        function mostrarFinal(resultado) {
+
+            const ganhou = premios.indexOf(resultado) !== -1;
+
+            resultBox.textContent = resultado;
+
+            resultBox.style.color = randomColor();
 
             resultBox.classList.add("visible");
 
-            /* Começa animação */
+            playBtn.classList.add("hidden");
+
+            playBtn.disabled = true;
+
+            if (ganhou) {
+
+                printMsg.classList.add("show");
+
+                launchConfetti();
+
+            } else {
+
+                launchSadFaces();
+
+            }
+
+        }
+
+
+        /* =========================================
+           JOGAR
+        ========================================= */
+
+        let jogou = false;
+
+        function playLoteria() {
+
+            /* Só uma jogada por pessoa */
+
+            if (jogou) return;
+
+            jogou = true;
+
+            playBtn.disabled = true;
+
+            /* O resultado já é sorteado e guardado agora,
+               para recarregar no meio da animação não
+               adiantar nada. */
+
+            const resultado = randomItem(loteriaOpcoes);
+
+            gravarEstado({ resultado: resultado });
+
+            /* Torna visível e começa a animação */
+
+            resultBox.classList.add("visible");
 
             resultBox.classList.add("spinning");
 
@@ -733,16 +827,6 @@
 
                     clearInterval(spinner);
 
-                    /* Resultado final */
-
-                    const resultado = randomItem(loteriaOpcoes);
-
-                    const ganhou = premios.indexOf(resultado) !== -1;
-
-                    resultBox.textContent = resultado;
-
-                    resultBox.style.color = randomColor();
-
                     resultBox.classList.remove("spinning");
 
                     resultBox.classList.add("finished");
@@ -751,24 +835,7 @@
                         resultBox.classList.remove("finished");
                     }, 180);
 
-                    /* Esconde botão */
-
-                    playBtn.classList.add("hidden");
-
-                    /* Ganhou: confete + aviso do print.
-                       Perdeu: carinhas tristes subindo. */
-
-                    if (ganhou) {
-
-                        printMsg.classList.add("show");
-
-                        launchConfetti();
-
-                    } else {
-
-                        launchSadFaces();
-
-                    }
+                    mostrarFinal(resultado);
 
                 }
 
@@ -835,6 +902,24 @@
             }, 100);
 
         });
+
+
+        /* =========================================
+           AO CARREGAR: JÁ JOGOU NESTE APARELHO?
+        ========================================= */
+
+        const salvo = lerEstado();
+
+        if (
+            salvo &&
+            loteriaOpcoes.indexOf(salvo.resultado) !== -1
+        ) {
+
+            jogou = true;
+
+            mostrarFinal(salvo.resultado);
+
+        }
 
     </script>
 
