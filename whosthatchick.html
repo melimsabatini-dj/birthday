@@ -1,1 +1,1105 @@
 
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    >
+
+    <title>WHO'S THAT CHICK - SABATINI28</title>
+
+
+    <style>
+
+        /* =========================================
+           FONTES
+        ========================================= */
+
+        @font-face {
+            font-family: "POI Diode";
+            src: url("fonts/POIDiodeTrial-Bold.woff2") format("woff2");
+            font-weight: 700;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: "Moderat";
+            src: url("fonts/Moderat-Mono-Light.woff2") format("woff2");
+            font-weight: 300;
+            font-style: normal;
+            font-display: swap;
+        }
+
+
+        /* =========================================
+           RESET
+        ========================================= */
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html,
+        body {
+            width: 100%;
+            min-height: 100%;
+            background: #000;
+        }
+
+        body {
+            overflow-x: hidden;
+            background: #000;
+        }
+
+
+        /* =========================================
+           PÁGINA
+        ========================================= */
+
+        .chick-page {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            background: #000;
+            padding: 16px 16px 45px;
+        }
+
+        @media (min-width: 700px) {
+            .chick-page {
+                padding: 20px 30px 60px;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .chick-page {
+                padding-left: 11px;
+                padding-right: 11px;
+            }
+        }
+
+
+        /* =========================================
+           VOLTAR
+        ========================================= */
+
+        .back {
+            position: absolute;
+            top: 12px;
+            left: 14px;
+            border: 0;
+            background: none;
+            color: #FF5C00;
+            font-family: "POI Diode", sans-serif;
+            font-size: 42px;
+            line-height: 1;
+            cursor: pointer;
+            z-index: 20;
+            transition:
+                transform 100ms ease,
+                color 80ms linear;
+        }
+
+        .back:active {
+            transform: translateX(-8px) scale(1.15);
+        }
+
+
+        /* =========================================
+           TÍTULO
+        ========================================= */
+
+        .title {
+            width: 100%;
+            margin-top: 52px;
+            color: #00FF38;
+            font-family: "POI Diode", sans-serif;
+            font-size: clamp(60px, 17vw, 180px);
+            line-height: 0.72;
+            letter-spacing: -0.04em;
+            text-align: center;
+            user-select: none;
+            margin-bottom: 32px;
+        }
+
+        @media (max-width: 380px) {
+            .title {
+                font-size: 56px;
+            }
+        }
+
+
+        /* =========================================
+           CONTEÚDO
+        ========================================= */
+
+        .chick-container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .question-text {
+            color: #087AFF;
+            font-family: "POI Diode", sans-serif;
+            font-size: clamp(24px, 7vw, 46px);
+            font-weight: 700;
+            line-height: 0.9;
+            letter-spacing: -0.04em;
+            text-align: center;
+            text-transform: uppercase;
+            user-select: none;
+        }
+
+
+        /* =========================================
+           FOTO
+        ========================================= */
+
+        .photo-frame {
+            position: relative;
+            width: 100%;
+            min-height: 220px;
+            border: 4px solid #FF5C00;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .photo-frame img {
+            display: block;
+            width: 100%;
+            max-height: 52vh;
+            object-fit: contain;
+            opacity: 0;
+            user-select: none;
+            -webkit-user-drag: none;
+        }
+
+        .photo-frame img.loaded {
+            opacity: 1;
+            animation: photo-pop 280ms cubic-bezier(.2, .8, .2, 1);
+        }
+
+        @keyframes photo-pop {
+            0%   { transform: scale(.7) rotate(-4deg); opacity: 0; }
+            100% { transform: scale(1) rotate(0deg); opacity: 1; }
+        }
+
+        .photo-status {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            color: #FF5C00;
+            font-family: "Moderat", monospace;
+            font-weight: 300;
+            font-size: clamp(16px, 4.5vw, 26px);
+            text-align: center;
+            text-transform: uppercase;
+            pointer-events: none;
+        }
+
+        .photo-status.hidden {
+            display: none;
+        }
+
+        @media (max-width: 380px) {
+            .photo-frame {
+                border-width: 3px;
+                min-height: 180px;
+            }
+        }
+
+
+        /* =========================================
+           OPÇÕES
+        ========================================= */
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .option {
+            --c: #087AFF;
+            display: block;
+            width: 100%;
+            padding: 14px 18px;
+            border: 4px solid var(--c);
+            border-radius: 0;
+            background: #000;
+            color: var(--c);
+            font-family: "POI Diode", sans-serif;
+            font-size: clamp(24px, 6.5vw, 42px);
+            font-weight: 700;
+            line-height: 0.9;
+            letter-spacing: -0.04em;
+            text-align: center;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition:
+                background-color 70ms linear,
+                color 70ms linear,
+                transform 100ms ease,
+                opacity 200ms ease;
+        }
+
+        .option:nth-child(1) { --c: #087AFF; }
+        .option:nth-child(2) { --c: #B000FF; }
+        .option:nth-child(3) { --c: #FF5C00; }
+        .option:nth-child(4) { --c: #00FF38; }
+
+        .option:active:not(:disabled) {
+            background: var(--c);
+            color: #000;
+            transform: scaleX(1.06) scaleY(0.92);
+        }
+
+        .option:disabled {
+            cursor: default;
+        }
+
+        .option.dim {
+            opacity: 0.3;
+        }
+
+        .option.chosen {
+            background: var(--c);
+            color: #000;
+        }
+
+        @media (max-width: 380px) {
+            .option {
+                border-width: 3px;
+                padding: 12px 14px;
+            }
+        }
+
+
+        /* =========================================
+           RESULTADO
+        ========================================= */
+
+        .resultado {
+            width: 100%;
+            margin-top: 18px;
+            text-align: center;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .resultado.show {
+            opacity: 1;
+            animation: pop 260ms cubic-bezier(.2, .8, .2, 1);
+        }
+
+        @keyframes pop {
+            0%   { transform: scale(.6) rotate(-6deg); opacity: 0; }
+            100% { transform: scale(1) rotate(0deg); opacity: 1; }
+        }
+
+        .resultado-titulo {
+            font-family: "POI Diode", sans-serif;
+            font-weight: 700;
+            font-size: clamp(34px, 10vw, 90px);
+            line-height: 0.85;
+            letter-spacing: -0.04em;
+            text-transform: uppercase;
+            color: #FF5C00;
+        }
+
+        .resultado.win .resultado-titulo {
+            animation: win-colors 700ms steps(1) infinite;
+        }
+
+        @keyframes win-colors {
+            0%   { color: #00FF38; }
+            20%  { color: #E5FF00; }
+            40%  { color: #FF5C00; }
+            60%  { color: #087AFF; }
+            80%  { color: #B000FF; }
+            100% { color: #00FF38; }
+        }
+
+        .resultado-sub {
+            margin-top: 18px;
+            color: #B000FF;
+            font-family: "Moderat", monospace;
+            font-weight: 300;
+            font-size: clamp(16px, 4.5vw, 28px);
+            line-height: 1.4;
+            letter-spacing: -0.03em;
+            text-transform: uppercase;
+        }
+
+        .resultado-sub:empty {
+            display: none;
+        }
+
+
+        /* =========================================
+           CONFETE (canvas criado pelo JavaScript)
+        ========================================= */
+
+        .fx-canvas {
+            position: fixed;
+            inset: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 50;
+        }
+
+
+        /* =========================================
+           CARINHAS TRISTES SUBINDO
+        ========================================= */
+
+        .sad-layer {
+            position: fixed;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 50;
+        }
+
+        .sad-face {
+            position: absolute;
+            bottom: -150px;
+            opacity: 0;
+            animation-name: sad-rise;
+            animation-timing-function: linear;
+            animation-fill-mode: forwards;
+        }
+
+        .sad-face svg {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        @keyframes sad-rise {
+            0% {
+                opacity: 0;
+                transform: translate(0, 0) rotate(-10deg);
+            }
+            10% {
+                opacity: 1;
+            }
+            50% {
+                transform: translate(3vw, -60vh) rotate(9deg);
+            }
+            100% {
+                opacity: .9;
+                transform: translate(-3vw, -130vh) rotate(-8deg);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            .resultado.win .resultado-titulo {
+                animation: none;
+                color: #00FF38;
+            }
+
+            .resultado.show,
+            .photo-frame img.loaded {
+                animation: none;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <main class="chick-page">
+
+        <!-- VOLTAR -->
+        <button
+            class="back"
+            onclick="history.back()"
+            aria-label="Voltar"
+        >
+            ←
+        </button>
+
+
+        <!-- TÍTULO -->
+        <h1 class="title">
+            WHO'S THAT<br>CHICK
+        </h1>
+
+
+        <div class="chick-container">
+
+            <!-- PERGUNTA -->
+            <div class="question-text">
+                Quem é esse bebê na foto?
+            </div>
+
+
+            <!-- FOTO -->
+            <div
+                class="photo-frame"
+                id="photoFrame"
+            >
+
+                <div
+                    class="photo-status"
+                    id="photoStatus"
+                >
+                    Carregando...
+                </div>
+
+            </div>
+
+
+            <!-- OPÇÕES -->
+            <div
+                class="options"
+                id="options"
+            ></div>
+
+
+            <!-- RESULTADO -->
+            <section
+                class="resultado"
+                id="resultado"
+            >
+
+                <div
+                    class="resultado-titulo"
+                    id="resultadoTitulo"
+                ></div>
+
+                <p
+                    class="resultado-sub"
+                    id="resultadoSub"
+                ></p>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <script>
+
+        /* =========================================
+           CANTORAS
+
+           nome: o que aparece no botão
+           foto: nome do arquivo na pasta "fotos"
+                 (sem a extensão: o site tenta
+                 .jpg, .jpeg, .png e .webp)
+           url:  link da internet, usado só se a foto
+                 não estiver na pasta "fotos"
+        ========================================= */
+
+        const cantoras = [
+
+            { nome: "LADY GAGA", foto: "01",
+              url: "https://pbs.twimg.com/media/HUnKtDoWIAA7_co?format=webp&name=large" },
+
+            { nome: "BEYONCÉ", foto: "02",
+              url: "https://conteudo.imguol.com.br/c/entretenimento/5c/2018/09/04/beyonce-1536094578980_v2_1080x1350.jpg" },
+
+            { nome: "MADONNA", foto: "03",
+              url: "https://www.audiograma.com.br/wp-content/uploads/2018/08/madonna-infancia-biografia.jpg" },
+
+            { nome: "KATY PERRY", foto: "04",
+              url: "https://pbs.twimg.com/media/GPUhekHWAAAb1V2?format=webp&name=large" },
+
+            { nome: "CHARLI XCX", foto: "05",
+              url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ408TsMVMDtQ4AqYBYDxV6iAmguVd7Eh1P07Hkx-vf6UTqA6b1QPX0Ekc&s=10" },
+
+            { nome: "ARIANA GRANDE", foto: "06",
+              url: "https://i.pinimg.com/originals/1c/5b/22/1c5b229367d595ccc0058fce5e58b4f8.jpg" },
+
+            { nome: "RIHANNA", foto: "07",
+              url: "https://i.pinimg.com/736x/34/eb/ea/34ebea52d07b536349acc00b0cd15dbe.jpg" },
+
+            { nome: "LANA DEL REY", foto: "08",
+              url: "https://i.pinimg.com/564x/f7/8c/9e/f78c9e0dab8ba961d8841ae92fc25034.jpg" },
+
+            { nome: "MARINA", foto: "09",
+              url: "https://myhero.com/content/images/thumbs/0132719_marina-diamandis.jpeg" },
+
+            { nome: "BRITNEY SPEARS", foto: "10",
+              url: "https://i.pinimg.com/474x/1d/54/36/1d5436e3f4a3e81fa9109a843dd7d713.jpg" },
+
+            { nome: "MILEY CYRUS", foto: "11",
+              url: "https://people.com/thmb/2ILlLnCfMj6yQBJTYJpU5LQ5TcA=/4000x0/filters:no_upscale():max_bytes(150000):strip_icc():focal(149x0:151x2)/miley_cyrus5-65eae209f180494bafa98d632004ec2e.jpg" },
+
+            { nome: "DUA LIPA", foto: "12",
+              url: "https://f.i.uol.com.br/fotografia/2025/08/08/175466880568961f05de7a8_1754668805_3x2_md.jpg" },
+
+            { nome: "KESHA", foto: "13",
+              url: "https://www.nickiswift.com/img/gallery/the-transformation-of-kesha/keshas-musical-childhood-1644527995.jpg" },
+
+            { nome: "RAYE", foto: "14",
+              url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTilqi0OVlyKoxKttHcrYAQTmb-rWm7Y1BcfuBxIKOfN80fSFIgslplnZkO&s=10" },
+
+            { nome: "ROSALÍA", foto: "15",
+              url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiYjkdbHFvbb7ilp_BhtPRyYrFHLKQRWRjMjiw3dWpXmttv1UpPBMrPtfx&s=10" }
+
+        ];
+
+
+        /* =========================================
+           ELEMENTOS
+        ========================================= */
+
+        const photoFrame = document.getElementById("photoFrame");
+        const photoStatus = document.getElementById("photoStatus");
+        const optionsBox = document.getElementById("options");
+        const resultado = document.getElementById("resultado");
+        const resultadoTitulo = document.getElementById("resultadoTitulo");
+        const resultadoSub = document.getElementById("resultadoSub");
+
+        const reduzirMovimento =
+            window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+
+        /* =========================================
+           PALETA
+        ========================================= */
+
+        const colors = [
+            "#087AFF",
+            "#B000FF",
+            "#FF5C00",
+            "#00FF38",
+            "#E5FF00"
+        ];
+
+        function randomColor() {
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
+
+        function random(min, max) {
+            return Math.random() * (max - min) + min;
+        }
+
+        function embaralhar(lista) {
+
+            const copia = lista.slice();
+
+            for (let i = copia.length - 1; i > 0; i--) {
+
+                const j = Math.floor(Math.random() * (i + 1));
+
+                const temp = copia[i];
+
+                copia[i] = copia[j];
+
+                copia[j] = temp;
+
+            }
+
+            return copia;
+
+        }
+
+
+        /* =========================================
+           MEMÓRIA DO JOGADOR
+
+           Guarda no próprio aparelho qual foto saiu,
+           quais eram as 4 opções e se a pessoa já
+           respondeu. Assim, recarregar a página não
+           sorteia outra foto nem dá outra chance.
+
+           Para testar do zero, abra a página com
+           ?reset no final do endereço:
+           whosthatchick.html?reset
+        ========================================= */
+
+        const CHAVE = "sabatini_whosthatchick";
+
+        function lerEstado() {
+
+            try {
+                return JSON.parse(localStorage.getItem(CHAVE));
+            } catch (e) {
+                return null;
+            }
+
+        }
+
+        function gravarEstado(estado) {
+
+            try {
+                localStorage.setItem(CHAVE, JSON.stringify(estado));
+            } catch (e) { }
+
+        }
+
+        if (window.location.search.indexOf("reset") !== -1) {
+
+            try {
+                localStorage.removeItem(CHAVE);
+            } catch (e) { }
+
+            window.location.replace(window.location.pathname);
+
+        }
+
+
+        /* =========================================
+           CONFETE
+           Explosão a partir do resultado
+           + chuva vinda do topo, nas cores do site.
+        ========================================= */
+
+        function launchConfetti() {
+
+            if (reduzirMovimento) return;
+
+            const canvas = document.createElement("canvas");
+
+            canvas.className = "fx-canvas";
+
+            document.body.appendChild(canvas);
+
+            const ctx = canvas.getContext("2d");
+
+            const dpr = window.devicePixelRatio || 1;
+
+            canvas.width = window.innerWidth * dpr;
+            canvas.height = window.innerHeight * dpr;
+
+            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+            const rect = resultado.getBoundingClientRect();
+
+            const originX = rect.left + rect.width / 2;
+
+            const originY = Math.min(
+                Math.max(rect.top + rect.height / 2, 0),
+                window.innerHeight
+            );
+
+            const pecas = [];
+
+            /* Explosão */
+
+            for (let i = 0; i < 130; i++) {
+
+                const angulo = random(-Math.PI * 0.95, -Math.PI * 0.05);
+                const velocidade = random(7, 18);
+
+                pecas.push({
+                    x: originX,
+                    y: originY,
+                    vx: Math.cos(angulo) * velocidade,
+                    vy: Math.sin(angulo) * velocidade,
+                    w: random(8, 18),
+                    h: random(4, 10),
+                    rot: random(0, Math.PI * 2),
+                    vr: random(-.3, .3),
+                    cor: randomColor()
+                });
+
+            }
+
+            /* Chuva do topo */
+
+            for (let i = 0; i < 70; i++) {
+
+                pecas.push({
+                    x: random(0, window.innerWidth),
+                    y: random(-400, -20),
+                    vx: random(-1, 1),
+                    vy: random(2, 5),
+                    w: random(8, 16),
+                    h: random(4, 9),
+                    rot: random(0, Math.PI * 2),
+                    vr: random(-.25, .25),
+                    cor: randomColor()
+                });
+
+            }
+
+            const duracao = 4200;
+            const inicio = performance.now();
+
+            function quadro(agora) {
+
+                const t = agora - inicio;
+
+                ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+
+                const restante = duracao - t;
+
+                ctx.globalAlpha =
+                    restante < 900 ? Math.max(restante / 900, 0) : 1;
+
+                pecas.forEach(function (p) {
+
+                    p.vy += .28;
+                    p.vx *= .992;
+                    p.x += p.vx;
+                    p.y += p.vy;
+                    p.rot += p.vr;
+
+                    ctx.save();
+                    ctx.translate(p.x, p.y);
+                    ctx.rotate(p.rot);
+                    ctx.fillStyle = p.cor;
+                    ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+                    ctx.restore();
+
+                });
+
+                if (t < duracao) {
+                    requestAnimationFrame(quadro);
+                } else {
+                    canvas.remove();
+                }
+
+            }
+
+            requestAnimationFrame(quadro);
+
+        }
+
+
+        /* =========================================
+           CARINHAS TRISTES SUBINDO
+           Desenhadas em SVG com traço grosso,
+           nas cores do site.
+        ========================================= */
+
+        const carinhaTriste = `
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="50" cy="50" r="44" fill="none"
+                    stroke="currentColor" stroke-width="8"/>
+                <circle cx="35" cy="42" r="6" fill="currentColor"/>
+                <circle cx="65" cy="42" r="6" fill="currentColor"/>
+                <path d="M30 72 Q50 54 70 72" fill="none"
+                    stroke="currentColor" stroke-width="8"
+                    stroke-linecap="round"/>
+                <path d="M33 52 Q27 61 33 65 Q39 61 33 52 Z"
+                    fill="currentColor"/>
+            </svg>
+        `;
+
+        function launchSadFaces() {
+
+            if (reduzirMovimento) return;
+
+            const camada = document.createElement("div");
+
+            camada.className = "sad-layer";
+
+            document.body.appendChild(camada);
+
+            const total = 24;
+
+            for (let i = 0; i < total; i++) {
+
+                const face = document.createElement("div");
+
+                const tamanho = Math.round(random(44, 110));
+
+                face.className = "sad-face";
+                face.innerHTML = carinhaTriste;
+
+                face.style.width = tamanho + "px";
+                face.style.height = tamanho + "px";
+                face.style.left = random(0, 92) + "vw";
+                face.style.color = randomColor();
+                face.style.animationDuration = random(3.6, 6) + "s";
+                face.style.animationDelay = random(0, 2.2) + "s";
+
+                camada.appendChild(face);
+
+            }
+
+            setTimeout(function () {
+                camada.remove();
+            }, 9000);
+
+        }
+
+
+        /* =========================================
+           CARREGAR A FOTO
+
+           Tenta primeiro a pasta "fotos" (.jpg, .jpeg,
+           .png, .webp) e, se não achar, o link da
+           internet. Se nada funcionar, avisa na tela.
+        ========================================= */
+
+        function carregarFoto(cantora) {
+
+            const tentativas = [
+                "fotos/" + cantora.foto + ".jpg",
+                "fotos/" + cantora.foto + ".jpeg",
+                "fotos/" + cantora.foto + ".png",
+                "fotos/" + cantora.foto + ".webp",
+                cantora.url
+            ];
+
+            let atual = 0;
+
+            const img = document.createElement("img");
+
+            img.alt = "Foto de bebê";
+
+            img.referrerPolicy = "no-referrer";
+
+            img.draggable = false;
+
+            img.addEventListener("load", function () {
+
+                photoStatus.classList.add("hidden");
+
+                img.classList.add("loaded");
+
+            });
+
+            img.addEventListener("error", function () {
+
+                atual++;
+
+                if (atual < tentativas.length) {
+
+                    img.src = tentativas[atual];
+
+                } else {
+
+                    photoStatus.textContent =
+                        "Foto indisponível. Recarregue a página.";
+
+                }
+
+            });
+
+            img.src = tentativas[0];
+
+            photoFrame.appendChild(img);
+
+        }
+
+
+        /* =========================================
+           MOSTRAR O RESULTADO
+        ========================================= */
+
+        function mostrarResultado(acertou) {
+
+            if (acertou) {
+
+                resultado.classList.add("win");
+
+                resultadoTitulo.textContent =
+                    "PARABÉNS! VOCÊ PODE ESCOLHER UMA MÚSICA!";
+
+                resultadoSub.textContent =
+                    "MANDE UM PRINT PRA MIM";
+
+            } else {
+
+                resultado.classList.remove("win");
+
+                resultadoTitulo.textContent =
+                    "QUE AZAR... PAGUE UM DRINK PRA MIM!";
+
+                resultadoSub.textContent = "";
+
+            }
+
+            resultado.classList.add("show");
+
+            resultado.scrollIntoView({
+                behavior: reduzirMovimento ? "auto" : "smooth",
+                block: "center"
+            });
+
+            /* Espera a rolagem terminar para o confete sair do lugar certo */
+
+            setTimeout(function () {
+
+                if (acertou) {
+                    launchConfetti();
+                } else {
+                    launchSadFaces();
+                }
+
+            }, reduzirMovimento ? 0 : 350);
+
+        }
+
+
+        /* =========================================
+           MONTAR AS OPÇÕES
+        ========================================= */
+
+        let estado = null;
+
+        let respondido = false;
+
+        function montarOpcoes() {
+
+            optionsBox.innerHTML = "";
+
+            estado.opcoes.forEach(function (indice) {
+
+                const botao = document.createElement("button");
+
+                botao.type = "button";
+
+                botao.className = "option";
+
+                botao.textContent = cantoras[indice].nome;
+
+                botao.dataset.indice = String(indice);
+
+                botao.addEventListener("click", function () {
+                    responder(indice);
+                });
+
+                optionsBox.appendChild(botao);
+
+            });
+
+        }
+
+        function marcarEscolha(escolha) {
+
+            const botoes = optionsBox.querySelectorAll(".option");
+
+            botoes.forEach(function (botao) {
+
+                botao.disabled = true;
+
+                if (botao.dataset.indice === String(escolha)) {
+                    botao.classList.add("chosen");
+                } else {
+                    botao.classList.add("dim");
+                }
+
+            });
+
+        }
+
+
+        /* =========================================
+           RESPONDER
+        ========================================= */
+
+        function responder(escolha) {
+
+            if (respondido) return;
+
+            respondido = true;
+
+            const acertou = escolha === estado.id;
+
+            estado.status = acertou ? "win" : "lose";
+
+            estado.escolha = escolha;
+
+            gravarEstado(estado);
+
+            marcarEscolha(escolha);
+
+            mostrarResultado(acertou);
+
+        }
+
+
+        /* =========================================
+           INÍCIO
+        ========================================= */
+
+        function estadoValido(e) {
+
+            return (
+                e &&
+                typeof e.id === "number" &&
+                cantoras[e.id] &&
+                Array.isArray(e.opcoes) &&
+                e.opcoes.length === 4 &&
+                e.opcoes.indexOf(e.id) !== -1 &&
+                e.opcoes.every(function (n) {
+                    return typeof n === "number" && cantoras[n];
+                })
+            );
+
+        }
+
+        const salvo = lerEstado();
+
+        if (estadoValido(salvo)) {
+
+            /* Já viu esta foto (e talvez já respondeu) neste aparelho */
+
+            estado = salvo;
+
+        } else {
+
+            /* Jogador novo: sorteia a foto e 3 opções erradas */
+
+            const todos = cantoras.map(function (c, i) { return i; });
+
+            const id = Math.floor(Math.random() * cantoras.length);
+
+            const erradas = embaralhar(
+                todos.filter(function (n) { return n !== id; })
+            ).slice(0, 3);
+
+            estado = {
+                id: id,
+                opcoes: embaralhar([id].concat(erradas)),
+                status: "pending",
+                escolha: null
+            };
+
+            gravarEstado(estado);
+
+        }
+
+        carregarFoto(cantoras[estado.id]);
+
+        montarOpcoes();
+
+        if (estado.status === "win" || estado.status === "lose") {
+
+            respondido = true;
+
+            marcarEscolha(estado.escolha);
+
+            mostrarResultado(estado.status === "win");
+
+        }
+
+    </script>
+
+</body>
+
+</html>
