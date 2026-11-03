@@ -1,1 +1,421 @@
 
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    >
+
+    <title>SABATINI28</title>
+
+    <style>
+
+        /* =========================================
+           FONTE (mesma do index.html)
+        ========================================= */
+
+        @font-face {
+            font-family: "POI Diode";
+            src: url("fonts/POIDiodeTrial-Bold.woff2") format("woff2");
+            font-weight: 700;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        :root {
+            --font-main: "POI Diode", sans-serif;
+            /* O index só usa a POI Diode. Se tiver uma fonte secundária, troque aqui. */
+            --font-second: "POI Diode", sans-serif;
+        }
+
+
+        /* =========================================
+           RESET
+        ========================================= */
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            width: 100%;
+            min-height: 100%;
+            background: #000;
+        }
+
+        body {
+            overflow: hidden;
+        }
+
+
+        /* =========================================
+           TELA
+        ========================================= */
+
+        .screen {
+            position: relative;
+            width: 100vw;
+            height: 100dvh;
+            min-height: 100vh;
+            overflow: hidden;
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+            padding: 20px 4vw;
+        }
+
+
+        /* =========================================
+           TÍTULO — ESSE SÁBADO
+        ========================================= */
+
+        .titulo {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: var(--font-main);
+            font-weight: 700;
+            font-size: min(24vw, 15dvh);
+            line-height: .8;
+            letter-spacing: -.045em;
+            text-align: center;
+            white-space: nowrap;
+            user-select: none;
+        }
+
+        .titulo span {
+            display: block;
+            color: #00FF38;
+            will-change: transform, color;
+        }
+
+
+        /* =========================================
+           MENU
+        ========================================= */
+
+        .menu {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 9px;
+        }
+
+        .menu-item {
+            position: relative;
+            display: block;
+            width: max-content;
+            max-width: 100%;
+            font-family: var(--font-main);
+            font-size: min(10vw, 6.5dvh);
+            font-weight: 700;
+            line-height: .78;
+            letter-spacing: -.04em;
+            text-decoration: none;
+            text-transform: uppercase;
+            cursor: pointer;
+            white-space: nowrap;
+            transition:
+                transform 100ms ease,
+                color 70ms linear;
+        }
+
+        .menu-item:nth-child(1) { color: #00FF38; }
+        .menu-item:nth-child(2) { color: #087AFF; }
+        .menu-item:nth-child(3) { color: #B000FF; }
+
+        .menu-item:hover {
+            transform: skewX(-12deg) scaleX(1.08) scaleY(.94);
+        }
+
+        .menu-item:active {
+            transform: skewX(16deg) scaleX(.88) scaleY(1.08);
+        }
+
+
+        /* =========================================
+           INFO — DIA / LOCAL / ENTRADA
+        ========================================= */
+
+        .info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            font-family: var(--font-second);
+            font-weight: 700;
+            font-size: min(7.5vw, 5dvh);
+            line-height: .8;
+            letter-spacing: -.03em;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .info span {
+            display: block;
+            color: #FF5C00;
+        }
+
+
+        /* =========================================
+           FLASH
+        ========================================= */
+
+        .flash {
+            position: fixed;
+            inset: 0;
+            background: #FFF;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        .flash.active {
+            animation: flash-effect 100ms linear;
+        }
+
+        @keyframes flash-effect {
+            0% { opacity: 0; }
+            25% { opacity: .8; }
+            100% { opacity: 0; }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <main class="screen">
+
+        <!-- TÍTULO -->
+        <h1 class="titulo" id="titulo">
+            <span>ESSE</span>
+            <span>SÁBADO</span>
+        </h1>
+
+
+        <!-- MENU -->
+        <nav class="menu" id="menu">
+
+            <a class="menu-item" href="confirme.html">CONFIRME AQUI</a>
+
+            <a class="menu-item" href="musica.html">SUGIRA UMA MÚSICA</a>
+
+            <a class="menu-item" href="index.html">PÁGINA INICIAL</a>
+
+        </nav>
+
+
+        <!-- INFO -->
+        <p class="info" id="info">
+            <span>DIA 7 ÀS 20H</span>
+            <span>BOHÔ BAR E PISTA</span>
+            <span>ENTRADA FREE</span>
+        </p>
+
+
+        <!-- FLASH -->
+        <div class="flash" id="flash"></div>
+
+    </main>
+
+
+    <script>
+
+        const flash = document.getElementById("flash");
+
+        const reduzirMovimento =
+            window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+
+        /* =========================================
+           PALETA (mesma do index.html)
+        ========================================= */
+
+        const colors = [
+            "#087AFF",   // azul
+            "#B000FF",   // roxo
+            "#FF5C00",   // laranja
+            "#00FF38",   // verde
+            "#E5FF00"    // amarelo
+        ];
+
+        function randomColor() {
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
+
+        function rgbParaHex(valor) {
+
+            if (valor.charAt(0) === "#") return valor.toLowerCase();
+
+            const m = valor.match(/\d+/g);
+
+            if (!m) return "";
+
+            return "#" + m.slice(0, 3).map(function (n) {
+                return ("0" + parseInt(n, 10).toString(16)).slice(-2);
+            }).join("");
+
+        }
+
+        /* Cor diferente da atual, para a troca sempre aparecer */
+
+        function newColor(atual) {
+
+            let cor = randomColor();
+            let tentativas = 0;
+
+            while (
+                tentativas < 5 &&
+                atual &&
+                cor.toLowerCase() === rgbParaHex(atual)
+            ) {
+                cor = randomColor();
+                tentativas++;
+            }
+
+            return cor;
+
+        }
+
+        function random(min, max) {
+            return Math.random() * (max - min) + min;
+        }
+
+
+        /* =========================================
+           FLASH
+        ========================================= */
+
+        let ultimoFlash = 0;
+
+        function doFlash(chance) {
+
+            if (reduzirMovimento) return;
+
+            const agora = performance.now();
+
+            if (Math.random() >= chance) return;
+
+            if (agora - ultimoFlash < 160) return;
+
+            ultimoFlash = agora;
+
+            flash.style.background =
+                Math.random() < .45 ? "#FFF" : randomColor();
+
+            flash.classList.remove("active");
+
+            void flash.offsetWidth;
+
+            flash.classList.add("active");
+
+        }
+
+
+        /* =========================================
+           TÍTULO CAÓTICO (ESSE / SÁBADO)
+        ========================================= */
+
+        const tituloLinhas = document.querySelectorAll("#titulo span");
+
+        function caosTitulo() {
+
+            tituloLinhas.forEach(function (linha) {
+
+                linha.style.color = newColor(linha.style.color);
+
+                linha.style.transform = `
+                    translate(${random(-2, 2)}vw, ${random(-1, 1)}vh)
+                    rotate(${random(-4, 4)}deg)
+                    skewX(${random(-8, 8)}deg)
+                    scaleX(${random(.9, 1.05)})
+                    scaleY(${random(.9, 1.2)})
+                `;
+
+                linha.style.opacity =
+                    (!reduzirMovimento && Math.random() < .08)
+                        ? random(.1, .35)
+                        : 1;
+
+            });
+
+            doFlash(.35);
+
+        }
+
+        caosTitulo();
+
+        setInterval(caosTitulo, reduzirMovimento ? 500 : 120);
+
+
+        /* =========================================
+           INFO: cores trocando mais devagar
+        ========================================= */
+
+        const infoLinhas = document.querySelectorAll("#info span");
+
+        setInterval(function () {
+
+            infoLinhas.forEach(function (linha) {
+
+                if (Math.random() < .5) {
+                    linha.style.color = newColor(linha.style.color);
+                }
+
+            });
+
+        }, reduzirMovimento ? 800 : 250);
+
+
+        /* =========================================
+           MENU CAÓTICO
+        ========================================= */
+
+        const items = document.querySelectorAll(".menu-item");
+
+        setInterval(function () {
+
+            items.forEach(function (item) {
+
+                const rotation = (Math.random() - .5) * 5;
+                const scaleX = .92 + Math.random() * .18;
+                const scaleY = .90 + Math.random() * .18;
+                const x = (Math.random() - .5) * 5;
+                const y = (Math.random() - .5) * 2;
+
+                item.style.transform = `
+                    translate(${x}vw, ${y}vh)
+                    rotate(${rotation}deg)
+                    scaleX(${scaleX})
+                    scaleY(${scaleY})
+                `;
+
+                item.style.color = randomColor();
+
+            });
+
+            if (Math.random() < .25) {
+                doFlash(1);
+            }
+
+        }, 700);
+
+    </script>
+
+</body>
+
+</html>
